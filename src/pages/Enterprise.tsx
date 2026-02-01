@@ -27,16 +27,13 @@ export default function Enterprise() {
                 </div>
 
                 <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
-                  Enterprise coworkers
-                </h1>
+  AI coworkers for every enterprise team.
+</h1>
 
-                <p className="text-xl lg:text-2xl text-muted-foreground mb-8">
-                  AI coworkers for every enterprise team.
-                </p>
+<p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">
+  Digiworks coworkers reduce operational load and accelerate execution by handling routine work, all from within the tools your teams already use, including Teams, Slack, and your enterprise platforms.
+</p>
 
-                <p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">
-                  Digiworks coworkers sit in Teams, Slack, and your enterprise stack to auto-resolve routine requests, streamline workflows, and give your people more time for real work.
-                </p>
               </AnimatedText>
 
               {/* RIGHT: image */}
@@ -128,7 +125,7 @@ export default function Enterprise() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedCard className="bg-[#111827] text-white rounded-xl p-8 lg:p-12 shadow-2xl relative overflow-hidden order-2 md:order-1">
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-4">Start with a 25K coworker pod.</h3>
+                <h3 className="text-2xl font-bold mb-4 text-gray-300">Start with a coworker pod.</h3>
                 <ul className="space-y-4 mb-8 text-gray-300">
                   <li className="flex gap-3">
                     <Check className="w-5 h-5 flex-shrink-0 text-primary" />

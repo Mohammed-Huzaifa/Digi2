@@ -91,23 +91,20 @@ const HigherEdRoles = [
         </div>
 
         <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
-          Higher Ed coworkers
-        </h1>
+  Coworkers for every department on campus
+</h1>
 
-        <p className="text-xl lg:text-2xl text-muted-foreground mb-8">
-          AI coworkers for every department on campus.
-        </p>
+<p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">
+  Digiworks coworkers augment your existing staff by extending capacity in recruitment, advising, student services, and alumni relations, giving students, families, and alumni 24/7 support through fully integrated campus systems.
+</p>
 
-        <p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">
-          Digiworks coworkers act like additional staff for recruitment, advising, student services, and alumni relations—integrated with your campus systems and available 24/7 for students, families, and alumni.
-        </p>
       </AnimatedText>
 
       {/* RIGHT: image (your marked area) */}
       <div className="relative">
         <div className="absolute -inset-6 rounded-[32px] bg-gradient-to-br from-primary/10 via-transparent to-sky-200/20 blur-2xl" />
         <img
-          src="/images/stu.jpg"
+          src="/images/profes.webp"
           alt="Higher education students collaborating"
           className="relative w-full h-[320px] sm:h-[380px] lg:h-[440px] object-cover rounded-3xl border border-border/60 shadow-xl"
           loading="lazy"
@@ -225,6 +222,72 @@ const HigherEdRoles = [
           </div>
         </section>
 
+        {/* HOW IT WORKS (same structure as Home) */}
+<section className="container py-24 glass-bg">
+  <AnimatedSection className="text-center mb-16">
+    <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
+      2.7  CAMPUS COWORKER POD
+    </p>
+
+    <h2 className="text-5xl font-heading font-bold mb-4 tracking-tight">
+      Launch your first campus coworker pod 
+    </h2>
+
+    <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+      Start with a focused pod—such as Recruiter + One-Stop for a specific program, population, or campus.
+    </p>
+
+    <p className="text-muted-foreground text-lg max-w-3xl mx-auto mt-3">
+      We handle discovery, workflow design, integrations, configuration, safety guardrails, and staff training.
+    </p>
+
+    <p className="text-muted-foreground text-lg max-w-3xl mx-auto mt-3">
+      Within weeks, coworkers are live in your Teams/Slack environment and web experiences, handling real student and family needs.
+    </p>
+  </AnimatedSection>
+
+  <div className="grid md:grid-cols-3 gap-8 relative">
+    {[
+      {
+        step: "01",
+        title: "Identify high-leverage workflows",
+        desc: "We start by finding the repetitive, rules-based work that slows your teams down—support tickets, admissions inquiries, HR questions, approvals, and more.",
+      },
+      {
+        step: "02",
+        title: "Connect your systems and guardrails",
+        desc: "Next, we integrate your coworkers with the right systems and data, design their responsibilities, and set clear boundaries and escalation rules.",
+      },
+      {
+        step: "03",
+        title: "Deploy, monitor, and scale",
+        desc: "We deploy your first coworkers in weeks. You track their impact, refine their behavior, and then scale coworkers across teams and departments.",
+      },
+    ].map((item, i) => (
+      <AnimatedCard
+        key={i}
+        delay={i * 0.2}
+        className="glass-card border-none rounded-2xl px-8 py-10 min-h-[260px] flex flex-col"
+      >
+        <div className="flex items-center gap-4 mb-6">
+          <div className="glass-card w-12 h-12 rounded-2xl shadow-sm flex items-center justify-center text-lg font-bold font-heading text-primary flex-shrink-0">
+            {item.step}
+          </div>
+
+          <h3 className="text-[20px] lg:text-xl font-bold tracking-tight leading-snug text-left">
+            {item.title}
+          </h3>
+        </div>
+
+        <p className="text-center text-muted-foreground text-sm leading-relaxed mt-auto">
+          {item.desc}
+        </p>
+      </AnimatedCard>
+    ))}
+  </div>
+</section>
+
+
         <section className="container py-24">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
@@ -262,7 +325,7 @@ const HigherEdRoles = [
             
             <AnimatedCard className="bg-[#111827] text-white rounded-xl p-8 lg:p-12 shadow-2xl relative overflow-hidden">
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-4">Launch your first campus coworker pod for 25K.</h3>
+                <h3 className="text-2xl font-bold mb-4 text-gray-300">Launch your first campus coworker pod </h3>
                 <ul className="space-y-4 mb-8 text-gray-300">
                   <li className="flex gap-3">
                     <Check className="w-5 h-5 flex-shrink-0 text-primary" />

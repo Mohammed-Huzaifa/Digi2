@@ -41,13 +41,16 @@ export default function Home() {
         
         <div className="container relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            <AnimatedText delay={0.1}>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border border-border text-sm font-medium text-foreground mb-8 hover:bg-secondary/80 transition-colors cursor-pointer group">
-                <span className="flex h-2 w-2 rounded-full bg-primary"></span>
-                <span>Start with one coworker pod today</span>
-                <ChevronRight className="w-3 h-3 text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
-              </div>
-            </AnimatedText>
+          <AnimatedText delay={0.1}>
+  <Link href="/contact">
+    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border border-border text-sm font-medium text-foreground mb-8 hover:bg-secondary/80 transition-colors cursor-pointer group">
+      <span className="flex h-2 w-2 rounded-full bg-primary"></span>
+      <span>Start with one coworker pod today</span>
+      <ChevronRight className="w-3 h-3 text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
+    </div>
+  </Link>
+</AnimatedText>
+
             
             <AnimatedText delay={0.2}>
             <h1 className="text-[42px] sm:text-5xl lg:text-7xl font-heading font-bold tracking-tighter text-foreground mb-6 leading-[1.1] text-center px-3 sm:px-0">
@@ -86,12 +89,12 @@ export default function Home() {
               </Link>
             </AnimatedText>
             
-            <AnimatedText delay={0.5} className="mt-8">
+            {/* <AnimatedText delay={0.5} className="mt-8">
               <p className="text-sm text-muted-foreground font-medium flex items-center justify-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-primary" />
                 Start with one coworker pod. Prove ROI in weeks, not months.
               </p>
-            </AnimatedText>
+            </AnimatedText> */}
           </div>
           
           {/* Graphite-style Hero Visual - 3D/Video feel */}
@@ -196,7 +199,7 @@ export default function Home() {
               <div className="relative z-10 grid gap-6">
                 <AnimatedCard delay={0.1} className="glass-card p-6 rounded-xl shadow-sm">
                   <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                    <img src="/images/teams.jpeg" className="w-6 h-6 object-contain" alt="Teams" />
+                    <img src="/images/business.png" className="w-6 h-6 object-contain" alt="Teams" />
                     Microsoft Teams
                   </h4>
                   <p className="text-sm text-muted-foreground">"Hey Digi, can you reset the password for user @sarah?"</p>
@@ -212,7 +215,7 @@ export default function Home() {
                 
                 <AnimatedCard delay={0.3} className="glass-card p-6 rounded-xl shadow-sm">
                   <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                    <img src="/images/icon-workflow.png" className="w-6 h-6 object-contain" alt="System" />
+                    <img src="/images/crm.png" className="w-6 h-6 object-contain" alt="System" />
                     CRM / ERP Update
                   </h4>
                   <p className="text-sm text-muted-foreground">System updated successfully. Notification sent to finance team.</p>
@@ -260,7 +263,7 @@ export default function Home() {
         
         <div className="grid md:grid-cols-3 gap-8 relative">
           {/* Connecting line */}
-          <div className="hidden md:block absolute top-8 left-0 w-full h-px bg-border -z-10" />
+          {/* <div className="hidden md:block absolute top-8 left-0 w-full h-px bg-border -z-10" /> */}
           
           {[
   {
@@ -306,16 +309,23 @@ export default function Home() {
 
       {/* TECHNOLOGIES SECTION */}
 <section className="container py-10">
+  <AnimatedSection className="text-center mb-10">
+    <h2 className="text-5xl font-heading font-bold mb-4 tracking-tight">
+      Tools & Technologies
+    </h2>
+  </AnimatedSection>
+
   <AnimatedCard className="glass-card rounded-[32px] p-8 md:p-12 overflow-hidden">
     <Technologies />
   </AnimatedCard>
 </section>
 
+
       {/* Solutions Overview - Bento Grid Style */}
       {/* Solutions Overview - Bento Grid Style */}
 <section className="container py-10">
   <AnimatedSection className="text-center mb-10">
-    <h2 className="text-3xl lg:text-4xl font-heading font-bold tracking-tight">
+    <h2 className="text-5xl font-heading font-bold mb-4 tracking-tight">
       Solutions
     </h2>
   </AnimatedSection>
@@ -324,14 +334,32 @@ export default function Home() {
 
           <AnimatedCard className="min-h-[400px] flex flex-col justify-between group cursor-pointer glass-card rounded-2xl overflow-hidden">
             <div className="p-8">
-              <h3 className="text-2xl font-heading font-bold mb-3">Higher Ed Coworkers</h3>
+              <h3 className="text-2xl font-heading font-bold mb-3">Higher Ed</h3>
               <p className="text-muted-foreground mb-6">
-                Coworkers for recruitment, advising, student services, alumni engagement, and more—performing critical functions across campus, 24/7, in many languages.
+                Coworkers for recruitment, advising, student services, alumni engagement, and more performing critical functions across campus, 24/7.  
               </p>
               <Link href="/solutions">
-                <Button variant="outline" className="group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
-                  View Higher Ed solutions <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
+              <Button
+  variant="outline"
+  className="
+    group
+    cursor-pointer
+    bg-white
+    text-foreground
+    border-border
+    hover:bg-primary
+    hover:text-white
+    hover:border-primary
+    transition-all
+    shadow-sm
+    hover:shadow-md
+  "
+>
+  View Higher Ed solutions
+  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+</Button>
+
+
               </Link>
             </div>
             <div className="h-48 relative overflow-hidden mt-auto">
@@ -342,12 +370,24 @@ export default function Home() {
           
           <AnimatedCard delay={0.2} className="min-h-[400px] flex flex-col justify-between group cursor-pointer glass-card rounded-2xl overflow-hidden">
             <div className="p-8">
-              <h3 className="text-2xl font-heading font-bold mb-3">Enterprise Coworkers</h3>
+              <h3 className="text-2xl font-heading font-bold mb-3">Enterprise </h3>
               <p className="text-muted-foreground mb-6">
                 Coworkers for IT, HR, finance, and operations that auto‑resolve routine issues, optimize knowledge, and accelerate approvals.
               </p>
               <Link href="/enterprise">
-                <Button variant="outline" className="group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
+                <Button variant="outline" className="
+    group
+    cursor-pointer
+    bg-white
+    text-foreground
+    border-border
+    hover:bg-primary
+    hover:text-white
+    hover:border-primary
+    transition-all
+    shadow-sm
+    hover:shadow-md
+  ">
                   View Enterprise solutions <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
@@ -433,7 +473,7 @@ export default function Home() {
             </div>
             
             <div className="relative z-10 max-w-2xl mx-auto space-y-8">
-              <h2 className="text-3xl lg:text-4xl font-heading font-bold tracking-tight">Ready to meet your first coworkers?</h2>
+              <h2 className="text-3xl lg:text-4xl font-heading font-bold tracking-tight text-gray-300">Ready to meet your first coworkers?</h2>
               <p className="text-gray-300 text-lg">
                 Tell us where you're stuck today and we'll show you what a coworker can do in that part of your organization.
               </p>

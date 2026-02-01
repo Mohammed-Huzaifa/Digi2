@@ -15,8 +15,9 @@ export default function Technologies() {
   // };
 
   return (
-    <div className="w-full h-full text-[#f2f2f2] flex flex-col">
-      <h3 className="font-heading text-xl mb-4 md:mb-0">Technologies</h3>
+    <div className="w-full h-full flex flex-col">
+
+      {/* <h3 className="font-heading text-xl mb-4 md:mb-0">Technologies</h3> */}
       
       {/* Skills Pills - 3 rows with horizontal overflow, extending edge-to-edge */}
       <div className="py-6 md:flex-1 flex flex-col gap-6 md:gap-11 md:justify-center mb-6 md:mb-1 edge-to-edge relative">
