@@ -21,7 +21,7 @@ export default function AgentUsecases() {
               </h1>
 
               <p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">
-                Every use case below is a live agentflow — the exact triggers, nodes, and system write-backs we deploy inside your stack. No slideware, no hypotheticals.
+                Every use case below is a live agentflow: the exact triggers, nodes, and system write-backs we deploy inside your stack. No slideware, no hypotheticals.
               </p>
 
               <Link href="/contact">

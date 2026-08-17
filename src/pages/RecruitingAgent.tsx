@@ -19,7 +19,7 @@ const agents = [
     title: "Resume Enrichment Agent",
     tagline: "Stop reading CVs. Start knowing candidates.",
     description:
-      "Analyzes candidate resumes and job descriptions, extracts structured profiles, and scores job fit automatically — so recruiters spend time on people, not paperwork.",
+      "Analyzes candidate resumes and job descriptions, extracts structured profiles, and scores job fit automatically, so recruiters spend time on people, not paperwork.",
     capabilities: [
       "Resume parsing and skills extraction",
       "Candidate-to-job fit evaluation",
@@ -34,7 +34,7 @@ const agents = [
     title: "Screening Agent",
     tagline: "First-round interviews, fully automated.",
     description:
-      "Conducts AI-powered voice screening calls, collects candidate responses, and delivers transcripts and summaries — without a recruiter on the line.",
+      "Conducts AI-powered voice screening calls, collects candidate responses, and delivers transcripts and summaries, all without a recruiter on the line.",
     capabilities: [
       "Automated outbound voice interviews",
       "Natural language conversation handling",
@@ -49,7 +49,7 @@ const agents = [
     title: "Interview Scheduling & Question Generator",
     tagline: "Schedule smarter. Walk in prepared.",
     description:
-      "Checks interviewer availability, confirms candidates via voice, books the meeting, and sends hiring managers tailored interview questions — all without manual coordination.",
+      "Checks interviewer availability, confirms candidates via voice, books the meeting, and sends hiring managers tailored interview questions, all without manual coordination.",
     capabilities: [
       "Interviewer calendar availability checks",
       "Candidate availability confirmation via voice",
@@ -64,7 +64,7 @@ const agents = [
     title: "Email Reply Processing Agent",
     tagline: "Turn inbox responses into structured data.",
     description:
-      "Reads interviewer email feedback, extracts answers, and converts them into structured evaluation data — eliminating manual feedback processing entirely.",
+      "Reads interviewer email feedback, extracts answers, and converts them into structured evaluation data, eliminating manual feedback processing entirely.",
     capabilities: [
       "Interviewer email content analysis",
       "Feedback extraction and categorization",
@@ -79,7 +79,7 @@ const agents = [
     title: "Executive Meeting Intelligence Agent",
     tagline: "From transcript to decision in minutes.",
     description:
-      "Analyzes interview meeting transcripts and produces executive-level summaries, candidate strengths, concerns, and hiring recommendations — giving leadership the signal without the noise.",
+      "Analyzes interview meeting transcripts and produces executive-level summaries, candidate strengths, concerns, and hiring recommendations, giving leadership the signal without the noise.",
     capabilities: [
       "Interview transcript analysis",
       "Candidate strengths and concerns extraction",
@@ -126,7 +126,7 @@ export default function RecruitingAgent() {
               </h1>
 
               <p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">
-                Five specialized AI agents that cover the full recruiting lifecycle — from resume review to executive debrief — so your team focuses on decisions, not administration.
+                Five specialized AI agents that cover the full recruiting lifecycle, from resume review to executive debrief, so your team focuses on decisions, not administration.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -154,7 +154,7 @@ export default function RecruitingAgent() {
               Recruiting is slow because it's still mostly manual
             </h2>
             <p className="text-xl text-muted-foreground">
-              Screening calls, interview coordination, feedback chasing — your recruiters are spending hours on tasks that shouldn't require a human at all.
+              Screening calls, interview coordination, feedback chasing: your recruiters are spending hours on tasks that shouldn't require a human at all.
             </p>
           </AnimatedSection>
 
@@ -297,7 +297,7 @@ export default function RecruitingAgent() {
           <AnimatedCard className="glass-card rounded-2xl p-8">
             <h3 className="text-xl font-bold mb-4">How We Deploy It</h3>
             <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-              Digiworks handles the full implementation — integrations with your ATS, HRIS, email, and calendar systems, plus configuration, guardrails, and staff onboarding.
+              Digiworks handles the full implementation: integrations with your ATS, HRIS, email, and calendar systems, plus configuration, guardrails, and staff onboarding.
             </p>
             <div className="space-y-4">
               <div className="p-4 bg-secondary/50 rounded-lg text-sm border border-border">

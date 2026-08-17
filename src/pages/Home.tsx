@@ -269,7 +269,7 @@ export default function Home() {
   {
     step: "01",
     title: "Identify high-leverage workflows",
-    desc: "We start by finding the repetitive, rules-based work that slows your teams down—support tickets, admissions inquiries, HR questions, approvals, and more."
+    desc: "We start by finding the repetitive, rules-based work that slows your teams down: support tickets, admissions inquiries, HR questions, approvals, and more."
   },
   {
     step: "02",
@@ -430,7 +430,7 @@ export default function Home() {
               },
               {
                 q: "What's the difference between Business Operations and Higher Education coworkers?",
-                a: "Business Operations coworkers handle cross-industry functions like HR, Finance, IT, and Payroll that every organization needs. Higher Education coworkers are purpose-built for campus-specific workflows — admissions, student services, academic advising, and registrar operations. You can mix both. A university might use Business Operations coworkers for their HR and finance teams, and Higher Education coworkers for their student-facing departments."
+                a: "Business Operations coworkers handle cross-industry functions like HR, Finance, IT, and Payroll that every organization needs. Higher Education coworkers are purpose-built for campus-specific workflows: admissions, student services, academic advising, and registrar operations. You can mix both. A university might use Business Operations coworkers for their HR and finance teams, and Higher Education coworkers for their student-facing departments."
               }
             ].map((item, i) => (
               <AnimatedCard

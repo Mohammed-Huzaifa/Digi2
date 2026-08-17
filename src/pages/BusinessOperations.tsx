@@ -31,7 +31,7 @@ export default function BusinessOperations() {
 </h1>
 
 <p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">
-  Digiworks coworkers handle HR, finance, IT, payroll, and procurement tasks — right inside Microsoft Teams, Slack, and your existing business systems.
+  Digiworks coworkers handle HR, finance, IT, payroll, and procurement tasks, right inside Microsoft Teams, Slack, and your existing business systems.
 </p>
 
               </AnimatedText>
@@ -60,7 +60,7 @@ export default function BusinessOperations() {
               <ul className="space-y-4">
                 {[
                   "Coworkers automate repetitive HR, IT, finance, payroll, and procurement tasks so your team focuses on what requires human judgment.",
-                  "They live inside the tools your teams already use — Teams, Slack, your HRIS, ERP, and ITSM.",
+                  "They live inside the tools your teams already use: Teams, Slack, your HRIS, ERP, and ITSM.",
                   "They help standardize processes and reduce dependence on tribal knowledge."
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 items-start">
@@ -76,7 +76,7 @@ export default function BusinessOperations() {
             <AnimatedCard className="glass-card p-8 rounded-xl shadow-sm">
               <h3 className="text-xl font-bold mb-4">How It Works</h3>
               <p className="text-muted-foreground mb-6">
-                Digiworks coworkers plug into your ITSM, HRIS, ERP, and collaboration tools so they can work across departments — not in silos.
+                Digiworks coworkers plug into your ITSM, HRIS, ERP, and collaboration tools so they can work across departments, not in silos.
               </p>
               <div className="space-y-4">
                 <div className="p-4 bg-secondary/50 rounded-lg text-sm border border-border">
@@ -129,7 +129,7 @@ export default function BusinessOperations() {
                 <ul className="space-y-4 mb-8 text-gray-300">
                   <li className="flex gap-3">
                     <Check className="w-5 h-5 flex-shrink-0 text-primary" />
-                    <span>Choose one function—like IT support, HR, or finance.</span>
+                    <span>Choose one function, like IT support, HR, or finance.</span>
                   </li>
                   <li className="flex gap-3">
                     <Check className="w-5 h-5 flex-shrink-0 text-primary" />

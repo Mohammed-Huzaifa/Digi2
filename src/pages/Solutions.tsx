@@ -234,7 +234,7 @@ const HigherEdRoles = [
     </h2>
 
     <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-      Start with a focused pod—such as Recruiter + One-Stop for a specific program, population, or campus.
+      Start with a focused pod, such as Recruiter + One-Stop for a specific program, population, or campus.
     </p>
 
     <p className="text-muted-foreground text-lg max-w-3xl mx-auto mt-3">
@@ -251,7 +251,7 @@ const HigherEdRoles = [
       {
         step: "01",
         title: "Identify high-leverage workflows",
-        desc: "We start by finding the repetitive, rules-based work that slows your teams down—support tickets, admissions inquiries, HR questions, approvals, and more.",
+        desc: "We start by finding the repetitive, rules-based work that slows your teams down: support tickets, admissions inquiries, HR questions, approvals, and more.",
       },
       {
         step: "02",
@@ -329,7 +329,7 @@ const HigherEdRoles = [
                 <ul className="space-y-4 mb-8 text-gray-300">
                   <li className="flex gap-3">
                     <Check className="w-5 h-5 flex-shrink-0 text-primary" />
-                    <span>Start with a focused pod—such as a set of academic support coworkers.</span>
+                    <span>Start with a focused pod, such as a set of academic support coworkers.</span>
                   </li>
                   <li className="flex gap-3">
                     <Check className="w-5 h-5 flex-shrink-0 text-primary" />

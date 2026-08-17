@@ -36,22 +36,22 @@ export const agentUsecases: AgentUsecase[] = [
     icon: Workflow,
     eyebrow: "DIGIWORKS AGENTFLOW",
     title: "HR Automation Flow",
-    cardHook: "From resume to hire — five agents, zero manual handoffs.",
+    cardHook: "From resume to hire: five agents, zero manual handoffs.",
     cardDescription:
-      "A closed-loop pipeline that enriches resumes, runs AI voice screenings, schedules interviews, and briefs your execs — writing every result straight back into Workday.",
+      "A closed-loop pipeline that enriches resumes, runs AI voice screenings, schedules interviews, and briefs your execs, writing every result straight back into Workday.",
     cardStat: "5 connected agents · 3 lifecycle stages",
     integrations: ["Workday", "Voice AI", "Calendar & Meetings", "Email"],
-    heroTitle: "Your recruiting pipeline, running itself — inside Workday.",
+    heroTitle: "Your recruiting pipeline, running itself inside Workday.",
     heroSubhead:
-      "DigiWorks AgentFlow chains five AI agents across Workday and the voice, calendar, and email channels your recruiters already use. Every time a recruiter moves a candidate's stage, the next agent fires automatically — and writes its results straight back into the candidate record.",
+      "DigiWorks AgentFlow chains five AI agents across Workday and the voice, calendar, and email channels your recruiters already use. Every time a recruiter moves a candidate's stage, the next agent fires automatically and writes its results straight back into the candidate record.",
     problems: [
       {
         title: "Resumes pile up unread",
-        desc: "Hundreds of applications land in Workday, and every one needs a human to open the PDF, compare it to the job description, and judge fit — before a recruiter even picks up the phone.",
+        desc: "Hundreds of applications land in Workday, and every one needs a human to open the PDF, compare it to the job description, and judge fit before a recruiter even picks up the phone.",
       },
       {
         title: "Screening calls eat the calendar",
-        desc: "First-round phone screens are still booked, dialed, and summarized by hand — one candidate at a time, one recruiter at a time.",
+        desc: "First-round phone screens are still booked, dialed, and summarized by hand, one candidate at a time, one recruiter at a time.",
       },
       {
         title: "Feedback gets lost in inboxes",
@@ -76,7 +76,7 @@ export const agentUsecases: AgentUsecase[] = [
           { label: "Post Request to Workday", type: "http", detail: "Sends the enriched profile / AI summary object to Workday via API (PATCH/POST)." },
         ],
         benefit:
-          "Recruiters open Workday to a fully parsed profile — skills, experience, education, and an AI fit assessment — instead of a raw PDF.",
+          "Recruiters open Workday to a fully parsed profile: skills, experience, education, and an AI fit assessment, instead of a raw PDF.",
       },
       {
         id: "screening-interview",
@@ -95,14 +95,14 @@ export const agentUsecases: AgentUsecase[] = [
           { label: "Send to Workday", type: "http", detail: "Posts the interview transcript and recording link back to Workday." },
         ],
         benefit:
-          "By the time a recruiter checks the candidate record, the screening call has already happened — transcript, recording, and structured Q&A summary included.",
+          "By the time a recruiter checks the candidate record, the screening call has already happened: transcript, recording, and structured Q&A summary included.",
       },
       {
         id: "interview-cycle-3a",
         kicker: "Scenario 3a",
         title: "Interview Question Generator",
         trigger: "Triggers on: the recruiter moves the candidate to the Interview stage",
-        hook: "Scheduling, confirmation, and interview prep — handled before a human says a word.",
+        hook: "Scheduling, confirmation, and interview prep, handled before a human says a word.",
         description:
           "Checks the interviewer's calendar, calls the candidate to confirm availability, schedules the interview meeting, pulls the resume summary from Workday, generates tailored interview questions, and e-mails them to the interviewer.",
         nodes: [
@@ -115,7 +115,7 @@ export const agentUsecases: AgentUsecase[] = [
           { label: "Question Generator", type: "llm", detail: "Agent generates role-specific interview questions and e-mails them to the interviewer." },
         ],
         benefit:
-          "The interviewer opens their inbox to a confirmed meeting invite and a tailored question set — built from the candidate's actual resume summary.",
+          "The interviewer opens their inbox to a confirmed meeting invite and a tailored question set, built from the candidate's actual resume summary.",
       },
       {
         id: "interview-cycle-3b",
@@ -149,12 +149,12 @@ export const agentUsecases: AgentUsecase[] = [
           { label: "Written to Workday", type: "outcome", detail: "The summary and hiring recommendation are written back to the candidate's Workday record." },
         ],
         benefit:
-          "Leadership gets a structured recommendation and summary the moment the interview ends — no transcript-reading required.",
+          "Leadership gets a structured recommendation and summary the moment the interview ends, no transcript-reading required.",
       },
     ],
     closingTitle: "Five agents. One closed loop. Zero manual re-entry.",
     closingBody:
-      "Workday stage changes drive resume enrichment, an AI voice screening round, and a full interview cycle — scheduling, question generation, answer capture, and meeting summarization — with every result written back into Workday automatically. Recruiters always see the latest AI-generated data on the candidate record, without touching a spreadsheet or re-typing a single field.",
+      "Workday stage changes drive resume enrichment, an AI voice screening round, and a full interview cycle: scheduling, question generation, answer capture, and meeting summarization, with every result written back into Workday automatically. Recruiters always see the latest AI-generated data on the candidate record, without touching a spreadsheet or re-typing a single field.",
     closingStats: [
       { value: "5", label: "connected agentflows" },
       { value: "4", label: "systems synced automatically" },

@@ -105,7 +105,7 @@ export default function AgentUsecaseDetail() {
             Every stage change fires the next agent
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Each scenario below is a real agentflow — the trigger, the nodes it runs, and exactly what gets written back to Workday.
+            Each scenario below is a real agentflow: the trigger, the nodes it runs, and exactly what gets written back to Workday.
           </p>
         </AnimatedSection>
 
@@ -156,7 +156,7 @@ export default function AgentUsecaseDetail() {
 
               <div className="p-5 rounded-xl bg-primary/5 border border-primary/10">
                 <p className="text-foreground/80 leading-relaxed">
-                  <span className="font-semibold text-primary">Why it matters — </span>
+                  <span className="font-semibold text-primary">Why it matters: </span>
                   {scenario.benefit}
                 </p>
               </div>
