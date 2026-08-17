@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Building2, PhoneCall, CalendarClock, Mail } from "lucide-react";
 import { Link, useParams, Redirect } from "wouter";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
-import { AgentFlowDiagram } from "@/components/AgentFlowDiagram";
 import { getAgentUsecase } from "@/data/agentUsecases";
 
 const INTEGRATION_ICONS: Record<string, React.ReactNode> = {
@@ -66,7 +65,7 @@ export default function AgentUsecaseDetail() {
                 </Link>
                 <a href="#scenarios">
                   <Button size="lg" variant="outline" className="h-12 px-8 text-base bg-white hover:bg-secondary border-border rounded-md font-medium text-foreground">
-                    See the agent chain
+                    See how it works
                   </Button>
                 </a>
               </div>
@@ -99,13 +98,13 @@ export default function AgentUsecaseDetail() {
       <section id="scenarios" className="container py-24 scroll-mt-24">
         <AnimatedSection className="mb-16">
           <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
-            The Agent Chain
+            How It Works
           </p>
           <h2 className="text-4xl font-heading font-bold tracking-tight mb-4">
-            Every stage change fires the next agent
+            Five agents, each handling their part automatically
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Each scenario below is a real agentflow: the trigger, the nodes it runs, and exactly what gets written back to Workday.
+            Every stage below runs on its own, the moment a candidate moves forward in Workday.
           </p>
         </AnimatedSection>
 
@@ -134,25 +133,9 @@ export default function AgentUsecaseDetail() {
                 {scenario.title}
               </h3>
               <p className="text-lg font-medium text-foreground/80 mb-4">{scenario.hook}</p>
-              <p className="text-sm text-muted-foreground mb-1">
-                <span className="font-semibold text-foreground/70">{scenario.trigger}</span>
-              </p>
               <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
                 {scenario.description}
               </p>
-
-              <div className="overflow-x-auto pb-4 mb-8">
-                <AgentFlowDiagram nodes={scenario.nodes} />
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                {scenario.nodes.map((node, j) => (
-                  <div key={j} className="p-4 bg-secondary/50 rounded-lg text-sm border border-border">
-                    <span className="font-semibold text-primary block mb-1">{node.label}</span>
-                    {node.detail}
-                  </div>
-                ))}
-              </div>
 
               <div className="p-5 rounded-xl bg-primary/5 border border-primary/10">
                 <p className="text-foreground/80 leading-relaxed">
@@ -200,7 +183,7 @@ export default function AgentUsecaseDetail() {
                 Ready to put your recruiting pipeline on autopilot?
               </h2>
               <p className="text-gray-300 text-lg">
-                Tell us how candidates move through Workday today and we'll show you exactly where this agentflow plugs in.
+                Tell us how candidates move through Workday today and we'll show you exactly where this fits in.
               </p>
               <Link href="/contact">
                 <Button size="lg" className="h-14 px-10 text-lg rounded-md shadow-xl bg-white text-black hover:bg-gray-100 font-medium">

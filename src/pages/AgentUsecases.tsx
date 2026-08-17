@@ -21,7 +21,7 @@ export default function AgentUsecases() {
               </h1>
 
               <p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">
-                Every use case below is a live agentflow: the exact triggers, nodes, and system write-backs we deploy inside your stack. No slideware, no hypotheticals.
+                Every use case below is a live deployment already running for real teams. No slideware, no hypotheticals.
               </p>
 
               <Link href="/contact">
@@ -44,7 +44,7 @@ export default function AgentUsecases() {
             Browse by use case
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Click into any pipeline to see the exact agent chain, the systems it touches, and what changes once it's live.
+            Click into any use case to see what it does, the systems it touches, and what changes once it's live.
           </p>
         </AnimatedSection>
 
@@ -105,7 +105,7 @@ export default function AgentUsecases() {
                 Don't see your workflow yet?
               </h2>
               <p className="text-gray-300 text-lg">
-                Tell us what your team does manually today, and we'll design the agentflow that takes it over.
+                Tell us what your team does manually today, and we'll design the agent that takes it over.
               </p>
               <Link href="/contact">
                 <Button size="lg" className="h-14 px-10 text-lg rounded-md shadow-xl bg-white text-black hover:bg-gray-100 font-medium">

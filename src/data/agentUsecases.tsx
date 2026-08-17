@@ -1,14 +1,11 @@
 import { Workflow, type LucideIcon } from "lucide-react";
-import type { FlowNode } from "@/components/AgentFlowDiagram";
 
 export interface Scenario {
   id: string;
   kicker: string;
   title: string;
-  trigger: string;
   hook: string;
   description: string;
-  nodes: FlowNode[];
   benefit: string;
 }
 
@@ -63,57 +60,29 @@ export const agentUsecases: AgentUsecase[] = [
         id: "resume-enrichment",
         kicker: "Scenario 1",
         title: "Resume Enrichment Agent",
-        trigger: "Triggers on: a new resume or application submitted in Workday",
         hook: "Every resume becomes a structured, scored profile before a recruiter opens it.",
         description:
-          "The agentflow extracts the resume content, has an LLM parse and compare it against the job description, and posts the enriched candidate profile back to Workday via API.",
-        nodes: [
-          { label: "Start", type: "trigger", detail: "Receives the trigger from Workday with the candidate/application reference and resume file." },
-          { label: "PDF to Text", type: "function", detail: "Converts the uploaded resume PDF into plain text for parsing." },
-          { label: "Resume Parsing", type: "llm", detail: "Extracts structured candidate data (skills, experience, education) and compares it against the job description to produce an AI summary/fit assessment." },
-          { label: "Get WD Token", type: "function", detail: "Requests/refreshes the Workday OAuth access token used to authenticate the API call." },
-          { label: "Build POST Body", type: "function", detail: "Assembles the Workday API request payload from the parsed resume data." },
-          { label: "Post Request to Workday", type: "http", detail: "Sends the enriched profile / AI summary object to Workday via API (PATCH/POST)." },
-        ],
+          "The moment a candidate applies, this agent reads the resume, weighs it against the job description, and adds a structured, scored profile straight to the candidate's Workday record, before anyone on the team has opened the file.",
         benefit:
-          "Recruiters open Workday to a fully parsed profile: skills, experience, education, and an AI fit assessment, instead of a raw PDF.",
+          "Recruiters open Workday to a fully parsed profile: skills, experience, education, and a fit assessment, instead of a raw PDF.",
       },
       {
         id: "screening-interview",
         kicker: "Scenario 2",
         title: "Screening Interview Agent",
-        trigger: "Triggers on: the recruiter moves the candidate to the Screening stage",
         hook: "An AI-led phone interview happens before your recruiter finds time to call.",
         description:
-          "This calls the candidate, conducts an AI-led voice screening interview, and then extracts and writes the transcript and recording back to Workday.",
-        nodes: [
-          { label: "Start", type: "trigger", detail: "Fires when Workday moves the candidate into the Screening stage." },
-          { label: "Interviewer", type: "voice", detail: "Places an outbound AI voice call to the candidate, conducts the screening interview, and records + transcribes the call." },
-          { label: "Call Content Extractor", type: "llm", detail: "Processes the raw call transcript into a structured summary of questions and candidate answers." },
-          { label: "POST Body Structure", type: "function", detail: "Builds the Workday API request payload from the extracted call content." },
-          { label: "GET WD Token", type: "function", detail: "Requests/refreshes the Workday OAuth access token." },
-          { label: "Send to Workday", type: "http", detail: "Posts the interview transcript and recording link back to Workday." },
-        ],
+          "As soon as a candidate reaches the Screening stage, this agent calls them, runs the first-round interview by voice, and saves the transcript and recording straight back to their Workday record.",
         benefit:
-          "By the time a recruiter checks the candidate record, the screening call has already happened: transcript, recording, and structured Q&A summary included.",
+          "By the time a recruiter checks the candidate record, the screening call has already happened: transcript, recording, and a structured summary included.",
       },
       {
         id: "interview-cycle-3a",
         kicker: "Scenario 3a",
         title: "Interview Question Generator",
-        trigger: "Triggers on: the recruiter moves the candidate to the Interview stage",
         hook: "Scheduling, confirmation, and interview prep, handled before a human says a word.",
         description:
-          "Checks the interviewer's calendar, calls the candidate to confirm availability, schedules the interview meeting, pulls the resume summary from Workday, generates tailored interview questions, and e-mails them to the interviewer.",
-        nodes: [
-          { label: "Start", type: "trigger", detail: "Fires when Workday moves the candidate into the Interview stage; receives candidate ID, job application ID and role." },
-          { label: "Get Availability", type: "llm", detail: "Agent checks the interviewer's calendar for open slots." },
-          { label: "Interview Scheduler", type: "voice", detail: "Calls the candidate to confirm their availability against the proposed slots." },
-          { label: "Create Event", type: "llm", detail: "Agent creates the interview meeting on the calendar once a slot is confirmed." },
-          { label: "Get Token", type: "function", detail: "Requests/refreshes the Workday OAuth access token." },
-          { label: "Get Resume Summary", type: "http", detail: "Pulls the candidate's AI resume summary from Workday to inform question generation." },
-          { label: "Question Generator", type: "llm", detail: "Agent generates role-specific interview questions and e-mails them to the interviewer." },
-        ],
+          "Once a candidate reaches the Interview stage, this agent checks the interviewer's calendar, calls the candidate to confirm a time, books the meeting, and sends the interviewer a set of tailored questions built from the candidate's resume summary.",
         benefit:
           "The interviewer opens their inbox to a confirmed meeting invite and a tailored question set, built from the candidate's actual resume summary.",
       },
@@ -121,33 +90,19 @@ export const agentUsecases: AgentUsecase[] = [
         id: "interview-cycle-3b",
         kicker: "Scenario 3b",
         title: "Email Reply to Workday",
-        trigger: "Triggers on: the interviewer replies to the question e-mail with the candidate's answers",
         hook: "Interview notes go from inbox reply to Workday record automatically.",
         description:
-          "After the interview, the interviewer replies to that e-mail with the candidate's answers; this agentflow extracts the answers from the reply and writes them to Workday.",
-        nodes: [
-          { label: "Start", type: "trigger", detail: "Fires when the interviewer replies to the interview-question e-mail with the candidate's answers." },
-          { label: "Response Extractor", type: "llm", detail: "Parses the e-mail reply and extracts the candidate's answers to each interview question." },
-          { label: "Post Body Structure", type: "function", detail: "Builds the Workday API request payload from the extracted answers." },
-          { label: "Get WD Token", type: "function", detail: "Requests/refreshes the Workday OAuth access token." },
-          { label: "Post Request", type: "http", detail: "Writes the candidate's interview answers back to Workday." },
-        ],
+          "After the interview, the interviewer simply replies with the candidate's answers. This agent reads that reply and writes the structured answers straight into Workday.",
         benefit:
-          "No copy-pasting interviewer feedback. The reply email becomes structured answers in the candidate's Workday record within seconds.",
+          "No copy-pasting interviewer feedback. The reply becomes structured answers in the candidate's Workday record within seconds.",
       },
       {
         id: "interview-cycle-3c",
         kicker: "Scenario 3c",
         title: "Executive Meeting Intelligence Agent",
-        trigger: "Triggers on: the interview transcript becomes available",
         hook: "Executives get the verdict, not the transcript.",
         description:
-          "Once the interview transcript is available, this agent analyzes it and sends a summary and recommendation back to Workday.",
-        nodes: [
-          { label: "Start", type: "trigger", detail: "Fires once the interview has ended and a transcript is available." },
-          { label: "Data Collector", type: "llm", detail: "Agent collects and validates the required inputs, then calls a transcript analyser tool that analyzes the interview transcript and produces a summary and recommendation." },
-          { label: "Written to Workday", type: "outcome", detail: "The summary and hiring recommendation are written back to the candidate's Workday record." },
-        ],
+          "As soon as the interview transcript is ready, this agent reviews it and sends leadership a clear summary and hiring recommendation, written straight back into Workday.",
         benefit:
           "Leadership gets a structured recommendation and summary the moment the interview ends, no transcript-reading required.",
       },
@@ -156,7 +111,7 @@ export const agentUsecases: AgentUsecase[] = [
     closingBody:
       "Workday stage changes drive resume enrichment, an AI voice screening round, and a full interview cycle: scheduling, question generation, answer capture, and meeting summarization, with every result written back into Workday automatically. Recruiters always see the latest AI-generated data on the candidate record, without touching a spreadsheet or re-typing a single field.",
     closingStats: [
-      { value: "5", label: "connected agentflows" },
+      { value: "5", label: "connected agents" },
       { value: "4", label: "systems synced automatically" },
       { value: "0", label: "manual data re-entry" },
     ],
