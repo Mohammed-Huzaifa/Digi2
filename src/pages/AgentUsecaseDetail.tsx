@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Building2, PhoneCall, CalendarClock, Mail } from "lucide-react";
 import { Link, useParams, Redirect } from "wouter";
+import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
+import { UsecaseUIMockup } from "@/components/UsecaseUIMockup";
 import { getAgentUsecase } from "@/data/agentUsecases";
 
 const INTEGRATION_ICONS: Record<string, React.ReactNode> = {
@@ -14,10 +17,13 @@ const INTEGRATION_ICONS: Record<string, React.ReactNode> = {
 export default function AgentUsecaseDetail() {
   const { slug } = useParams<{ slug: string }>();
   const usecase = getAgentUsecase(slug);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   if (!usecase) {
     return <Redirect to="/agent-usecases" />;
   }
+
+  const activeScenario = usecase.scenarios[activeIndex];
 
   return (
     <div className="flex flex-col pb-20 overflow-x-hidden">
@@ -94,9 +100,9 @@ export default function AgentUsecaseDetail() {
         </div>
       </section>
 
-      {/* SCENARIO TOC */}
+      {/* SCENARIOS */}
       <section id="scenarios" className="container py-24 scroll-mt-24">
-        <AnimatedSection className="mb-16">
+        <AnimatedSection className="mb-12">
           <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
             How It Works
           </p>
@@ -104,49 +110,62 @@ export default function AgentUsecaseDetail() {
             Five agents, each handling their part automatically
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Every stage below runs on its own, the moment a candidate moves forward in Workday.
+            Every stage below runs on its own, the moment a candidate moves forward in Workday. Click through to see what each one produces.
           </p>
         </AnimatedSection>
 
-        <div className="flex flex-wrap gap-3 mb-4">
-          {usecase.scenarios.map((s) => (
-            <a
+        <div className="flex flex-wrap gap-3 mb-10">
+          {usecase.scenarios.map((s, i) => (
+            <button
               key={s.id}
-              href={`#${s.id}`}
-              className="px-4 py-2 rounded-xl text-sm font-medium bg-secondary text-foreground/70 hover:text-foreground hover:bg-secondary/80 transition-colors"
+              type="button"
+              onClick={() => setActiveIndex(i)}
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                i === activeIndex
+                  ? "bg-primary text-white shadow-sm"
+                  : "bg-secondary text-foreground/70 hover:text-foreground hover:bg-secondary/80"
+              }`}
             >
               {s.kicker}: {s.title}
-            </a>
+            </button>
           ))}
         </div>
-      </section>
 
-      {/* SCENARIOS */}
-      <div className="container flex flex-col gap-16">
-        {usecase.scenarios.map((scenario, i) => (
-          <div key={scenario.id} id={scenario.id} className="scroll-mt-24">
-            <AnimatedCard delay={i * 0.05} className="glass-card rounded-2xl p-8 md:p-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeScenario.id}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="glass-card rounded-2xl p-8 md:p-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center"
+          >
+            <div>
               <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">
-                {scenario.kicker}
+                {activeScenario.kicker}
               </p>
               <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3 tracking-tight">
-                {scenario.title}
+                {activeScenario.title}
               </h3>
-              <p className="text-lg font-medium text-foreground/80 mb-4">{scenario.hook}</p>
-              <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
-                {scenario.description}
+              <p className="text-lg font-medium text-foreground/80 mb-4">{activeScenario.hook}</p>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                {activeScenario.description}
               </p>
 
               <div className="p-5 rounded-xl bg-primary/5 border border-primary/10">
                 <p className="text-foreground/80 leading-relaxed">
                   <span className="font-semibold text-primary">Why it matters: </span>
-                  {scenario.benefit}
+                  {activeScenario.benefit}
                 </p>
               </div>
-            </AnimatedCard>
-          </div>
-        ))}
-      </div>
+            </div>
+
+            <div className="flex justify-center lg:justify-end">
+              <UsecaseUIMockup sample={activeScenario.uiSample} />
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </section>
 
       {/* CLOSING SUMMARY */}
       <section className="py-24 mt-16 border-y border-border/50 glass-bg">

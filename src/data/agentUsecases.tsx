@@ -1,4 +1,5 @@
 import { Workflow, type LucideIcon } from "lucide-react";
+import type { UISample } from "@/components/UsecaseUIMockup";
 
 export interface Scenario {
   id: string;
@@ -7,6 +8,7 @@ export interface Scenario {
   hook: string;
   description: string;
   benefit: string;
+  uiSample: UISample;
 }
 
 export interface AgentUsecase {
@@ -65,6 +67,19 @@ export const agentUsecases: AgentUsecase[] = [
           "The moment a candidate applies, this agent reads the resume, weighs it against the job description, and adds a structured, scored profile straight to the candidate's Workday record, before anyone on the team has opened the file.",
         benefit:
           "Recruiters open Workday to a fully parsed profile: skills, experience, education, and a fit assessment, instead of a raw PDF.",
+        uiSample: {
+          kind: "record",
+          system: "Workday",
+          heading: "Candidate Profile",
+          name: "Sarah Chen",
+          role: "Senior Backend Engineer",
+          score: { label: "Fit Score", value: "94%" },
+          fields: [
+            { label: "Skills", value: "React, Node.js, AWS, PostgreSQL" },
+            { label: "Experience", value: "6 years, Senior Backend" },
+            { label: "Education", value: "B.S. Computer Science" },
+          ],
+        },
       },
       {
         id: "screening-interview",
@@ -75,6 +90,17 @@ export const agentUsecases: AgentUsecase[] = [
           "As soon as a candidate reaches the Screening stage, this agent calls them, runs the first-round interview by voice, and saves the transcript and recording straight back to their Workday record.",
         benefit:
           "By the time a recruiter checks the candidate record, the screening call has already happened: transcript, recording, and a structured summary included.",
+        uiSample: {
+          kind: "call",
+          system: "Workday",
+          heading: "Screening Call",
+          duration: "4:12",
+          lines: [
+            { speaker: "ai", text: "What drew you to this role?" },
+            { speaker: "candidate", text: "I've led backend rebuilds at scale before, and this is a similar challenge." },
+            { speaker: "ai", text: "Tell me about a recent production incident you handled." },
+          ],
+        },
       },
       {
         id: "interview-cycle-3a",
@@ -85,6 +111,18 @@ export const agentUsecases: AgentUsecase[] = [
           "Once a candidate reaches the Interview stage, this agent checks the interviewer's calendar, calls the candidate to confirm a time, books the meeting, and sends the interviewer a set of tailored questions built from the candidate's resume summary.",
         benefit:
           "The interviewer opens their inbox to a confirmed meeting invite and a tailored question set, built from the candidate's actual resume summary.",
+        uiSample: {
+          kind: "email",
+          system: "Digiworks",
+          heading: "Interview Questions",
+          from: "Digi · AI Coworker",
+          subject: "Interview questions: Sarah Chen, Senior Backend Engineer",
+          points: [
+            "Walk me through your approach to scaling a Postgres-backed service.",
+            "Describe a time you disagreed with a technical decision on your team.",
+            "How do you handle on-call incidents under pressure?",
+          ],
+        },
       },
       {
         id: "interview-cycle-3b",
@@ -95,6 +133,19 @@ export const agentUsecases: AgentUsecase[] = [
           "After the interview, the interviewer simply replies with the candidate's answers. This agent reads that reply and writes the structured answers straight into Workday.",
         benefit:
           "No copy-pasting interviewer feedback. The reply becomes structured answers in the candidate's Workday record within seconds.",
+        uiSample: {
+          kind: "record",
+          system: "Workday",
+          heading: "Interview Answers",
+          name: "Sarah Chen",
+          role: "Senior Backend Engineer",
+          score: { label: "Interviewer Rating", value: "Strong" },
+          fields: [
+            { label: "Scaling approach", value: "Read replicas + queue-based writes" },
+            { label: "Team conflict", value: "Pushed back on a schema change, won on data" },
+            { label: "On-call handling", value: "Calm, methodical, escalates early" },
+          ],
+        },
       },
       {
         id: "interview-cycle-3c",
@@ -105,6 +156,17 @@ export const agentUsecases: AgentUsecase[] = [
           "As soon as the interview transcript is ready, this agent reviews it and sends leadership a clear summary and hiring recommendation, written straight back into Workday.",
         benefit:
           "Leadership gets a structured recommendation and summary the moment the interview ends, no transcript-reading required.",
+        uiSample: {
+          kind: "summary",
+          system: "Digiworks",
+          heading: "Executive Summary",
+          recommendation: "Strong Hire",
+          points: [
+            "Deep, specific answers on scaling and incident response",
+            "Clear communicator, backed opinions with data",
+            "No concerns raised on team fit or seniority",
+          ],
+        },
       },
     ],
     closingTitle: "Five agents. One closed loop. Zero manual re-entry.",
