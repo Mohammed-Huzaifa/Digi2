@@ -1,17 +1,15 @@
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Building2, PhoneCall } from "lucide-react";
+import { ArrowLeft, Building2, PhoneCall, CalendarClock, Mail } from "lucide-react";
 import { Link, useParams, Redirect } from "wouter";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
 import { AgentFlowDiagram } from "@/components/AgentFlowDiagram";
 import { getAgentUsecase } from "@/data/agentUsecases";
-import teamsIcon from "@/components/icons/skills/icons8-teams-48.png";
-import gmailIcon from "@/components/icons/skills/icons8-gmail-48.png";
 
 const INTEGRATION_ICONS: Record<string, React.ReactNode> = {
   Workday: <Building2 className="w-4 h-4" />,
-  Twilio: <PhoneCall className="w-4 h-4" />,
-  "Microsoft Teams": <img src={teamsIcon} className="w-4 h-4 object-contain" alt="Microsoft Teams" />,
-  Gmail: <img src={gmailIcon} className="w-4 h-4 object-contain" alt="Gmail" />,
+  "Voice AI": <PhoneCall className="w-4 h-4" />,
+  "Calendar & Meetings": <CalendarClock className="w-4 h-4" />,
+  Email: <Mail className="w-4 h-4" />,
 };
 
 export default function AgentUsecaseDetail() {

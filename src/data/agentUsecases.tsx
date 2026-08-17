@@ -40,10 +40,10 @@ export const agentUsecases: AgentUsecase[] = [
     cardDescription:
       "A closed-loop pipeline that enriches resumes, runs AI voice screenings, schedules interviews, and briefs your execs — writing every result straight back into Workday.",
     cardStat: "5 connected agents · 3 lifecycle stages",
-    integrations: ["Workday", "Twilio", "Microsoft Teams", "Gmail"],
+    integrations: ["Workday", "Voice AI", "Calendar & Meetings", "Email"],
     heroTitle: "Your recruiting pipeline, running itself — inside Workday.",
     heroSubhead:
-      "DigiWorks AgentFlow chains five AI agents across Workday, Twilio, Microsoft Teams, and Gmail. Every time a recruiter moves a candidate's stage, the next agent fires automatically — and writes its results straight back into the candidate record.",
+      "DigiWorks AgentFlow chains five AI agents across Workday and the voice, calendar, and email channels your recruiters already use. Every time a recruiter moves a candidate's stage, the next agent fires automatically — and writes its results straight back into the candidate record.",
     problems: [
       {
         title: "Resumes pile up unread",
@@ -81,7 +81,7 @@ export const agentUsecases: AgentUsecase[] = [
       {
         id: "screening-interview",
         kicker: "Scenario 2",
-        title: "Screening Interview Agent (Twilio)",
+        title: "Screening Interview Agent",
         trigger: "Triggers on: the recruiter moves the candidate to the Screening stage",
         hook: "An AI-led phone interview happens before your recruiter finds time to call.",
         description:
@@ -104,18 +104,18 @@ export const agentUsecases: AgentUsecase[] = [
         trigger: "Triggers on: the recruiter moves the candidate to the Interview stage",
         hook: "Scheduling, confirmation, and interview prep — handled before a human says a word.",
         description:
-          "Checks the interviewer's calendar, calls the candidate to confirm availability, schedules the Teams meeting, pulls the resume summary from Workday, generates tailored interview questions, and e-mails them to the interviewer.",
+          "Checks the interviewer's calendar, calls the candidate to confirm availability, schedules the interview meeting, pulls the resume summary from Workday, generates tailored interview questions, and e-mails them to the interviewer.",
         nodes: [
           { label: "Start", type: "trigger", detail: "Fires when Workday moves the candidate into the Interview stage; receives candidate ID, job application ID and role." },
-          { label: "Get Availability", type: "llm", detail: "Agent with an Outlook calendar tool checks the interviewer's calendar for open slots." },
+          { label: "Get Availability", type: "llm", detail: "Agent checks the interviewer's calendar for open slots." },
           { label: "Interview Scheduler", type: "voice", detail: "Calls the candidate to confirm their availability against the proposed slots." },
-          { label: "Create Event", type: "llm", detail: "Agent with a Teams calendar tool creates the interview meeting on Microsoft Teams once a slot is confirmed." },
+          { label: "Create Event", type: "llm", detail: "Agent creates the interview meeting on the calendar once a slot is confirmed." },
           { label: "Get Token", type: "function", detail: "Requests/refreshes the Workday OAuth access token." },
           { label: "Get Resume Summary", type: "http", detail: "Pulls the candidate's AI resume summary from Workday to inform question generation." },
-          { label: "Question Generator", type: "llm", detail: "Agent with a Gmail tool generates role-specific interview questions and e-mails them to the interviewer." },
+          { label: "Question Generator", type: "llm", detail: "Agent generates role-specific interview questions and e-mails them to the interviewer." },
         ],
         benefit:
-          "The interviewer opens their inbox to a confirmed Teams meeting and a tailored question set — built from the candidate's actual resume summary.",
+          "The interviewer opens their inbox to a confirmed meeting invite and a tailored question set — built from the candidate's actual resume summary.",
       },
       {
         id: "interview-cycle-3b",
@@ -124,7 +124,7 @@ export const agentUsecases: AgentUsecase[] = [
         trigger: "Triggers on: the interviewer replies to the question e-mail with the candidate's answers",
         hook: "Interview notes go from inbox reply to Workday record automatically.",
         description:
-          "After the Teams interview, the interviewer replies to that e-mail with the candidate's answers; this agentflow extracts the answers from the reply and writes them to Workday.",
+          "After the interview, the interviewer replies to that e-mail with the candidate's answers; this agentflow extracts the answers from the reply and writes them to Workday.",
         nodes: [
           { label: "Start", type: "trigger", detail: "Fires when the interviewer replies to the interview-question e-mail with the candidate's answers." },
           { label: "Response Extractor", type: "llm", detail: "Parses the e-mail reply and extracts the candidate's answers to each interview question." },
@@ -139,13 +139,13 @@ export const agentUsecases: AgentUsecase[] = [
         id: "interview-cycle-3c",
         kicker: "Scenario 3c",
         title: "Executive Meeting Intelligence Agent",
-        trigger: "Triggers on: the Teams interview transcript becomes available",
+        trigger: "Triggers on: the interview transcript becomes available",
         hook: "Executives get the verdict, not the transcript.",
         description:
-          "Once the Teams interview transcript is available, this agent analyzes it and sends a summary and recommendation back to Workday.",
+          "Once the interview transcript is available, this agent analyzes it and sends a summary and recommendation back to Workday.",
         nodes: [
-          { label: "Start", type: "trigger", detail: "Fires once the Teams interview has ended and a transcript is available." },
-          { label: "Data Collector", type: "llm", detail: "Agent collects and validates the required inputs, then calls a transcript_analyser tool that analyzes the Teams transcript and produces a summary and recommendation." },
+          { label: "Start", type: "trigger", detail: "Fires once the interview has ended and a transcript is available." },
+          { label: "Data Collector", type: "llm", detail: "Agent collects and validates the required inputs, then calls a transcript analyser tool that analyzes the interview transcript and produces a summary and recommendation." },
           { label: "Written to Workday", type: "outcome", detail: "The summary and hiring recommendation are written back to the candidate's Workday record." },
         ],
         benefit:
