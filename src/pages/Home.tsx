@@ -45,7 +45,7 @@ export default function Home() {
   <Link href="/contact">
     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border border-border text-sm font-medium text-foreground mb-8 hover:bg-secondary/80 transition-colors cursor-pointer group">
       <span className="flex h-2 w-2 rounded-full bg-primary"></span>
-      <span>Start with one coworker pod today</span>
+      <span>Start with a coworker pod today</span>
       <ChevronRight className="w-3 h-3 text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
     </div>
   </Link>
@@ -334,9 +334,9 @@ export default function Home() {
 
           <AnimatedCard className="min-h-[400px] flex flex-col justify-between group cursor-pointer glass-card rounded-2xl overflow-hidden">
             <div className="p-8">
-              <h3 className="text-2xl font-heading font-bold mb-3">Higher Ed</h3>
+              <h3 className="text-2xl font-heading font-bold mb-3">Higher Education</h3>
               <p className="text-muted-foreground mb-6">
-                Coworkers for recruitment, advising, student services, alumni engagement, and more performing critical functions across campus, 24/7.  
+                Coworkers for recruitment, advising, student services, alumni engagement, and more performing critical functions across campus, 24/7.
               </p>
               <Link href="/solutions">
               <Button
@@ -355,7 +355,7 @@ export default function Home() {
     hover:shadow-md
   "
 >
-  View Higher Ed solutions
+  View Higher Education
   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
 </Button>
 
@@ -363,18 +363,18 @@ export default function Home() {
               </Link>
             </div>
             <div className="h-48 relative overflow-hidden mt-auto">
-              <img src="/images/higher-ed-bg.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Higher Ed" />
+              <img src="/images/higher-ed-bg.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Higher Education" />
               <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
             </div>
           </AnimatedCard>
           
           <AnimatedCard delay={0.2} className="min-h-[400px] flex flex-col justify-between group cursor-pointer glass-card rounded-2xl overflow-hidden">
             <div className="p-8">
-              <h3 className="text-2xl font-heading font-bold mb-3">Enterprise </h3>
+              <h3 className="text-2xl font-heading font-bold mb-3">Business Operations</h3>
               <p className="text-muted-foreground mb-6">
                 Coworkers for IT, HR, finance, and operations that auto‑resolve routine issues, optimize knowledge, and accelerate approvals.
               </p>
-              <Link href="/enterprise">
+              <Link href="/business-operations">
                 <Button variant="outline" className="
     group
     cursor-pointer
@@ -388,7 +388,7 @@ export default function Home() {
     shadow-sm
     hover:shadow-md
   ">
-                  View Enterprise solutions <ArrowRight className="ml-2 w-4 h-4" />
+                  View Business Operations <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
             </div>
@@ -425,8 +425,12 @@ export default function Home() {
                 a: "Most teams launch their first coworker pod in a matter of weeks, starting with a tightly scoped set of workflows and clear success metrics."
               },
               {
-                q: "What is a 25K coworker pod?",
-                a: "A coworker pod is a starter package focused on a specific area (like IT support or student services). For 25K, you get design, integration, configuration, guardrails, and initial optimization for a set of coworkers."
+                q: "What is a coworker pod?",
+                a: "A coworker pod is a starter package focused on a specific area (like IT support or student services). you get design, integration, configuration, guardrails, and initial optimization for a set of coworkers."
+              },
+              {
+                q: "What's the difference between Business Operations and Higher Education coworkers?",
+                a: "Business Operations coworkers handle cross-industry functions like HR, Finance, IT, and Payroll that every organization needs. Higher Education coworkers are purpose-built for campus-specific workflows — admissions, student services, academic advising, and registrar operations. You can mix both. A university might use Business Operations coworkers for their HR and finance teams, and Higher Education coworkers for their student-facing departments."
               }
             ].map((item, i) => (
               <AnimatedCard
@@ -464,7 +468,7 @@ export default function Home() {
 </section>
 
       {/* Contact Teaser - Graphite Style Dark Section */}
-      <section className="container pb-24">
+      <section className="container pt-16 pb-24">
         <AnimatedSection>
           <div className="bg-[#111827] rounded-2xl p-12 text-center text-white relative overflow-hidden shadow-2xl">
             {/* Abstract animated background */}

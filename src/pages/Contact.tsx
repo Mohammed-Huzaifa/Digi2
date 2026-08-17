@@ -150,7 +150,7 @@ ${form.usecase}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="role">Role</Label>
+                <Label htmlFor="role">Title</Label>
                 <Input
                   id="role"
                   placeholder="Director of IT"
@@ -225,7 +225,7 @@ ${form.usecase}
                   Sending...
                 </>
               ) : (
-                "Submit Request"
+                "Submit Request "
               )}
             </Button>
           </form>

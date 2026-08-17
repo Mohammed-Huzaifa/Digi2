@@ -1,21 +1,21 @@
 import { Button } from "@/components/ui/button";
-import { Check, Headset, Users, Receipt, Lightbulb } from "lucide-react";
+import { Check, Headset, Users, Receipt, Wallet } from "lucide-react";
 
 import { Link } from "wouter";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
 
-export default function Enterprise() {
-    const EnterpriseRoles = [
-        { title: "IT & Service Desk", desc: "Resets passwords, unlocks accounts, triages tickets, and answers IT questions.", icon: Headset },
-        { title: "HR & People", desc: "Responds to policy/benefit questions, guides onboarding, and supports offboarding.", icon: Users },
-        { title: "Finance & Operations", desc: "Routes invoices, chases approvals, and aggregates operational info.", icon: Receipt },
-        { title: "Knowledge & Insights", desc: "Turns resolved tickets into documentation and surfaces recurring issue patterns.", icon: Lightbulb }
+export default function BusinessOperations() {
+    const BusinessOperationsRoles = [
+        { title: "HR & People Operations", desc: "Meeting Organizer, Profile Enrichment, Doctor's Certificate Validator, policy questions, onboarding support, and offboarding workflows.", icon: Users },
+        { title: "Finance & Procurement", desc: "Invoice approvals, expense reporting, purchase order creation, vendor onboarding, budget inquiries, and approval routing.", icon: Receipt },
+        { title: "IT & Service Desk", desc: "Password resets, account unlocks, access management, ticket triage, software requests, and knowledge base answers.", icon: Headset },
+        { title: "Payroll & Operations", desc: "Pay stub requests, tax form generation, status inquiries, scheduling, and operational task automation.", icon: Wallet }
       ];
-      
+
 
   return (
     <div className="flex flex-col pb-20 overflow-x-hidden">
-      {/* ENTERPRISE SECTION */}
+      {/* BUSINESS OPERATIONS SECTION */}
       <div className="pt-20">
         <section className="relative py-24 overflow-hidden bg-secondary/30">
           <div className="container relative z-10">
@@ -23,15 +23,15 @@ export default function Enterprise() {
               {/* LEFT: text */}
               <AnimatedText className="max-w-3xl">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-bold text-primary mb-6 uppercase tracking-wider shadow-sm">
-                  Enterprise Solutions
+                  Business Operations
                 </div>
 
                 <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
-  AI coworkers for every enterprise team.
+  AI coworkers for every business team.
 </h1>
 
 <p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">
-  Digiworks coworkers reduce operational load and accelerate execution by handling routine work, all from within the tools your teams already use, including Teams, Slack, and your enterprise platforms.
+  Digiworks coworkers handle HR, finance, IT, payroll, and procurement tasks — right inside Microsoft Teams, Slack, and your existing business systems.
 </p>
 
               </AnimatedText>
@@ -41,7 +41,7 @@ export default function Enterprise() {
                 <div className="absolute -inset-6 rounded-[32px] bg-gradient-to-br from-primary/10 via-transparent to-sky-200/20 blur-2xl" />
                 <img
                   src="/images/hero-coworkers.jpg"
-                  alt="Enterprise team reviewing analytics"
+                  alt="Business team reviewing analytics"
                   className="relative w-full h-[320px] sm:h-[380px] lg:h-[440px] object-cover rounded-3xl border border-border/60 shadow-xl"
                   loading="lazy"
                 />
@@ -53,14 +53,14 @@ export default function Enterprise() {
         <section className="container py-24">
           <div className="grid lg:grid-cols-2 gap-20">
             <AnimatedSection>
-              <h2 className="text-3xl font-heading font-bold mb-6 tracking-tight">Why Coworkers for Enterprise</h2>
+              <h2 className="text-3xl font-heading font-bold mb-6 tracking-tight">Why Coworkers for Business Operations</h2>
               <p className="text-lg text-muted-foreground mb-8">
-                The modern enterprise runs on tickets, emails, and requests. Most of them are routine, but they still consume expensive human attention.
+                Every business runs on tickets, emails, and repeatable requests. Most are routine, but they still consume expensive human attention.
               </p>
               <ul className="space-y-4">
                 {[
-                  "Coworkers automate repetitive IT, HR, and operations tasks so teams can focus on complex challenges.",
-                  "They use your existing tools and data, avoiding the need for yet another interface.",
+                  "Coworkers automate repetitive HR, IT, finance, payroll, and procurement tasks so your team focuses on what requires human judgment.",
+                  "They live inside the tools your teams already use — Teams, Slack, your HRIS, ERP, and ITSM.",
                   "They help standardize processes and reduce dependence on tribal knowledge."
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 items-start">
@@ -74,9 +74,9 @@ export default function Enterprise() {
             </AnimatedSection>
 
             <AnimatedCard className="glass-card p-8 rounded-xl shadow-sm">
-              <h3 className="text-xl font-bold mb-4">How It Works for Enterprises</h3>
+              <h3 className="text-xl font-bold mb-4">How It Works</h3>
               <p className="text-muted-foreground mb-6">
-                Digiworks coworkers plug into your ITSM, HRIS, ERP, CRM, and collaboration tools so they can work across departments, not in silos.
+                Digiworks coworkers plug into your ITSM, HRIS, ERP, and collaboration tools so they can work across departments — not in silos.
               </p>
               <div className="space-y-4">
                 <div className="p-4 bg-secondary/50 rounded-lg text-sm border border-border">
@@ -99,15 +99,15 @@ export default function Enterprise() {
         <section className="py-10 glass-bg">
           <div className="container">
             <AnimatedSection>
-              <h2 className="text-3xl font-heading font-bold mb-10 tracking-tight">Enterprise Capabilities</h2>
+              <h2 className="text-3xl font-heading font-bold mb-10 tracking-tight">Business Operations Capabilities</h2>
             </AnimatedSection>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {EnterpriseRoles.map((role, i) => (
+              {BusinessOperationsRoles.map((role, i) => (
                 <AnimatedCard key={i} delay={i * 0.1} className="h-full glass-card p-6 rounded-xl transition-colors shadow-sm">
                   <div className="flex items-start gap-3 mb-2">
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
                     {(() => {
-  const Icon = role.icon ?? Lightbulb;
+  const Icon = role.icon ?? Users;
   return <Icon className="w-5 h-5" />;
 })()}
 

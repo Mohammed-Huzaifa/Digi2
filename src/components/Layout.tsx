@@ -19,11 +19,25 @@ function ScrollToTop() {
   return null;
 }
 
+function Footer() {
+  return (
+    <footer className="w-full border-t border-border bg-background">
+      <div className="container mx-auto px-4">
+        <div className="py-6 flex items-center justify-center">
+          <p className="text-sm text-muted-foreground text-center">
+            © {new Date().getFullYear()} Digiworks. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
-  // ✅ NEW: mobile solutions dropdown state
+  // mobile solutions dropdown state
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
 
   const { scrollY } = useScroll();
@@ -87,7 +101,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Link href="/solutions">
                   <a
                     className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1 ${
-                      location.startsWith("/solutions") || location === "/enterprise"
+                      location.startsWith("/solutions") || location === "/business-operations"
                         ? "bg-secondary text-foreground"
                         : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
                     }`}
@@ -101,16 +115,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <div className="w-56 rounded-xl border border-border bg-background shadow-lg p-2">
                     <Link href="/solutions#higher-ed">
                       <a className="block rounded-lg px-3 py-2 text-sm hover:bg-secondary transition-colors">
-                        <div className="font-semibold">Higher Ed</div>
+                        <div className="font-semibold">Higher Education</div>
                         <div className="text-xs text-muted-foreground">
                           Universities & Institutions
                         </div>
                       </a>
                     </Link>
 
-                    <Link href="/enterprise">
+                    <Link href="/business-operations">
                       <a className="block rounded-lg px-3 py-2 text-sm hover:bg-secondary transition-colors">
-                        <div className="font-semibold">Enterprise</div>
+                        <div className="font-semibold">Business Operations</div>
                         <div className="text-xs text-muted-foreground">
                           IT, HR & Operations teams
                         </div>
@@ -119,6 +133,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   </div>
                 </div>
               </div>
+
+              <Link href="/agent-usecases">
+                <a
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                    location.startsWith("/agent-usecases")
+                      ? "bg-secondary text-foreground"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                  }`}
+                >
+                  Agent Usecases
+                </a>
+              </Link>
 
               <Link href="/contact">
                 <a
@@ -185,7 +211,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         </div>
                       </Link>
 
-                      {/* ✅ UPDATED: Solutions dropdown in mobile */}
+                      {/* Solutions dropdown in mobile */}
                       <div className="rounded-xl overflow-hidden">
                         <button
                           type="button"
@@ -213,7 +239,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                               }}
                             >
                               <div className="px-4 py-3 rounded-xl text-sm font-medium text-foreground hover:bg-secondary transition-colors">
-                                Higher Ed
+                                Higher Education
                                 <div className="text-xs text-muted-foreground mt-0.5">
                                   Universities & Institutions
                                 </div>
@@ -221,14 +247,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             </Link>
 
                             <Link
-                              href="/enterprise"
+                              href="/business-operations"
                               onClick={() => {
                                 setIsOpen(false);
                                 setIsSolutionsOpen(false);
                               }}
                             >
                               <div className="px-4 py-3 rounded-xl text-sm font-medium text-foreground hover:bg-secondary transition-colors">
-                                Enterprise
+                                Business Operations
                                 <div className="text-xs text-muted-foreground mt-0.5">
                                   IT, HR & Operations teams
                                 </div>
@@ -237,6 +263,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                           </div>
                         )}
                       </div>
+
+                      <Link href="/agent-usecases" onClick={() => setIsOpen(false)}>
+                        <div className="px-4 py-4 rounded-xl text-base font-medium text-foreground hover:bg-secondary transition-colors">
+                          Agent Usecases
+                        </div>
+                      </Link>
 
                       <Link href="/contact" onClick={() => setIsOpen(false)}>
                         <div className="px-4 py-4 rounded-xl text-base font-medium text-foreground hover:bg-secondary transition-colors">
@@ -262,7 +294,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </motion.header>
 
       {/* Page Content */}
-      <main className="pt-16">{children}</main>
+      <main className="pt-16 min-h-screen">{children}</main>
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 }

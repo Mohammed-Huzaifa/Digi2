@@ -79,7 +79,7 @@ const HigherEdRoles = [
 
 
 
-      {/* HIGHER ED SECTION */}
+      {/* HIGHER EDUCATION SECTION */}
       <div id="higher-ed" className="scroll-mt-32">
       <section className="relative py-24 overflow-hidden bg-secondary/30">
   <div className="container relative z-10">
@@ -87,7 +87,7 @@ const HigherEdRoles = [
       {/* LEFT: text */}
       <AnimatedText className="max-w-3xl">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-bold text-primary mb-6 uppercase tracking-wider shadow-sm">
-          Higher Ed Solutions
+          Higher Education Solutions
         </div>
 
         <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
@@ -104,7 +104,7 @@ const HigherEdRoles = [
       <div className="relative">
         <div className="absolute -inset-6 rounded-[32px] bg-gradient-to-br from-primary/10 via-transparent to-sky-200/20 blur-2xl" />
         <img
-          src="/images/profes.webp"
+          src="/images/prof1.jpeg"
           alt="Higher education students collaborating"
           className="relative w-full h-[320px] sm:h-[380px] lg:h-[440px] object-cover rounded-3xl border border-border/60 shadow-xl"
           loading="lazy"
@@ -118,7 +118,7 @@ const HigherEdRoles = [
         <section className="container py-24">
           <div className="grid lg:grid-cols-2 gap-20">
             <AnimatedSection>
-              <h2 className="text-3xl font-heading font-bold mb-6 tracking-tight">Why Coworkers for Higher Ed</h2>
+              <h2 className="text-3xl font-heading font-bold mb-6 tracking-tight">Why Coworkers for Higher Education</h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Higher education is under pressure to do more with less. Coworkers help you support every stakeholder while reducing administrative load and costs.
               </p>
@@ -158,7 +158,7 @@ const HigherEdRoles = [
                 </div>
               </div>
             </AnimatedCard>
-          </div>
+          </div>    
         </section>
 
         <section className="py-24 overflow-hidden border-y border-border/50 glass-bg">
@@ -226,7 +226,7 @@ const HigherEdRoles = [
 <section className="container py-24 glass-bg">
   <AnimatedSection className="text-center mb-16">
     <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
-      2.7  CAMPUS COWORKER POD
+       CAMPUS COWORKER POD
     </p>
 
     <h2 className="text-5xl font-heading font-bold mb-4 tracking-tight">

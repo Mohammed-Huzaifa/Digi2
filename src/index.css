@@ -1,7 +1,8 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@custom-variant dark (&:is(.dark *));
+@import "tw-animate-css";
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -42,7 +43,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   
   --font-sans: "Inter", sans-serif;
-  --font-heading: "Inter", sans-serif; /* Clerk uses one main font family usually */
+--font-heading: "Inter", sans-serif;
 }
 
 :root {
@@ -139,7 +140,8 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
@@ -161,7 +163,8 @@
   }
   
   .graphite-card:hover {
-    @apply -translate-y-1 shadow-lg border-primary/30;
+    @apply -translate-y-1 shadow-lg;
+    border-color: color-mix(in oklab, var(--primary) 30%, var(--border));
     box-shadow: 0 10px 40px -10px rgba(108, 71, 255, 0.15); /* Purple glow */
   }
 
