@@ -45,7 +45,15 @@ async function prerender() {
   console.log('Starting preview server...');
   const server = await startServer();
 
-  const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+  let browser;
+  try {
+    browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+  } catch (err) {
+    console.warn('Pre-render skipped: could not launch headless Chromium in this environment.');
+    console.warn(err.message);
+    server.kill();
+    return;
+  }
 
   try {
     for (const route of ROUTES) {
@@ -82,6 +90,5 @@ async function prerender() {
 }
 
 prerender().catch((err) => {
-  console.error('Pre-render failed:', err);
-  process.exit(1);
+  console.warn('Pre-render failed, continuing without it:', err.message);
 });
