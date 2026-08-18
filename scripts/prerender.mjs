@@ -18,7 +18,7 @@ const DIST = path.join(ROOT, 'dist');
 const PORT = 4174;
 const BASE = `http://localhost:${PORT}`;
 
-const ROUTES = ['/', '/solutions', '/business-operations', '/recruiting-agent', '/contact'];
+const ROUTES = ['/', '/solutions', '/business-operations', '/agent-usecases', '/agent-usecases/hr-automation-flow', '/contact'];
 
 function startServer() {
   return new Promise((resolve, reject) => {

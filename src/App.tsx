@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 import Solutions from "./pages/Solutions";
 import Contact from "./pages/Contact";
 import BusinessOperations from "./pages/BusinessOperations";
-import RecruitingAgent from "./pages/RecruitingAgent";
 import AgentUsecases from "./pages/AgentUsecases";
 import AgentUsecaseDetail from "./pages/AgentUsecaseDetail";
 
@@ -24,7 +23,9 @@ function Router() {
         <Route path="/enterprise">
           <Redirect to="/business-operations" />
         </Route>
-        <Route path="/recruiting-agent" component={RecruitingAgent} />
+        <Route path="/recruiting-agent">
+          <Redirect to="/agent-usecases/hr-automation-flow" />
+        </Route>
         <Route path="/agent-usecases" component={AgentUsecases} />
         <Route path="/agent-usecases/:slug" component={AgentUsecaseDetail} />
         <Route path="/contact" component={Contact} />
