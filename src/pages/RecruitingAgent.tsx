@@ -1,111 +1,161 @@
 import { Button } from "@/components/ui/button";
 import {
-  FileText,
+  FileEdit,
+  FileSearch,
   Phone,
-  Calendar,
-  Mail,
+  CalendarCheck,
+  ClipboardList,
+  MessageSquare,
   BarChart3,
   Check,
   ArrowRight,
-  ChevronRight,
+  ShieldCheck,
+  Lock,
+  ClipboardCheck,
 } from "lucide-react";
 import { Link } from "wouter";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
 
+const strains = [
+  {
+    title: "Volume",
+    desc: "Hundreds of applications per role. Review is hurried and uneven, good candidates slip through unnoticed.",
+  },
+  {
+    title: "Coordination",
+    desc: "One interview can take a dozen emails across three calendars. Momentum, and candidates, get lost in between.",
+  },
+  {
+    title: "Feedback",
+    desc: "Debriefs wait days for input scattered across inboxes. Decisions lose context, and speed.",
+  },
+  {
+    title: "Evaluation",
+    desc: "Every interviewer applies a different standard, leaving leadership with impressions instead of comparable data.",
+  },
+];
+
 const agents = [
   {
     number: "01",
-    icon: FileText,
-    title: "Resume Enrichment Agent",
-    tagline: "Stop reading CVs. Start knowing candidates.",
+    icon: FileEdit,
+    title: "Job Description Agent",
+    headline: "A three-line request becomes a posted role, in minutes.",
     description:
-      "Analyzes candidate resumes and job descriptions, extracts structured profiles, and scores job fit automatically, so recruiters spend time on people, not paperwork.",
-    capabilities: [
-      "Resume parsing and skills extraction",
-      "Candidate-to-job fit evaluation",
-      "Structured profile generation for ATS/HR systems",
-      "Education and certification identification",
-    ],
+      "The recruiter forwards the hiring manager's requirement from Slack, email, or a meeting note. The agent drafts the JD in the organization's standard format; HR approves it into Workday or your HR management tool. No template hunting, no format drift, no drafting cycles.",
+    before: "Two to three days of drafting and follow-up per role.",
+    after: "Requirement in, company-format JD out, role live on approval.",
+    caption: "From request to live role, in minutes.",
     color: "bg-violet-100 text-violet-600 border-violet-200",
   },
   {
     number: "02",
-    icon: Phone,
-    title: "Screening Agent",
-    tagline: "First-round interviews, fully automated.",
+    icon: FileSearch,
+    title: "Resume Enrichment Agent",
+    headline: "Every resume read in seconds, and the strong candidates found.",
     description:
-      "Conducts AI-powered voice screening calls, collects candidate responses, and delivers transcripts and summaries, all without a recruiter on the line.",
-    capabilities: [
-      "Automated outbound voice interviews",
-      "Natural language conversation handling",
-      "Interview transcript and summary generation",
-      "Call recording and structured screening results",
-    ],
+      "CVs are parsed, skills mapped, and fit scored against the job description, then written to your existing app as candidate profiles.",
+    before: "Review is uneven; strong candidates are missed under volume.",
+    after: "Hundreds of resumes become scored, comparable profiles by start of day.",
+    caption: "Every candidate, read and scored.",
     color: "bg-blue-100 text-blue-600 border-blue-200",
   },
   {
     number: "03",
-    icon: Calendar,
-    title: "Interview Scheduling & Question Generator",
-    tagline: "Schedule smarter. Walk in prepared.",
+    icon: Phone,
+    title: "Screening Agent",
+    headline: "First-round screening, around the clock.",
     description:
-      "Checks interviewer availability, confirms candidates via voice, books the meeting, and sends hiring managers tailored interview questions, all without manual coordination.",
-    capabilities: [
-      "Interviewer calendar availability checks",
-      "Candidate availability confirmation via voice",
-      "Automatic meeting scheduling",
-      "Role-specific question generation sent to interviewers",
-    ],
+      "The agent runs structured voice screenings, capturing responses, transcripts, and summaries without a recruiter on the line. Candidates in any time zone move forward without waiting weeks.",
+    before: "Phone screens consume a recruiter's full day.",
+    after: "Screens complete overnight; results sit in your app by morning.",
+    caption: "Screening, on your schedule.",
     color: "bg-emerald-100 text-emerald-600 border-emerald-200",
   },
   {
     number: "04",
-    icon: Mail,
-    title: "Email Reply Processing Agent",
-    tagline: "Turn inbox responses into structured data.",
+    icon: CalendarCheck,
+    title: "Interview Scheduling Agent",
+    headline: "One calendar for the hiring manager, the recruiter, and the candidate.",
     description:
-      "Reads interviewer email feedback, extracts answers, and converts them into structured evaluation data, eliminating manual feedback processing entirely.",
-    capabilities: [
-      "Interviewer email content analysis",
-      "Feedback extraction and categorization",
-      "Structured evaluation data generation",
-      "Automated recruitment workflow updates",
-    ],
+      "Availability is checked across all three, the candidate is confirmed by voice, and the interview is booked. No double-booking, no dropped threads.",
+    before: "A dozen emails to find a slot everyone can hold.",
+    after: "Three parties aligned, booked, and confirmed automatically.",
+    caption: "Three calendars, one slot.",
     color: "bg-orange-100 text-orange-600 border-orange-200",
   },
   {
     number: "05",
-    icon: BarChart3,
-    title: "Executive Meeting Intelligence Agent",
-    tagline: "From transcript to decision in minutes.",
+    icon: ClipboardList,
+    title: "Questionnaire Agent",
+    headline: "The hiring manager walks in prepared, with questions worth asking.",
     description:
-      "Analyzes interview meeting transcripts and produces executive-level summaries, candidate strengths, concerns, and hiring recommendations, giving leadership the signal without the noise.",
-    capabilities: [
-      "Interview transcript analysis",
-      "Candidate strengths and concerns extraction",
-      "Hiring recommendations and action items",
-      "Executive summary generation",
-    ],
+      "Before each interview, the agent assembles a question set tailored to the role and the candidate, so every conversation starts from the same strong foundation.",
+    before: "Improvised interviews that resist comparison.",
+    after: "Consistent conversations from the first question.",
+    caption: "Prepared before the interview.",
+    color: "bg-sky-100 text-sky-600 border-sky-200",
+  },
+  {
+    number: "06",
+    icon: MessageSquare,
+    title: "Feedback Agent",
+    headline: "Interview feedback, captured while it's fresh.",
+    description:
+      "After the interview, the agent notes the hiring manager's feedback from chat or voice and saves it to the candidate record, directly in the recruiting software.",
+    before: "Feedback lives in memory and scattered emails; debriefs stretch across days.",
+    after: "The verdict is captured and comparable for every candidate.",
+    caption: "Feedback, captured while fresh.",
+    color: "bg-amber-100 text-amber-600 border-amber-200",
+  },
+  {
+    number: "07",
+    icon: BarChart3,
+    title: "Executive Debrief Agent",
+    headline: "Decision-ready summaries, without the transcript-diving.",
+    description:
+      "Interview transcripts are distilled into concise executive summaries: strengths, concerns, and a clear recommendation, so leadership reviews signal, not noise.",
+    before: "Leadership wades through transcripts and gut feel.",
+    after: "One crisp, decision-ready summary per candidate.",
+    caption: "Signal, not transcripts.",
     color: "bg-rose-100 text-rose-600 border-rose-200",
   },
 ];
 
-const workflow = [
-  { step: "01", title: "Resume Enrichment", desc: "Agent parses and profiles every candidate automatically." },
-  { step: "02", title: "Voice Screening", desc: "AI conducts the first-round call and summarizes responses." },
-  { step: "03", title: "Schedule & Prepare", desc: "Interviews get booked and interviewers receive tailored questions." },
-  { step: "04", title: "Capture Feedback", desc: "Email replies are parsed into structured evaluation data." },
-  { step: "05", title: "Executive Insights", desc: "Hiring leaders receive summaries and recommendations instantly." },
+const journey = [
+  { day: "Tue 09:00", desc: "Hiring manager: \"Senior backend engineer, Go, payments, Toronto.\"" },
+  { day: "Tue 09:05", desc: "JD drafted in company format, sent for HR approval." },
+  { day: "Tue 09:15", desc: "HR approves. Role live in Workday." },
+  { day: "Mon 09:00", desc: "Applications arrive." },
+  { day: "Mon 09:03", desc: "Profiles scored and written to the ATS." },
+  { day: "Tue", desc: "Voice screens complete, summarized." },
+  { day: "Wed", desc: "Interview booked: candidate, recruiter, hiring manager aligned." },
+  { day: "Wed", desc: "Hiring manager receives the tailored question set." },
+  { day: "Thu", desc: "Feedback captured, saved to Workday." },
+  { day: "Fri", desc: "Decision-ready debrief on the candidate." },
 ];
 
-const outcomes = [
-  "Dramatically reduced recruiter workload",
-  "Faster candidate screening and shortlisting",
-  "Consistent, bias-reduced evaluations",
-  "Searchable interview records across all candidates",
-  "Interviewers arrive better prepared",
-  "Hiring decisions backed by structured data",
-  "Scales to high-volume recruitment without extra headcount",
+const metrics = [
+  { title: "Requisition to posting", desc: "From days to minutes." },
+  { title: "Recruiter capacity", desc: "Administrative load cut; time returned to candidates and decisions." },
+  { title: "Time to fill", desc: "Weeks compressed; vacancy cost reduced." },
+  { title: "Decision quality", desc: "Every candidate compared on the same structured basis." },
+  { title: "Scale", desc: "Higher volume without added headcount." },
+];
+
+const guardrails = [
+  { icon: ShieldCheck, title: "Audit Trail", desc: "Every agent action is logged and reviewable." },
+  { icon: Lock, title: "Approval Gates", desc: "Human approval required on offers and sensitive steps." },
+  { icon: ClipboardCheck, title: "Non-Destructive", desc: "Nothing deleted, nothing committed without policy." },
+];
+
+const builtFor = [
+  "Lives inside Microsoft Teams and Slack, no new login for your team.",
+  "Posts jobs natively to Workday, your ATS and HRIS in one.",
+  "Stores interview feedback in the recruiting software, on the candidate record.",
+  "Connects to your calendar and email systems.",
+  "Aligns to your security model and permissions.",
+  "Escalation rules defined by your teams.",
 ];
 
 export default function RecruitingAgent() {
@@ -122,22 +172,22 @@ export default function RecruitingAgent() {
               </div>
 
               <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
-                Hire faster with AI coworkers that run your recruiting pipeline
+                Your best candidates aren't lost to competitors. They're lost to your process.
               </h1>
 
               <p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">
-                Five specialized AI agents that cover the full recruiting lifecycle, from resume review to executive debrief, so your team focuses on decisions, not administration.
+                Open roles carry a cost every day they sit unfilled. Digiworks AI coworkers run the recruiting pipeline end to end: posting, screening, scheduling, preparation, and feedback, so your team owns every decision while the agents carry the work. Live in weeks. Measured from day one.
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact">
-                  <Button size="lg" className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white rounded-md shadow-lg shadow-primary/20 font-medium">
-                    Talk to our team
-                  </Button>
-                </Link>
                 <a href="#agents">
+                  <Button size="lg" className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white rounded-md shadow-lg shadow-primary/20 font-medium">
+                    See the pod in action
+                  </Button>
+                </a>
+                <a href="#business-case">
                   <Button size="lg" variant="outline" className="h-12 px-8 text-base bg-white hover:bg-secondary border-border rounded-md font-medium text-foreground">
-                    See the agents <ArrowRight className="ml-2 w-4 h-4" />
+                    The business case <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </a>
               </div>
@@ -146,53 +196,46 @@ export default function RecruitingAgent() {
         </div>
       </section>
 
-      {/* THE PROBLEM */}
+      {/* THE COST OF A SLOW HIRE */}
       <section className="py-24 glass-bg">
         <div className="container">
           <AnimatedSection className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-heading font-bold tracking-tight mb-6">
-              Recruiting is slow because it's still mostly manual
+              The cost of a slow hire
             </h2>
             <p className="text-xl text-muted-foreground">
-              Screening calls, interview coordination, feedback chasing: your recruiters are spending hours on tasks that shouldn't require a human at all.
+              Every open role is a bet that the delay is cheaper than the risk.
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Volume overwhelm",
-                desc: "Hundreds of resumes per role. Recruiters can't meaningfully review every one, so good candidates get missed.",
-              },
-              {
-                title: "Coordination drag",
-                desc: "Scheduling screening calls, chasing interviewer calendars, and following up on feedback eats up the working day.",
-              },
-              {
-                title: "Inconsistent evaluation",
-                desc: "Different interviewers, different standards. Feedback arrives in scattered emails with no structure for comparison.",
-              },
-            ].map((item, i) => (
+          <div className="grid sm:grid-cols-2 gap-6">
+            {strains.map((item, i) => (
               <AnimatedCard key={i} delay={i * 0.1} className="glass-card p-8 hover:shadow-xl transition-all h-full flex flex-col">
                 <h3 className="text-xl font-bold tracking-tight mb-3">{item.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
               </AnimatedCard>
             ))}
           </div>
+
+          <AnimatedSection className="max-w-2xl mx-auto text-center mt-16">
+            <p className="text-lg font-medium text-foreground/80">
+              The Monday meeting starts with the decision already in reach. The work was done overnight.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* THE AGENTS */}
+      {/* THE RECRUITING POD */}
       <section id="agents" className="container py-24 scroll-mt-24">
         <AnimatedSection className="mb-16">
           <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
-            The Suite
+            The Recruiting Pod
           </p>
           <h2 className="text-4xl font-heading font-bold tracking-tight mb-4">
-            Five agents. One complete pipeline.
+            Seven agents, one complete pipeline.
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Each agent handles a distinct stage of the recruiting process. They work independently or as a connected end-to-end system.
+            Each handles one stage; together they run the entire loop, from request to decision.
           </p>
         </AnimatedSection>
 
@@ -200,7 +243,7 @@ export default function RecruitingAgent() {
           {agents.map((agent, i) => (
             <AnimatedCard
               key={i}
-              delay={i * 0.1}
+              delay={i * 0.05}
               className="glass-card rounded-2xl p-8 md:p-10 grid md:grid-cols-[auto_1fr] gap-8 items-start"
             >
               {/* Left: icon + number */}
@@ -213,107 +256,126 @@ export default function RecruitingAgent() {
 
               {/* Right: content */}
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1">{agent.tagline}</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1">{agent.headline}</p>
                 <h3 className="text-2xl font-heading font-bold mb-3 tracking-tight">{agent.title}</h3>
                 <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl">{agent.description}</p>
 
-                <ul className="grid sm:grid-cols-2 gap-3">
-                  {agent.capabilities.map((cap, j) => (
-                    <li key={j} className="flex gap-3 items-start">
-                      <div className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                        <Check className="w-3 h-3" />
-                      </div>
-                      <span className="text-sm text-foreground/80">{cap}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="grid sm:grid-cols-2 gap-3 mb-6">
+                  <div className="p-3 rounded-lg bg-secondary/50 border border-border text-sm">
+                    <span className="font-semibold text-foreground/70 block mb-1">Before</span>
+                    <span className="text-muted-foreground">{agent.before}</span>
+                  </div>
+                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/10 text-sm">
+                    <span className="font-semibold text-primary block mb-1">After</span>
+                    <span className="text-foreground/80">{agent.after}</span>
+                  </div>
+                </div>
+
+                <p className="text-xs text-muted-foreground italic">{agent.caption}</p>
               </div>
             </AnimatedCard>
           ))}
         </div>
       </section>
 
-      {/* END TO END WORKFLOW */}
+      {/* THE JOURNEY */}
       <section className="py-24 border-y border-border/50 glass-bg">
         <div className="container">
           <AnimatedSection className="text-center mb-16">
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
-              End-to-End Workflow
+              One Week, End to End
             </p>
             <h2 className="text-4xl font-heading font-bold tracking-tight mb-4">
-              How the pipeline runs together
+              The same week, with the pod running in the background
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Agents hand off to each other automatically. A candidate enters the pipeline and moves through every stage without manual intervention.
-            </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-5 gap-6 relative">
-            {workflow.map((item, i) => (
-              <AnimatedCard
-                key={i}
-                delay={i * 0.1}
-                className="glass-card border-none rounded-2xl px-6 py-8 flex flex-col items-center text-center relative"
-              >
-                <div className="glass-card w-12 h-12 rounded-2xl shadow-sm flex items-center justify-center text-lg font-bold font-heading text-primary mb-4">
-                  {item.step}
+          <AnimatedCard className="glass-card rounded-2xl p-8 md:p-10 max-w-3xl mx-auto">
+            <div className="flex flex-col divide-y divide-border">
+              {journey.map((item, i) => (
+                <div key={i} className="flex gap-6 py-4 first:pt-0 last:pb-0">
+                  <span className="w-24 flex-shrink-0 text-xs font-bold text-primary font-heading">{item.day}</span>
+                  <span className="text-sm text-foreground/80 leading-relaxed">{item.desc}</span>
                 </div>
-                <h3 className="font-bold text-base mb-2 tracking-tight">{item.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+              ))}
+            </div>
+          </AnimatedCard>
 
-                {i < workflow.length - 1 && (
-                  <div className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10">
-                    <ChevronRight className="w-5 h-5 text-muted-foreground/40" />
-                  </div>
-                )}
-              </AnimatedCard>
-            ))}
-          </div>
+          <AnimatedSection className="max-w-2xl mx-auto text-center mt-12">
+            <p className="text-lg font-medium text-foreground/80">
+              A week that used to run on coordination now runs on its own, with approvals exactly where they belong.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* OUTCOMES */}
-      <section className="container py-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* WHAT CHANGES, AND HOW IT'S MEASURED */}
+      <section id="business-case" className="container py-24 scroll-mt-24">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           <AnimatedSection>
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
-              Expected Outcomes
+              What Changes, and How It's Measured
             </p>
-            <h2 className="text-3xl font-heading font-bold mb-6 tracking-tight">
-              What changes when recruiting runs on AI coworkers
+            <h2 className="text-3xl font-heading font-bold mb-4 tracking-tight">
+              The suite pays for itself in the places leadership already tracks.
             </h2>
-            <ul className="space-y-4">
-              {outcomes.map((item, i) => (
+            <ul className="space-y-4 mt-8">
+              {metrics.map((item, i) => (
                 <li key={i} className="flex gap-3 items-start">
                   <div className="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
                     <Check className="w-3 h-3" />
                   </div>
-                  <span className="text-foreground/80">{item}</span>
+                  <span className="text-foreground/80">
+                    <span className="font-semibold text-foreground">{item.title}: </span>
+                    {item.desc}
+                  </span>
                 </li>
               ))}
             </ul>
+            <p className="text-sm text-muted-foreground mt-8 leading-relaxed">
+              A focused pilot, live in weeks, with impact measured from the first workflow. The numbers carry the conversation.
+            </p>
           </AnimatedSection>
 
           <AnimatedCard className="glass-card rounded-2xl p-8">
-            <h3 className="text-xl font-bold mb-4">How We Deploy It</h3>
-            <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-              Digiworks handles the full implementation: integrations with your ATS, HRIS, email, and calendar systems, plus configuration, guardrails, and staff onboarding.
-            </p>
+            <h3 className="text-xl font-bold mb-2">Guardrails</h3>
+            <p className="text-sm text-muted-foreground mb-6">Non-negotiable, on every deployment.</p>
             <div className="space-y-4">
-              <div className="p-4 bg-secondary/50 rounded-lg text-sm border border-border">
-                <span className="font-semibold text-primary block mb-1">System Integrations</span>
-                Connects to your ATS, HRIS, calendar, email, and communication tools.
-              </div>
-              <div className="p-4 bg-secondary/50 rounded-lg text-sm border border-border">
-                <span className="font-semibold text-primary block mb-1">Guardrails & Oversight</span>
-                Full audit trail of every agent action. Human escalation built in.
-              </div>
-              <div className="p-4 bg-secondary/50 rounded-lg text-sm border border-border">
-                <span className="font-semibold text-primary block mb-1">Live in Weeks</span>
-                Start with a focused pilot. Expand across teams as confidence grows.
-              </div>
+              {guardrails.map((item, i) => (
+                <div key={i} className="flex gap-4 p-4 bg-secondary/50 rounded-lg border border-border">
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                    <item.icon className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="font-semibold text-sm block">{item.title}</span>
+                    <span className="text-sm text-muted-foreground">{item.desc}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </AnimatedCard>
+        </div>
+      </section>
+
+      {/* BUILT FOR THE WAY YOU ALREADY WORK */}
+      <section className="py-24 glass-bg">
+        <div className="container">
+          <AnimatedSection className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-heading font-bold tracking-tight mb-6">
+              Built for the way you already work
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {builtFor.map((item, i) => (
+              <AnimatedCard key={i} delay={i * 0.05} className="glass-card p-5 rounded-xl flex gap-3 items-start">
+                <div className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                  <Check className="w-3 h-3" />
+                </div>
+                <span className="text-sm text-foreground/80">{item}</span>
+              </AnimatedCard>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -326,16 +388,23 @@ export default function RecruitingAgent() {
             </div>
             <div className="relative z-10 max-w-2xl mx-auto space-y-8">
               <h2 className="text-3xl lg:text-4xl font-heading font-bold tracking-tight text-gray-300">
-                Ready to transform your recruiting pipeline?
+                Tell us about one role you're hiring for today.
               </h2>
               <p className="text-gray-300 text-lg">
-                Tell us about your current hiring process and we'll show you exactly where AI coworkers can take over.
+                We'll show you exactly where the coworkers take over, live, in your stack.
               </p>
-              <Link href="/contact">
-                <Button size="lg" className="h-14 px-10 text-lg rounded-md shadow-xl bg-white text-black hover:bg-gray-100 font-medium">
-                  Talk to our team
-                </Button>
-              </Link>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Link href="/contact">
+                  <Button size="lg" className="h-14 px-10 text-lg rounded-md shadow-xl bg-white text-black hover:bg-gray-100 font-medium">
+                    Book a 20-minute walkthrough
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button size="lg" variant="outline" className="h-14 px-10 text-lg rounded-md border-white/20 bg-transparent text-white hover:bg-white/10 font-medium">
+                    Talk to our team
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </AnimatedSection>
