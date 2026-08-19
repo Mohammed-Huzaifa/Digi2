@@ -70,7 +70,7 @@ export const agentUsecases: AgentUsecase[] = [
     cardDescription:
       "A closed-loop pipeline that posts the role, enriches resumes, runs AI voice screenings, schedules interviews, and briefs your execs, writing every result straight back into Workday.",
     cardStat: "7 connected agents · full hiring lifecycle",
-    integrations: ["Workday", "Voice AI", "Calendar & Meetings", "Email"],
+    integrations: ["Voice AI", "Calendar & Meetings", "Email"],
     heroTitle: "Your best candidates aren't lost to competitors. They're lost to your process.",
     heroSubhead:
       "Open roles carry a cost every day they sit unfilled. Digiworks AI coworkers run the recruiting pipeline end to end: posting, screening, scheduling, preparation, and feedback, so your team owns every decision while the agents carry the work. Live in weeks. Measured from day one.",
@@ -97,9 +97,9 @@ export const agentUsecases: AgentUsecase[] = [
       system: "Inbox",
       heading: "Today, before",
       threads: [
-        { sender: "Priya · Hiring Manager", text: "Any update on the feedback for Marcus?", time: "9:14" },
-        { sender: "Priya · Hiring Manager", text: "Following up, still waiting on feedback", time: "11:40" },
-        { sender: "Priya · Hiring Manager", text: "Bump: can we close this out today?", time: "2:55" },
+        { sender: "Adrian · Hiring Manager", text: "Any update on the feedback for Marcus?", time: "9:14" },
+        { sender: "Adrian · Hiring Manager", text: "Following up, still waiting on feedback", time: "11:40" },
+        { sender: "Adrian · Hiring Manager", text: "Bump: can we close this out today?", time: "2:55" },
       ],
     },
 
@@ -212,7 +212,7 @@ export const agentUsecases: AgentUsecase[] = [
           kind: "email",
           system: "Digiworks",
           heading: "Interview Questions",
-          from: "To: Priya (Hiring Manager)",
+          from: "To: Adrian (Hiring Manager)",
           subject: "Interview questions: Marcus Reyes, Senior Backend Engineer",
           points: [
             "Walk through your approach to a queue backup under production load.",

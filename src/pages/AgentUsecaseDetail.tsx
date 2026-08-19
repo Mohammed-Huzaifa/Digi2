@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Building2, PhoneCall, CalendarClock, Mail, Check, ArrowRight } from "lucide-react";
+import { PhoneCall, CalendarClock, Mail, Check, ArrowRight } from "lucide-react";
 import { Link, useParams, Redirect } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
@@ -9,7 +9,6 @@ import { LiveTracePanel } from "@/components/LiveTracePanel";
 import { getAgentUsecase } from "@/data/agentUsecases";
 
 const INTEGRATION_ICONS: Record<string, React.ReactNode> = {
-  Workday: <Building2 className="w-4 h-4" />,
   "Voice AI": <PhoneCall className="w-4 h-4" />,
   "Calendar & Meetings": <CalendarClock className="w-4 h-4" />,
   Email: <Mail className="w-4 h-4" />,
@@ -31,13 +30,6 @@ export default function AgentUsecaseDetail() {
       {/* HERO */}
       <section className="relative py-24 overflow-hidden bg-secondary/30">
         <div className="container relative z-10">
-          <Link href="/agent-usecases">
-            <a className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors mb-8">
-              <ArrowLeft className="w-4 h-4" />
-              All agent usecases
-            </a>
-          </Link>
-
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
             <AnimatedText>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-bold text-primary mb-6 uppercase tracking-wider shadow-sm">
