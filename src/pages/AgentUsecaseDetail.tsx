@@ -5,6 +5,7 @@ import { Link, useParams, Redirect } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
 import { RecruitingUIMockup } from "@/components/RecruitingUIMockup";
+import { LiveTracePanel } from "@/components/LiveTracePanel";
 import { getAgentUsecase } from "@/data/agentUsecases";
 
 const INTEGRATION_ICONS: Record<string, React.ReactNode> = {
@@ -37,7 +38,7 @@ export default function AgentUsecaseDetail() {
             </a>
           </Link>
 
-          <div className="max-w-3xl">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
             <AnimatedText>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-bold text-primary mb-6 uppercase tracking-wider shadow-sm">
                 {usecase.eyebrow}
@@ -76,6 +77,10 @@ export default function AgentUsecaseDetail() {
                 </a>
               </div>
             </AnimatedText>
+
+            <AnimatedCard delay={0.2} className="flex justify-center lg:justify-end">
+              <LiveTracePanel steps={usecase.heroTrace} />
+            </AnimatedCard>
           </div>
         </div>
       </section>

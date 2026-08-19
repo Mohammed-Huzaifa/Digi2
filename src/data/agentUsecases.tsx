@@ -38,6 +38,7 @@ export interface AgentUsecase {
   integrations: string[];
   heroTitle: string;
   heroSubhead: string;
+  heroTrace: { day: string; desc: string }[];
   costTitle: string;
   costSub: string;
   strains: { title: string; desc: string }[];
@@ -73,6 +74,14 @@ export const agentUsecases: AgentUsecase[] = [
     heroTitle: "Your best candidates aren't lost to competitors. They're lost to your process.",
     heroSubhead:
       "Open roles carry a cost every day they sit unfilled. Digiworks AI coworkers run the recruiting pipeline end to end: posting, screening, scheduling, preparation, and feedback, so your team owns every decision while the agents carry the work. Live in weeks. Measured from day one.",
+    heroTrace: [
+      { day: "Tue", desc: "Role posted to Workday, drafted and approved in minutes." },
+      { day: "Mon", desc: "Resumes scored and written to the candidate record." },
+      { day: "Tue", desc: "Screening calls complete, transcripts saved." },
+      { day: "Wed", desc: "Interview scheduled, tailored questions sent." },
+      { day: "Thu", desc: "Interviewer feedback captured while it's fresh." },
+      { day: "Fri", desc: "Decision-ready debrief lands with leadership." },
+    ],
 
     costTitle: "The cost of a slow hire",
     costSub: "Every open role is a bet that the delay is cheaper than the risk.",
