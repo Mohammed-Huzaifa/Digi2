@@ -38,7 +38,7 @@ export interface AgentUsecase {
   integrations: string[];
   heroTitle: string;
   heroSubhead: string;
-  heroTrace: { day: string; desc: string }[];
+  heroTrace: { day: string; desc: string; icon: LucideIcon }[];
   costTitle: string;
   costSub: string;
   strains: { title: string; desc: string }[];
@@ -75,12 +75,12 @@ export const agentUsecases: AgentUsecase[] = [
     heroSubhead:
       "Open roles carry a cost every day they sit unfilled. Digiworks AI coworkers run the recruiting pipeline end to end: posting, screening, scheduling, preparation, and feedback, so your team owns every decision while the agents carry the work. Live in weeks. Measured from day one.",
     heroTrace: [
-      { day: "Tue", desc: "Role posted to Workday, drafted and approved in minutes." },
-      { day: "Mon", desc: "Resumes scored and written to the candidate record." },
-      { day: "Tue", desc: "Screening calls complete, transcripts saved." },
-      { day: "Wed", desc: "Interview scheduled, tailored questions sent." },
-      { day: "Thu", desc: "Interviewer feedback captured while it's fresh." },
-      { day: "Fri", desc: "Decision-ready debrief lands with leadership." },
+      { day: "Tue", desc: "Role posted to Workday, drafted and approved in minutes.", icon: FileEdit },
+      { day: "Mon", desc: "Resumes scored and written to the candidate record.", icon: FileSearch },
+      { day: "Tue", desc: "Screening calls complete, transcripts saved.", icon: Phone },
+      { day: "Wed", desc: "Interview scheduled, tailored questions sent.", icon: CalendarCheck },
+      { day: "Thu", desc: "Interviewer feedback captured while it's fresh.", icon: MessageSquare },
+      { day: "Fri", desc: "Decision-ready debrief lands with leadership.", icon: BarChart3 },
     ],
 
     costTitle: "The cost of a slow hire",

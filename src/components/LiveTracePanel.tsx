@@ -1,74 +1,119 @@
+import type { LucideIcon } from "lucide-react";
+
 interface TraceStep {
   day: string;
   desc: string;
+  icon: LucideIcon;
 }
 
 export function LiveTracePanel({ steps }: { steps: TraceStep[] }) {
-  const cycleSeconds = steps.length * 1.4 + 1.5;
+  const n = steps.length;
+  const cycle = n * 1.7 + 1.6;
 
   return (
-    <div className="w-full max-w-md rounded-2xl border border-border bg-white shadow-xl overflow-hidden">
+    <div className="relative w-full max-w-md">
       <style>{`
-        @keyframes tracePop {
-          0% { background: #F3F4F6; border-color: #E5E7EB; transform: scale(1); }
-          4% { background: #6C47FF; border-color: #6C47FF; transform: scale(1.15); }
-          10% { background: #6C47FF; border-color: #6C47FF; transform: scale(1); }
-          86% { background: #6C47FF; border-color: #6C47FF; transform: scale(1); }
-          92% { background: #F3F4F6; border-color: #E5E7EB; transform: scale(1); }
-          100% { background: #F3F4F6; border-color: #E5E7EB; transform: scale(1); }
+        @keyframes tracePanelGlowA {
+          0%, 100% { transform: translate(-10%, -10%) scale(1); opacity: 0.55; }
+          50% { transform: translate(5%, 5%) scale(1.15); opacity: 0.85; }
         }
-        @keyframes traceCheck {
-          0%, 8% { opacity: 0; transform: scale(0.5); }
-          12% { opacity: 1; transform: scale(1); }
-          86% { opacity: 1; transform: scale(1); }
-          92%, 100% { opacity: 0; transform: scale(0.5); }
+        @keyframes tracePanelGlowB {
+          0%, 100% { transform: translate(10%, 10%) scale(1); opacity: 0.45; }
+          50% { transform: translate(-5%, -8%) scale(1.2); opacity: 0.75; }
         }
-        @keyframes traceTextIn {
-          0%, 6% { opacity: 0.35; }
-          12% { opacity: 1; }
-          92%, 100% { opacity: 0.35; }
+        @keyframes nodeCore {
+          0% { background: rgba(255,255,255,0.06); box-shadow: 0 0 0 0 rgba(139,92,246,0); }
+          2% { background: linear-gradient(135deg,#8B5CF6,#6C47FF); box-shadow: 0 0 0 6px rgba(139,92,246,0.25), 0 0 24px 4px rgba(139,92,246,0.55); }
+          10% { background: linear-gradient(135deg,#7C5CFA,#6C47FF); box-shadow: 0 0 0 4px rgba(139,92,246,0.14), 0 0 14px 2px rgba(139,92,246,0.35); }
+          88% { background: linear-gradient(135deg,#7C5CFA,#6C47FF); box-shadow: 0 0 0 4px rgba(139,92,246,0.14), 0 0 14px 2px rgba(139,92,246,0.35); }
+          96%, 100% { background: rgba(255,255,255,0.06); box-shadow: 0 0 0 0 rgba(139,92,246,0); }
         }
-        .trace-dot { animation: tracePop var(--trace-duration) ease-in-out infinite; animation-delay: var(--trace-delay); }
-        .trace-check { animation: traceCheck var(--trace-duration) ease-in-out infinite; animation-delay: var(--trace-delay); }
-        .trace-text { animation: traceTextIn var(--trace-duration) ease-in-out infinite; animation-delay: var(--trace-delay); }
+        @keyframes nodeIcon {
+          0% { color: rgba(255,255,255,0.28); }
+          4% { color: #fff; }
+          92% { color: #fff; }
+          97%, 100% { color: rgba(255,255,255,0.28); }
+        }
+        @keyframes nodeLabel {
+          0% { opacity: 0.32; }
+          4% { opacity: 1; }
+          92% { opacity: 1; }
+          97%, 100% { opacity: 0.32; }
+        }
+        @keyframes nodeRing {
+          0% { opacity: 0; transform: scale(0.6); }
+          2% { opacity: 1; transform: scale(1.6); }
+          16% { opacity: 0; transform: scale(2.2); }
+          100% { opacity: 0; transform: scale(2.2); }
+        }
+        @keyframes segFill {
+          0% { transform: scaleY(0); }
+          8% { transform: scaleY(1); }
+          95%, 100% { transform: scaleY(1); }
+        }
+        .trace-node { animation: nodeCore var(--cyc) ease-in-out infinite backwards; animation-delay: var(--dly); }
+        .trace-icon { animation: nodeIcon var(--cyc) ease-in-out infinite backwards; animation-delay: var(--dly); }
+        .trace-label { animation: nodeLabel var(--cyc) ease-in-out infinite backwards; animation-delay: var(--dly); }
+        .trace-ring { animation: nodeRing var(--cyc) ease-in-out infinite backwards; animation-delay: var(--dly); }
+        .trace-seg { animation: segFill var(--cyc) ease-in-out infinite backwards; animation-delay: var(--dly); transform-origin: top; }
       `}</style>
 
-      <div className="flex items-center justify-between px-5 py-3 border-b border-border bg-secondary/40">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-rose-300" />
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-300" />
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-300" />
-        </div>
-        <span className="text-xs font-medium text-muted-foreground">This week, live</span>
-        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-600">
-          <span className="relative flex w-1.5 h-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full w-1.5 h-1.5 bg-emerald-500" />
-          </span>
-          Live
-        </span>
-      </div>
+      {/* Ambient glow */}
+      <div
+        className="absolute -inset-10 -z-10 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.5),transparent_65%)] blur-3xl"
+        style={{ animation: "tracePanelGlowA 7s ease-in-out infinite" }}
+      />
+      <div
+        className="absolute -inset-10 -z-10 rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.35),transparent_65%)] blur-3xl"
+        style={{ animation: "tracePanelGlowB 8s ease-in-out infinite" }}
+      />
 
-      <div className="p-6">
-        {steps.map((step, i) => (
-          <div key={i} className="flex gap-4">
-            <div className="flex flex-col items-center flex-shrink-0">
-              <div
-                className="trace-dot relative w-6 h-6 rounded-full border-2 flex items-center justify-center"
-                style={{ ["--trace-duration" as string]: `${cycleSeconds}s`, ["--trace-delay" as string]: `${i * 1.4}s` }}
-              >
-                <svg className="trace-check w-3 h-3" style={{ ["--trace-duration" as string]: `${cycleSeconds}s`, ["--trace-delay" as string]: `${i * 1.4}s` }} viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
+      <div className="relative rounded-2xl border border-white/10 bg-[#0B0F1A] shadow-2xl overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_0%,rgba(108,71,255,0.25),transparent_55%)]" />
+
+        <div className="relative flex items-center justify-between px-5 py-4 border-b border-white/10">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-white/50">Agent Pipeline</span>
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+            <span className="relative flex w-1.5 h-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full w-1.5 h-1.5 bg-emerald-400" />
+            </span>
+            Live
+          </span>
+        </div>
+
+        <div className="relative px-6 pt-6 pb-5">
+          {steps.map((step, i) => {
+            const vars = { ["--cyc" as string]: `${cycle}s`, ["--dly" as string]: `${i * 1.7}s` };
+            return (
+              <div key={i} className="flex gap-4">
+                <div className="flex flex-col items-center flex-shrink-0">
+                  <div className="relative w-10 h-10">
+                    <span className="trace-ring absolute inset-0 rounded-full border-2 border-primary" style={vars} />
+                    <div
+                      className="trace-node relative w-10 h-10 rounded-full border border-white/10 flex items-center justify-center"
+                      style={vars}
+                    >
+                      <step.icon className="trace-icon w-4 h-4" style={vars} />
+                    </div>
+                  </div>
+                  {i < steps.length - 1 && (
+                    <div className="relative w-px flex-1 my-1 bg-white/10" style={{ minHeight: "28px" }}>
+                      <div
+                        className="trace-seg absolute inset-0 bg-gradient-to-b from-primary to-sky-400"
+                        style={{ ["--cyc" as string]: `${cycle}s`, ["--dly" as string]: `${i * 1.7 + 0.9}s` }}
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className={`trace-label ${i < steps.length - 1 ? "pb-6" : ""}`} style={vars}>
+                  <div className="text-[10px] font-bold text-primary/90 uppercase tracking-widest mb-1">{step.day}</div>
+                  <div className="text-sm text-white/90 leading-snug">{step.desc}</div>
+                </div>
               </div>
-              {i < steps.length - 1 && <div className="w-px flex-1 bg-border my-1" style={{ minHeight: "20px" }} />}
-            </div>
-            <div className={`trace-text ${i < steps.length - 1 ? "pb-5" : ""}`} style={{ ["--trace-duration" as string]: `${cycleSeconds}s`, ["--trace-delay" as string]: `${i * 1.4}s` }}>
-              <div className="text-[11px] font-bold text-primary uppercase tracking-wider mb-0.5">{step.day}</div>
-              <div className="text-sm text-foreground/80 leading-snug">{step.desc}</div>
-            </div>
-          </div>
-        ))}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
