@@ -78,9 +78,9 @@ export default function AgentUsecaseDetail() {
               </div>
             </AnimatedText>
 
-            <AnimatedCard delay={0.2} className="flex justify-center lg:justify-end">
+            <AnimatedSection delay={0.2} className="flex justify-center lg:justify-end">
               <LiveTracePanel steps={usecase.heroTrace} />
-            </AnimatedCard>
+            </AnimatedSection>
           </div>
         </div>
       </section>
