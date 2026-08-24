@@ -181,6 +181,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <Button
                     variant="ghost"
                     size="icon"
+                    aria-label="Open menu"
                     className="rounded-xl hover:bg-secondary"
                   >
                     <Menu className="w-6 h-6" />

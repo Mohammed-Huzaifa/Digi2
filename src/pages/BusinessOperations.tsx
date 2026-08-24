@@ -3,8 +3,16 @@ import { Check, Headset, Users, Receipt, Wallet } from "lucide-react";
 
 import { Link } from "wouter";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
+import { useDocumentHead } from "@/hooks/useDocumentHead";
 
 export default function BusinessOperations() {
+    useDocumentHead({
+      title: "Business Operations AI Coworkers | Digiworks",
+      description:
+        "Digiworks AI coworkers handle HR, finance, IT, and payroll tasks inside Microsoft Teams, Slack, and your existing business systems, auto-resolving routine work and accelerating approvals.",
+      path: "/business-operations",
+    });
+
     const BusinessOperationsRoles = [
         { title: "HR & People Operations", desc: "Meeting Organizer, Profile Enrichment, Doctor's Certificate Validator, policy questions, onboarding support, and offboarding workflows.", icon: Users },
         { title: "Finance & Procurement", desc: "Invoice approvals, expense reporting, purchase order creation, vendor onboarding, budget inquiries, and approval routing.", icon: Receipt },

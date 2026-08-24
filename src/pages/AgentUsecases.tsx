@@ -3,8 +3,16 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
 import { agentUsecases } from "@/data/agentUsecases";
+import { useDocumentHead } from "@/hooks/useDocumentHead";
 
 export default function AgentUsecases() {
+  useDocumentHead({
+    title: "Agent Usecases | Digiworks",
+    description:
+      "Browse real Digiworks agent pipelines: the exact triggers, systems, and outcomes we deploy inside customer stacks, starting with the AI recruiting suite.",
+    path: "/agent-usecases",
+  });
+
   return (
     <div className="flex flex-col pb-20 overflow-x-hidden">
       {/* HERO */}

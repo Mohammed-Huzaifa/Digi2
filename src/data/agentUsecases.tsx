@@ -62,10 +62,10 @@ export interface AgentUsecase {
 
 export const agentUsecases: AgentUsecase[] = [
   {
-    slug: "hr-automation-flow",
+    slug: "recruiter",
     icon: Workflow,
     eyebrow: "AI RECRUITING SUITE",
-    title: "HR Automation Flow",
+    title: "Recruiter",
     cardHook: "From resume to hire: seven agents, zero manual handoffs.",
     cardDescription:
       "A closed-loop pipeline that posts the role, enriches resumes, runs AI voice screenings, schedules interviews, and briefs your execs, writing every result straight back into Workday.",

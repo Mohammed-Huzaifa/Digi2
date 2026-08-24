@@ -2,9 +2,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle, Home } from "lucide-react";
 import { useLocation } from "wouter";
+import { useDocumentHead } from "@/hooks/useDocumentHead";
 
 export default function NotFound() {
-  const [, setLocation] = useLocation();
+  const [location, setLocation] = useLocation();
+
+  useDocumentHead({
+    title: "Page Not Found | Digiworks",
+    description: "The page you're looking for doesn't exist.",
+    path: location,
+    noindex: true,
+  });
 
   const handleGoHome = () => {
     setLocation("/");

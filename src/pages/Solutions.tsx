@@ -22,10 +22,18 @@ import { Link } from "wouter";
 import { useEffect, useRef } from "react";
 import Technologies from "@/components/Technologies";
 
-  
+
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
+import { useDocumentHead } from "@/hooks/useDocumentHead";
 
 export default function Solutions() {
+  useDocumentHead({
+    title: "Higher Education AI Coworkers | Digiworks",
+    description:
+      "Digiworks AI coworkers extend admissions, advising, student services, and alumni relations teams, giving students and families 24/7 support inside your existing campus systems.",
+    path: "/solutions",
+  });
+
   // Scroll to section if hash is present
   useEffect(() => {
     const hash = window.location.hash;
@@ -173,6 +181,7 @@ const HigherEdRoles = [
   {/* Left Arrow */}
   <button
     onClick={() => scrollCarousel("left")}
+    aria-label="Scroll roles left"
     className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/80 backdrop-blur-md border border-border shadow-md flex items-center justify-center hover:bg-white transition"
   >
     <ArrowRight className="w-5 h-5 rotate-180 text-muted-foreground" />
@@ -181,6 +190,7 @@ const HigherEdRoles = [
   {/* Right Arrow */}
   <button
     onClick={() => scrollCarousel("right")}
+    aria-label="Scroll roles right"
     className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/80 backdrop-blur-md border border-border shadow-md flex items-center justify-center hover:bg-white transition"
   >
     <ArrowRight className="w-5 h-5 text-muted-foreground" />

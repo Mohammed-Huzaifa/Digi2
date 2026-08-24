@@ -7,8 +7,15 @@ import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { AnimatedSection, AnimatedCard } from "@/components/AnimatedSection";
+import { useDocumentHead } from "@/hooks/useDocumentHead";
 
 export default function Contact() {
+  useDocumentHead({
+    title: "Contact | Digiworks",
+    description: "Talk to the Digiworks team about deploying AI coworkers for your business operations or higher education institution.",
+    path: "/contact",
+  });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 

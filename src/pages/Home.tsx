@@ -9,15 +9,59 @@ import Technologies from "@/components/Technologies";
 
 
 import { useState } from "react";
+import { useDocumentHead } from "@/hooks/useDocumentHead";
 
+const homeFaqs = [
+  {
+    q: "What are Digiworks coworkers?",
+    a: "Digiworks coworkers are AI agents that behave like digital colleagues. They sit inside your chat tools and systems, understand your workflows, and take on repeatable work so your people don't have to."
+  },
+  {
+    q: "How are coworkers different from chatbots?",
+    a: "Chatbots mostly talk. Coworkers do. They can trigger automations, update records, complete tasks, and follow your rules with full visibility, not just provide answers."
+  },
+  {
+    q: "Where do coworkers live?",
+    a: "Coworkers show up in Microsoft Teams, Slack, and the portals and applications you already use. Your team interacts with them in the same channels they use every day."
+  },
+  {
+    q: "How long does it take to launch our first coworker?",
+    a: "Most teams launch their first coworker pod in a matter of weeks, starting with a tightly scoped set of workflows and clear success metrics."
+  },
+  {
+    q: "What is a coworker pod?",
+    a: "A coworker pod is a starter package focused on a specific area (like IT support or student services). you get design, integration, configuration, guardrails, and initial optimization for a set of coworkers."
+  },
+  {
+    q: "What's the difference between Business Operations and Higher Education coworkers?",
+    a: "Business Operations coworkers handle cross-industry functions like HR, Finance, IT, and Payroll that every organization needs. Higher Education coworkers are purpose-built for campus-specific workflows: admissions, student services, academic advising, and registrar operations. You can mix both. A university might use Business Operations coworkers for their HR and finance teams, and Higher Education coworkers for their student-facing departments."
+  }
+];
 
+const homeFaqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: homeFaqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
 
 export default function Home() {
+
+  useDocumentHead({
+    title: "Digiworks | AI Coworkers for Business Operations & Higher Education",
+    description:
+      "Digiworks deploys AI coworkers inside Microsoft Teams, Slack, and your core systems to automate HR, finance, IT, and higher education workflows so your team can focus on high-value work.",
+    path: "/",
+  });
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <div className="flex flex-col gap-0 pb-20 overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }} />
       {/* Hero Section - Clerk Style Layout with Graphite Animation */}
       <section className="relative min-h-[820px] pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
 
@@ -407,32 +451,7 @@ export default function Home() {
         <h2 className="text-3xl font-heading font-bold mb-10 text-center tracking-tight">FAQs</h2>
 
           <div className="grid gap-4">
-            {[
-              {
-                q: "What are Digiworks coworkers?",
-                a: "Digiworks coworkers are AI agents that behave like digital colleagues. They sit inside your chat tools and systems, understand your workflows, and take on repeatable work so your people don't have to."
-              },
-              {
-                q: "How are coworkers different from chatbots?",
-                a: "Chatbots mostly talk. Coworkers do. They can trigger automations, update records, complete tasks, and follow your rules with full visibility, not just provide answers."
-              },
-              {
-                q: "Where do coworkers live?",
-                a: "Coworkers show up in Microsoft Teams, Slack, and the portals and applications you already use. Your team interacts with them in the same channels they use every day."
-              },
-              {
-                q: "How long does it take to launch our first coworker?",
-                a: "Most teams launch their first coworker pod in a matter of weeks, starting with a tightly scoped set of workflows and clear success metrics."
-              },
-              {
-                q: "What is a coworker pod?",
-                a: "A coworker pod is a starter package focused on a specific area (like IT support or student services). you get design, integration, configuration, guardrails, and initial optimization for a set of coworkers."
-              },
-              {
-                q: "What's the difference between Business Operations and Higher Education coworkers?",
-                a: "Business Operations coworkers handle cross-industry functions like HR, Finance, IT, and Payroll that every organization needs. Higher Education coworkers are purpose-built for campus-specific workflows: admissions, student services, academic advising, and registrar operations. You can mix both. A university might use Business Operations coworkers for their HR and finance teams, and Higher Education coworkers for their student-facing departments."
-              }
-            ].map((item, i) => (
+            {homeFaqs.map((item, i) => (
               <AnimatedCard
   key={i}
   delay={i * 0.05}
@@ -441,6 +460,8 @@ export default function Home() {
   <button
     type="button"
     onClick={() => setOpenFaq(openFaq === i ? null : i)}
+    aria-expanded={openFaq === i}
+    aria-controls={`faq-answer-${i}`}
     className="w-full flex items-center justify-between gap-4 text-left"
   >
     <h4 className="font-bold text-lg group-hover:text-primary transition-colors">
@@ -455,7 +476,7 @@ export default function Home() {
   </button>
 
   {openFaq === i && (
-    <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
+    <p id={`faq-answer-${i}`} role="region" className="mt-3 text-muted-foreground text-sm leading-relaxed">
       {item.a}
     </p>
   )}

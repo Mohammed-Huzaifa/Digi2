@@ -58,17 +58,21 @@ export function LiveTracePanel({ steps }: { steps: TraceStep[] }) {
         .trace-seg { animation: segFill var(--cyc) ease-in-out infinite backwards; animation-delay: var(--dly); transform-origin: top; }
       `}</style>
 
-      {/* Ambient glow */}
+      {/* Ambient glow — fades the panel into the page instead of a hard edge */}
       <div
-        className="absolute -inset-10 -z-10 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.5),transparent_65%)] blur-3xl"
+        className="absolute -inset-24 -z-10 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.45),transparent_70%)] blur-3xl"
         style={{ animation: "tracePanelGlowA 7s ease-in-out infinite" }}
       />
       <div
-        className="absolute -inset-10 -z-10 rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.35),transparent_65%)] blur-3xl"
+        className="absolute -inset-24 -z-10 rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.3),transparent_70%)] blur-3xl"
         style={{ animation: "tracePanelGlowB 8s ease-in-out infinite" }}
       />
+      <div className="absolute -inset-6 -z-10 rounded-[32px] bg-primary/15 blur-2xl" />
 
-      <div className="relative rounded-2xl border border-white/10 bg-[#0B0F1A] shadow-2xl overflow-hidden">
+      {/* Grounding shadow beneath the card */}
+      <div className="absolute left-6 right-6 -bottom-6 h-12 -z-10 rounded-full bg-[#0B0F1A]/40 blur-2xl" />
+
+      <div className="relative rounded-2xl border border-white/10 bg-[#0B0F1A] shadow-[0_30px_60px_-15px_rgba(108,71,255,0.35),0_20px_40px_-20px_rgba(0,0,0,0.5)] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_0%,rgba(108,71,255,0.25),transparent_55%)]" />
 
         <div className="relative flex items-center justify-between px-5 py-4 border-b border-white/10">

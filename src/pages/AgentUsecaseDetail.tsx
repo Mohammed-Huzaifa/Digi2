@@ -7,6 +7,7 @@ import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/Animat
 import { RecruitingUIMockup } from "@/components/RecruitingUIMockup";
 import { LiveTracePanel } from "@/components/LiveTracePanel";
 import { getAgentUsecase } from "@/data/agentUsecases";
+import { useDocumentHead } from "@/hooks/useDocumentHead";
 
 const INTEGRATION_ICONS: Record<string, React.ReactNode> = {
   "Voice AI": <PhoneCall className="w-4 h-4" />,
@@ -18,6 +19,13 @@ export default function AgentUsecaseDetail() {
   const { slug } = useParams<{ slug: string }>();
   const usecase = getAgentUsecase(slug);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useDocumentHead({
+    title: usecase ? `${usecase.title} | Digiworks Agent Usecases` : "Agent Usecases | Digiworks",
+    description: usecase ? usecase.cardDescription : "Browse real Digiworks agent pipelines.",
+    path: `/agent-usecases/${slug}`,
+    noindex: !usecase,
+  });
 
   if (!usecase) {
     return <Redirect to="/agent-usecases" />;
@@ -120,11 +128,14 @@ export default function AgentUsecaseDetail() {
           <p className="text-lg text-muted-foreground max-w-2xl">{usecase.podIntro}</p>
         </AnimatedSection>
 
-        <div className="flex flex-wrap gap-3 mb-10">
+        <div role="tablist" aria-label="Recruiting pod agents" className="flex flex-wrap gap-3 mb-10">
           {usecase.scenarios.map((s, i) => (
             <button
               key={s.id}
               type="button"
+              role="tab"
+              aria-selected={i === activeIndex}
+              aria-controls={`agent-panel-${s.id}`}
               onClick={() => setActiveIndex(i)}
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
                 i === activeIndex
@@ -140,6 +151,8 @@ export default function AgentUsecaseDetail() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeScenario.id}
+            id={`agent-panel-${activeScenario.id}`}
+            role="tabpanel"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}

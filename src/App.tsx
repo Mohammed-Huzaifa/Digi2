@@ -24,7 +24,10 @@ function Router() {
           <Redirect to="/business-operations" />
         </Route>
         <Route path="/recruiting-agent">
-          <Redirect to="/agent-usecases/hr-automation-flow" />
+          <Redirect to="/agent-usecases/recruiter" />
+        </Route>
+        <Route path="/agent-usecases/hr-automation-flow">
+          <Redirect to="/agent-usecases/recruiter" />
         </Route>
         <Route path="/agent-usecases" component={AgentUsecases} />
         <Route path="/agent-usecases/:slug" component={AgentUsecaseDetail} />
