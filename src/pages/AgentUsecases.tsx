@@ -32,11 +32,11 @@ export default function AgentUsecases() {
                 Every use case below is a live deployment already running for real teams. No slideware, no hypotheticals.
               </p>
 
-              <Link href="/contact">
-                <Button size="lg" className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white rounded-md shadow-lg shadow-primary/20 font-medium">
+              <Button asChild size="lg" className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white rounded-md shadow-lg shadow-primary/20 font-medium">
+                <Link href="/contact">
                   Talk to our team
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </AnimatedText>
           </div>
         </div>
@@ -58,16 +58,16 @@ export default function AgentUsecases() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {agentUsecases.map((usecase, i) => (
-            <Link key={usecase.slug} href={`/agent-usecases/${usecase.slug}`}>
+            <Link key={usecase.slug} href={`/agent-usecases/${usecase.slug}`} className="block rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
               <AnimatedCard
                 delay={i * 0.1}
                 className="group cursor-pointer glass-card rounded-2xl p-8 h-full flex flex-col"
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0">
-                    <usecase.icon className="w-6 h-6" />
+                    <usecase.icon className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <ArrowRight className="w-5 h-5 text-muted-foreground/40 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                  <ArrowRight className="w-5 h-5 text-muted-foreground/40 transition-transform group-hover:translate-x-1 group-hover:text-primary" aria-hidden="true" />
                 </div>
 
                 <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">
@@ -115,11 +115,11 @@ export default function AgentUsecases() {
               <p className="text-gray-300 text-lg">
                 Tell us what your team does manually today, and we'll design the agent that takes it over.
               </p>
-              <Link href="/contact">
-                <Button size="lg" className="h-14 px-10 text-lg rounded-md shadow-xl bg-white text-black hover:bg-gray-100 font-medium">
+              <Button asChild size="lg" className="h-14 px-10 text-lg rounded-md shadow-xl bg-white text-black hover:bg-gray-100 font-medium">
+                <Link href="/contact">
                   Talk to our team
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </AnimatedSection>

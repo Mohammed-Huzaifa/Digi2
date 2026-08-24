@@ -73,7 +73,7 @@ export default function BusinessOperations() {
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 items-start">
                     <div className="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                      <Check className="w-3 h-3" />
+                      <Check className="w-3 h-3" aria-hidden="true" />
                     </div>
                     <span className="text-foreground/80">{item}</span>
                   </li>
@@ -116,11 +116,11 @@ export default function BusinessOperations() {
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
                     {(() => {
   const Icon = role.icon ?? Users;
-  return <Icon className="w-5 h-5" />;
+  return <Icon className="w-5 h-5" aria-hidden="true" />;
 })()}
 
                     </div>
-                    <h4 className="font-bold text-lg leading-tight mt-2">{role.title}</h4>
+                    <h3 className="font-bold text-lg leading-tight mt-2">{role.title}</h3>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{role.desc}</p>
                 </AnimatedCard>
@@ -136,21 +136,21 @@ export default function BusinessOperations() {
                 <h3 className="text-2xl font-bold mb-4 text-gray-300">Start with a coworker pod.</h3>
                 <ul className="space-y-4 mb-8 text-gray-300">
                   <li className="flex gap-3">
-                    <Check className="w-5 h-5 flex-shrink-0 text-primary" />
+                    <Check className="w-5 h-5 flex-shrink-0 text-primary" aria-hidden="true" />
                     <span>Choose one function, like IT support, HR, or finance.</span>
                   </li>
                   <li className="flex gap-3">
-                    <Check className="w-5 h-5 flex-shrink-0 text-primary" />
+                    <Check className="w-5 h-5 flex-shrink-0 text-primary" aria-hidden="true" />
                     <span>Includes defined roles, integrations, configuration, and guardrails.</span>
                   </li>
                   <li className="flex gap-3">
-                    <Check className="w-5 h-5 flex-shrink-0 text-primary" />
+                    <Check className="w-5 h-5 flex-shrink-0 text-primary" aria-hidden="true" />
                     <span>Live in weeks handling real requests.</span>
                   </li>
                 </ul>
-                <Link href="/contact">
-                  <Button className="w-full bg-white text-black hover:bg-gray-100 font-medium">Get Started</Button>
-                </Link>
+                <Button asChild className="w-full bg-white text-black hover:bg-gray-100 font-medium">
+                  <Link href="/contact">Get Started</Link>
+                </Button>
               </div>
             </AnimatedCard>
 
@@ -160,21 +160,21 @@ export default function BusinessOperations() {
                 <div className="flex gap-4 items-start">
                   <div className="text-4xl font-bold text-primary/20">01</div>
                   <div>
-                    <h4 className="font-bold text-lg">Reduce Manual Work</h4>
+                    <h3 className="font-bold text-lg">Reduce Manual Work</h3>
                     <p className="text-muted-foreground">Reduce manual handling of routine requests on targeted workflows.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
                   <div className="text-4xl font-bold text-primary/20">02</div>
                   <div>
-                    <h4 className="font-bold text-lg">Auto-Resolution</h4>
+                    <h3 className="font-bold text-lg">Auto-Resolution</h3>
                     <p className="text-muted-foreground">Increase the share of issues auto-resolved without human intervention.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
                   <div className="text-4xl font-bold text-primary/20">03</div>
                   <div>
-                    <h4 className="font-bold text-lg">Faster Outcomes</h4>
+                    <h3 className="font-bold text-lg">Faster Outcomes</h3>
                     <p className="text-muted-foreground">Shorten resolution times, reduce backlogs, and improve employee satisfaction scores.</p>
                   </div>
                 </div>

@@ -69,7 +69,7 @@ ${form.usecase}
       <div className="container min-h-[80vh] flex items-center justify-center">
         <AnimatedCard className="max-w-md w-full text-center py-12 px-8 bg-white border border-border shadow-lg rounded-xl">
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 mx-auto mb-6">
-            <CheckCircle2 className="w-8 h-8" />
+            <CheckCircle2 className="w-8 h-8" aria-hidden="true" />
           </div>
           <h2 className="text-2xl font-bold mb-4 tracking-tight">Thanks for reaching out</h2>
           <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -85,7 +85,7 @@ ${form.usecase}
   }
 
   return (
-    <section className="py-24 glass-bg">
+    <section className="py-24 glass-bg overflow-x-hidden">
   <div className="container max-w-6xl">
 
       <div className="grid lg:grid-cols-2 gap-20 items-start">
@@ -98,7 +98,7 @@ ${form.usecase}
           </p>
 
           <div className="bg-secondary/30 rounded-2xl p-8 border border-border">
-            <h3 className="font-bold text-lg mb-6">Why start now?</h3>
+            <h2 className="font-bold text-lg mb-6">Why start now?</h2>
             <ul className="space-y-6">
               <li className="flex gap-4">
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold flex-shrink-0">1</div>
@@ -176,7 +176,7 @@ ${form.usecase}
                 value={form.sector}
                 onValueChange={(value) => setForm({ ...form, sector: value })}
               >
-                <SelectTrigger className="h-10 bg-secondary/20">
+                <SelectTrigger id="sector" aria-label="Sector" className="h-10 bg-secondary/20">
                   <SelectValue placeholder="Select your sector" />
                 </SelectTrigger>
                 <SelectContent>
@@ -194,7 +194,7 @@ ${form.usecase}
                 value={form.timezone}
                 onValueChange={(value) => setForm({ ...form, timezone: value })}
               >
-                <SelectTrigger className="h-10 bg-secondary/20">
+                <SelectTrigger id="timezone" aria-label="Preferred time zone" className="h-10 bg-secondary/20">
                   <SelectValue placeholder="Select time zone" />
                 </SelectTrigger>
                 <SelectContent>
@@ -228,7 +228,7 @@ ${form.usecase}
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
                   Sending...
                 </>
               ) : (

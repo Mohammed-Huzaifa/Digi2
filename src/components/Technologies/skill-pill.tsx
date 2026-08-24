@@ -8,7 +8,7 @@ export function SkillPill({ icon, name }: SkillPillProps) {
     backdrop-blur-sm
     transition-colors
     hover:bg-primary/15">
-      <div className="icon-slot flex items-center justify-center text-[initial]">
+      <div className="icon-slot flex items-center justify-center text-[initial]" aria-hidden="true">
         {icon}
       </div>
       <span className="font-body text-sm text-[#120f0f]">{name}</span>

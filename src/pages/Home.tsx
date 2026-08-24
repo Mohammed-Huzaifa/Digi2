@@ -86,12 +86,12 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <AnimatedText delay={0.1}>
-  <Link href="/contact">
-    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border border-border text-sm font-medium text-foreground mb-8 hover:bg-secondary/80 transition-colors cursor-pointer group">
-      <span className="flex h-2 w-2 rounded-full bg-primary"></span>
+  <Link href="/contact" asChild>
+    <a className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border border-border text-sm font-medium text-foreground mb-8 hover:bg-secondary/80 transition-colors cursor-pointer group">
+      <span className="flex h-2 w-2 rounded-full bg-primary" aria-hidden="true"></span>
       <span>Start with a coworker pod today</span>
-      <ChevronRight className="w-3 h-3 text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
-    </div>
+      <ChevronRight className="w-3 h-3 text-muted-foreground group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+    </a>
   </Link>
 </AnimatedText>
 
@@ -121,16 +121,16 @@ export default function Home() {
             </AnimatedText>
             
             <AnimatedText delay={0.4} className="flex flex-wrap justify-center gap-4 w-full">
-              <Link href="/contact">
-                <Button size="lg" className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white rounded-md shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 font-medium">
+              <Button asChild size="lg" className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white rounded-md shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 font-medium">
+                <Link href="/contact">
                   Talk to our team
-                </Button>
-              </Link>
-              <Link href="/solutions">
-                <Button size="lg" variant="outline" className="h-12 px-8 text-base bg-white hover:bg-secondary border-border rounded-md font-medium text-foreground">
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="h-12 px-8 text-base bg-white hover:bg-secondary border-border rounded-md font-medium text-foreground">
+                <Link href="/solutions">
                   See coworker use cases
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </AnimatedText>
             
             {/* <AnimatedText delay={0.5} className="mt-8">
@@ -215,7 +215,7 @@ export default function Home() {
             <AnimatedCard key={i} delay={i * 0.1} className="glass-card p-8 hover:shadow-xl transition-all h-full flex flex-col">
               <div className="flex items-start gap-4 mb-3">
   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-    <item.icon className="w-6 h-6" />
+    <item.icon className="w-6 h-6" aria-hidden="true" />
   </div>
 
   <h3 className="text-xl font-bold tracking-tight leading-tight mt-1">
@@ -243,7 +243,7 @@ export default function Home() {
               <div className="relative z-10 grid gap-6">
                 <AnimatedCard delay={0.1} className="glass-card p-6 rounded-xl shadow-sm">
                   <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                    <img src="/images/business.png" className="w-6 h-6 object-contain" alt="Teams" />
+                    <img src="/images/business.png" className="w-6 h-6 object-contain" alt="Microsoft Teams" />
                     Microsoft Teams
                   </h4>
                   <p className="text-sm text-muted-foreground">"Hey Digi, can you reset the password for user @sarah?"</p>
@@ -251,7 +251,7 @@ export default function Home() {
                 
                 <AnimatedCard delay={0.2} className="glass-card p-6 rounded-xl shadow-sm translate-x-8">
                   <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                  <img src="/images/slack.png" className="w-6 h-6 object-contain" alt="Teams" />
+                  <img src="/images/slack.png" className="w-6 h-6 object-contain" alt="Slack" />
                     Slack
                   </h4>
                   <p className="text-sm text-muted-foreground">"Approved. Please proceed with the purchase order #9921."</p>
@@ -259,7 +259,7 @@ export default function Home() {
                 
                 <AnimatedCard delay={0.3} className="glass-card p-6 rounded-xl shadow-sm">
                   <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                    <img src="/images/crm.png" className="w-6 h-6 object-contain" alt="System" />
+                    <img src="/images/crm.png" className="w-6 h-6 object-contain" alt="CRM / ERP" />
                     CRM / ERP Update
                   </h4>
                   <p className="text-sm text-muted-foreground">System updated successfully. Notification sent to finance team.</p>
@@ -285,7 +285,7 @@ export default function Home() {
                   ].map((point, i) => (
                     <li key={i} className="flex gap-3 items-start">
                       <div className="mt-1.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                        <CheckCircle2 className="w-3 h-3" />
+                        <CheckCircle2 className="w-3 h-3" aria-hidden="true" />
                       </div>
                       <span className="text-foreground/80">{point}</span>
                     </li>
@@ -382,8 +382,8 @@ export default function Home() {
               <p className="text-muted-foreground mb-6">
                 Coworkers for recruitment, advising, student services, alumni engagement, and more performing critical functions across campus, 24/7.
               </p>
-              <Link href="/solutions">
               <Button
+  asChild
   variant="outline"
   className="
     group
@@ -399,12 +399,11 @@ export default function Home() {
     hover:shadow-md
   "
 >
-  View Higher Education
-  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+  <Link href="/solutions">
+    View Higher Education
+    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+  </Link>
 </Button>
-
-
-              </Link>
             </div>
             <div className="h-48 relative overflow-hidden mt-auto">
               <img src="/images/higher-ed-bg.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Higher Education" />
@@ -418,8 +417,7 @@ export default function Home() {
               <p className="text-muted-foreground mb-6">
                 Coworkers for IT, HR, finance, and operations that auto‑resolve routine issues, optimize knowledge, and accelerate approvals.
               </p>
-              <Link href="/business-operations">
-                <Button variant="outline" className="
+              <Button asChild variant="outline" className="
     group
     cursor-pointer
     bg-white
@@ -432,9 +430,10 @@ export default function Home() {
     shadow-sm
     hover:shadow-md
   ">
-                  View Business Operations <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
+                <Link href="/business-operations">
+                  View Business Operations <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+                </Link>
+              </Button>
             </div>
             <div className="h-48 relative overflow-hidden mt-auto">
               <img src="/images/enterprise-bg.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Enterprise" />
@@ -464,11 +463,12 @@ export default function Home() {
     aria-controls={`faq-answer-${i}`}
     className="w-full flex items-center justify-between gap-4 text-left"
   >
-    <h4 className="font-bold text-lg group-hover:text-primary transition-colors">
+    <h3 className="font-bold text-lg group-hover:text-primary transition-colors">
       {item.q}
-    </h4>
+    </h3>
 
     <ChevronDown
+      aria-hidden="true"
       className={`w-5 h-5 text-muted-foreground transition-transform ${
         openFaq === i ? "rotate-180" : ""
       }`}
@@ -502,11 +502,11 @@ export default function Home() {
               <p className="text-gray-300 text-lg">
                 Tell us where you're stuck today and we'll show you what a coworker can do in that part of your organization.
               </p>
-              <Link href="/contact">
-                <Button size="lg" className="h-14 px-10 text-lg rounded-md shadow-xl bg-white text-black hover:bg-gray-100 font-medium">
+              <Button asChild size="lg" className="h-14 px-10 text-lg rounded-md shadow-xl bg-white text-black hover:bg-gray-100 font-medium">
+                <Link href="/contact">
                   Talk to our team
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </AnimatedSection>

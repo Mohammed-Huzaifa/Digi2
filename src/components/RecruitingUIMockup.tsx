@@ -109,7 +109,7 @@ function MockWindow({
         </div>
         <span className="text-xs font-medium text-muted-foreground">{heading}</span>
         <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/70">
-          {system === "Digiworks" ? <Sparkles className="w-3 h-3" /> : <Building2 className="w-3 h-3" />}
+          {system === "Digiworks" ? <Sparkles className="w-3 h-3" aria-hidden="true" /> : <Building2 className="w-3 h-3" aria-hidden="true" />}
           {system}
         </span>
       </div>
@@ -156,7 +156,7 @@ function ChatMockup({ sample }: { sample: ChatSample }) {
         ))}
         {sample.confirm && (
           <div className="self-start max-w-[82%] bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold px-3.5 py-2.5 rounded-xl flex items-center gap-2">
-            <Check className="w-3.5 h-3.5" />
+            <Check className="w-3.5 h-3.5" aria-hidden="true" />
             {sample.confirm}
           </div>
         )}
@@ -203,7 +203,7 @@ function CallMockup({ sample }: { sample: CallSample }) {
     <MockWindow system={sample.system} heading={sample.heading}>
       <div className="flex items-center gap-3 mb-4">
         <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-          <Mic className="w-4 h-4" />
+          <Mic className="w-4 h-4" aria-hidden="true" />
         </div>
         <div className="flex items-end gap-0.5 flex-1 h-6">
           {[6, 12, 18, 10, 20, 14, 8, 16, 11, 22, 9, 13].map((h, i) => (
@@ -251,7 +251,7 @@ function CalendarMockup({ sample }: { sample: CalendarSample }) {
           <div className="text-xs font-bold text-primary">{sample.title}</div>
           <div className="text-[10px] text-primary/70 mt-0.5">{sample.subtitle}</div>
         </div>
-        <CalendarCheck className="w-4 h-4 text-primary flex-shrink-0" />
+        <CalendarCheck className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
       </div>
       <div className="space-y-1">
         {sample.skipped.map((s, i) => (
@@ -270,7 +270,7 @@ function EmailMockup({ sample }: { sample: EmailSample }) {
     <MockWindow system={sample.system} heading={sample.heading}>
       <div className="flex items-center gap-2 mb-3 pb-3 border-b border-border">
         <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-          <Mail className="w-3.5 h-3.5" />
+          <Mail className="w-3.5 h-3.5" aria-hidden="true" />
         </div>
         <div className="min-w-0">
           <div className="text-xs font-semibold text-foreground truncate">{sample.from}</div>
@@ -301,7 +301,7 @@ function DashboardMockup({ sample }: { sample: DashboardSample }) {
         ))}
       </div>
       <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70 mb-2 flex items-center gap-1.5">
-        <LayoutDashboard className="w-3 h-3" />
+        <LayoutDashboard className="w-3 h-3" aria-hidden="true" />
         Audit log
       </div>
       <div className="space-y-1.5">
@@ -328,7 +328,7 @@ function ApprovalMockup({ sample }: { sample: ApprovalSample }) {
         <button className="flex-1 py-2.5 rounded-lg bg-white border border-border text-muted-foreground text-xs font-bold">Decline</button>
       </div>
       <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70 mb-2 flex items-center gap-1.5">
-        <ShieldAlert className="w-3 h-3" />
+        <ShieldAlert className="w-3 h-3" aria-hidden="true" />
         Audit trail
       </div>
       <div className="space-y-1.5">
@@ -348,7 +348,7 @@ function SummaryMockup({ sample }: { sample: SummarySample }) {
     <MockWindow system={sample.system} heading={sample.heading}>
       <div className="flex items-center gap-2 mb-4">
         <div className="w-9 h-9 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
-          <Award className="w-4 h-4" />
+          <Award className="w-4 h-4" aria-hidden="true" />
         </div>
         <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">
           {sample.recommendation}

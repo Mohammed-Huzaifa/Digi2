@@ -10,9 +10,9 @@ import { getAgentUsecase } from "@/data/agentUsecases";
 import { useDocumentHead } from "@/hooks/useDocumentHead";
 
 const INTEGRATION_ICONS: Record<string, React.ReactNode> = {
-  "Voice AI": <PhoneCall className="w-4 h-4" />,
-  "Calendar & Meetings": <CalendarClock className="w-4 h-4" />,
-  Email: <Mail className="w-4 h-4" />,
+  "Voice AI": <PhoneCall className="w-4 h-4" aria-hidden="true" />,
+  "Calendar & Meetings": <CalendarClock className="w-4 h-4" aria-hidden="true" />,
+  Email: <Mail className="w-4 h-4" aria-hidden="true" />,
 };
 
 export default function AgentUsecaseDetail() {
@@ -65,14 +65,14 @@ export default function AgentUsecaseDetail() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <a href="#pod">
+                <a href="#pod" className="inline-block">
                   <Button size="lg" className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white rounded-md shadow-lg shadow-primary/20 font-medium">
                     See the pod in action
                   </Button>
                 </a>
-                <a href="#business-case">
+                <a href="#business-case" className="inline-block">
                   <Button size="lg" variant="outline" className="h-12 px-8 text-base bg-white hover:bg-secondary border-border rounded-md font-medium text-foreground">
-                    The business case <ArrowRight className="ml-2 w-4 h-4" />
+                    The business case <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                   </Button>
                 </a>
               </div>
@@ -162,7 +162,7 @@ export default function AgentUsecaseDetail() {
             <div>
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0">
-                  <activeScenario.icon className="w-5 h-5" />
+                  <activeScenario.icon className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <span className="text-xs font-bold text-muted-foreground">{activeScenario.number}</span>
               </div>
@@ -235,7 +235,7 @@ export default function AgentUsecaseDetail() {
               {usecase.metrics.map((item, i) => (
                 <li key={i} className="flex gap-3 items-start">
                   <div className="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                    <Check className="w-3 h-3" />
+                    <Check className="w-3 h-3" aria-hidden="true" />
                   </div>
                   <span className="text-foreground/80">
                     <span className="font-semibold text-foreground">{item.title}: </span>
@@ -292,7 +292,7 @@ export default function AgentUsecaseDetail() {
             {usecase.builtFor.map((item, i) => (
               <AnimatedCard key={i} delay={i * 0.05} className="glass-card p-5 rounded-xl flex gap-3 items-start">
                 <div className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                  <Check className="w-3 h-3" />
+                  <Check className="w-3 h-3" aria-hidden="true" />
                 </div>
                 <span className="text-sm text-foreground/80">{item}</span>
               </AnimatedCard>
@@ -314,16 +314,16 @@ export default function AgentUsecaseDetail() {
               </h2>
               <p className="text-gray-300 text-lg">{usecase.closeSub}</p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <Link href="/contact">
-                  <Button size="lg" className="h-14 px-10 text-lg rounded-md shadow-xl bg-white text-black hover:bg-gray-100 font-medium">
+                <Button asChild size="lg" className="h-14 px-10 text-lg rounded-md shadow-xl bg-white text-black hover:bg-gray-100 font-medium">
+                  <Link href="/contact">
                     Book a 20-minute walkthrough
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button size="lg" variant="outline" className="h-14 px-10 text-lg rounded-md border-white/20 bg-transparent text-white hover:bg-white/10 font-medium">
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="h-14 px-10 text-lg rounded-md border-white/20 bg-transparent text-white hover:bg-white/10 font-medium">
+                  <Link href="/contact">
                     Talk to our team
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>

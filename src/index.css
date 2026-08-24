@@ -143,10 +143,13 @@
     @apply border-border;
     outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
   }
+  html, body {
+    overflow-x: clip;
+  }
   body {
     @apply bg-background text-foreground font-sans antialiased;
     /* Remove the previous gradient background for a cleaner Clerk-like look */
-    background-image: none; 
+    background-image: none;
   }
   
   h1, h2, h3, h4, h5, h6 {

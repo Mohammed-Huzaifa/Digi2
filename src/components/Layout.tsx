@@ -59,6 +59,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <ScrollToTop />
 
+      <a
+        href="#main"
+        className="fixed top-2 left-2 z-[100] -translate-y-20 focus:translate-y-0 transition-transform bg-primary text-white text-sm font-medium px-4 py-2 rounded-lg"
+      >
+        Skip to content
+      </a>
+
       {/* Header */}
       <motion.header
         style={{ backgroundColor: headerBg }}
@@ -69,7 +76,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto px-4">
           <div className="h-16 flex items-center justify-between">
             {/* Logo */}
-            <Link href="/">
+            <Link href="/" asChild>
               <a className="flex items-center gap-2">
                 <img
                   src={DigiworksLogo}
@@ -84,7 +91,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-2">
-              <Link href="/">
+              <Link href="/" asChild>
                 <a
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
                     location === "/"
@@ -98,7 +105,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
               {/* Solutions dropdown */}
               <div className="relative group">
-                <Link href="/solutions">
+                <Link href="/solutions" asChild>
                   <a
                     className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1 ${
                       location.startsWith("/solutions") || location === "/business-operations"
@@ -107,13 +114,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     }`}
                   >
                     Solutions
-                    <ChevronRight className="w-4 h-4 rotate-90 opacity-70" />
+                    <ChevronRight className="w-4 h-4 rotate-90 opacity-70" aria-hidden="true" />
                   </a>
                 </Link>
 
                 <div className="absolute left-0 top-full pt-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
                   <div className="w-56 rounded-xl border border-border bg-background shadow-lg p-2">
-                    <Link href="/solutions#higher-ed">
+                    <Link href="/solutions#higher-ed" asChild>
                       <a className="block rounded-lg px-3 py-2 text-sm hover:bg-secondary transition-colors">
                         <div className="font-semibold">Higher Education</div>
                         <div className="text-xs text-muted-foreground">
@@ -122,7 +129,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       </a>
                     </Link>
 
-                    <Link href="/business-operations">
+                    <Link href="/business-operations" asChild>
                       <a className="block rounded-lg px-3 py-2 text-sm hover:bg-secondary transition-colors">
                         <div className="font-semibold">Business Operations</div>
                         <div className="text-xs text-muted-foreground">
@@ -134,7 +141,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </div>
               </div>
 
-              <Link href="/agent-usecases">
+              <Link href="/agent-usecases" asChild>
                 <a
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
                     location.startsWith("/agent-usecases")
@@ -146,7 +153,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </a>
               </Link>
 
-              <Link href="/contact">
+              <Link href="/contact" asChild>
                 <a
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
                     location === "/contact"
@@ -161,11 +168,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Desktop CTA */}
             <div className="hidden md:block">
-              <Link href="/contact">
-                <Button className="rounded-xl">
-                  Get started <ChevronRight className="ml-1 w-3 h-3" />
-                </Button>
-              </Link>
+              <Button asChild className="rounded-xl">
+                <Link href="/contact">
+                  Get started <ChevronRight className="ml-1 w-3 h-3" aria-hidden="true" />
+                </Link>
+              </Button>
             </div>
 
             {/* Mobile Nav */}
@@ -184,7 +191,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     aria-label="Open menu"
                     className="rounded-xl hover:bg-secondary"
                   >
-                    <Menu className="w-6 h-6" />
+                    <Menu className="w-6 h-6" aria-hidden="true" />
                   </Button>
                 </SheetTrigger>
 
@@ -206,10 +213,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
                     {/* Links */}
                     <div className="px-4 py-4">
-                      <Link href="/" onClick={() => setIsOpen(false)}>
-                        <div className="px-4 py-4 rounded-xl text-base font-medium text-foreground hover:bg-secondary transition-colors">
+                      <Link href="/" onClick={() => setIsOpen(false)} asChild>
+                        <a className="block px-4 py-4 rounded-xl text-base font-medium text-foreground hover:bg-secondary transition-colors">
                           Home
-                        </div>
+                        </a>
                       </Link>
 
                       {/* Solutions dropdown in mobile */}
@@ -226,7 +233,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             }`}
                             aria-hidden="true"
                           >
-                            <ChevronRight className="w-5 h-5" />
+                            <ChevronRight className="w-5 h-5" aria-hidden="true" />
                           </span>
                         </button>
 
@@ -238,13 +245,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 setIsOpen(false);
                                 setIsSolutionsOpen(false);
                               }}
+                              asChild
                             >
-                              <div className="px-4 py-3 rounded-xl text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+                              <a className="block px-4 py-3 rounded-xl text-sm font-medium text-foreground hover:bg-secondary transition-colors">
                                 Higher Education
                                 <div className="text-xs text-muted-foreground mt-0.5">
                                   Universities & Institutions
                                 </div>
-                              </div>
+                              </a>
                             </Link>
 
                             <Link
@@ -253,38 +261,39 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 setIsOpen(false);
                                 setIsSolutionsOpen(false);
                               }}
+                              asChild
                             >
-                              <div className="px-4 py-3 rounded-xl text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+                              <a className="block px-4 py-3 rounded-xl text-sm font-medium text-foreground hover:bg-secondary transition-colors">
                                 Business Operations
                                 <div className="text-xs text-muted-foreground mt-0.5">
                                   IT, HR & Operations teams
                                 </div>
-                              </div>
+                              </a>
                             </Link>
                           </div>
                         )}
                       </div>
 
-                      <Link href="/agent-usecases" onClick={() => setIsOpen(false)}>
-                        <div className="px-4 py-4 rounded-xl text-base font-medium text-foreground hover:bg-secondary transition-colors">
+                      <Link href="/agent-usecases" onClick={() => setIsOpen(false)} asChild>
+                        <a className="block px-4 py-4 rounded-xl text-base font-medium text-foreground hover:bg-secondary transition-colors">
                           Agent Usecases
-                        </div>
+                        </a>
                       </Link>
 
-                      <Link href="/contact" onClick={() => setIsOpen(false)}>
-                        <div className="px-4 py-4 rounded-xl text-base font-medium text-foreground hover:bg-secondary transition-colors">
+                      <Link href="/contact" onClick={() => setIsOpen(false)} asChild>
+                        <a className="block px-4 py-4 rounded-xl text-base font-medium text-foreground hover:bg-secondary transition-colors">
                           Contact
-                        </div>
+                        </a>
                       </Link>
                     </div>
 
                     {/* Bottom CTA */}
                     <div className="mt-auto px-6 py-6 border-t border-border bg-background">
-                      <Link href="/contact" onClick={() => setIsOpen(false)}>
-                        <Button className="w-full h-12 bg-primary hover:bg-primary/90 text-white rounded-xl">
+                      <Button asChild className="w-full h-12 bg-primary hover:bg-primary/90 text-white rounded-xl">
+                        <Link href="/contact" onClick={() => setIsOpen(false)}>
                           Get started
-                        </Button>
-                      </Link>
+                        </Link>
+                      </Button>
                     </div>
                   </div>
                 </SheetContent>
@@ -295,7 +304,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </motion.header>
 
       {/* Page Content */}
-      <main className="pt-16 min-h-screen">{children}</main>
+      <main id="main" className="pt-16 min-h-screen">{children}</main>
 
       {/* Footer */}
       <Footer />

@@ -138,7 +138,7 @@ const HigherEdRoles = [
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 items-start">
                     <div className="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                      <Check className="w-3 h-3" />
+                      <Check className="w-3 h-3" aria-hidden="true" />
                     </div>
                     <span className="text-foreground/80">{item}</span>
                   </li>
@@ -184,7 +184,7 @@ const HigherEdRoles = [
     aria-label="Scroll roles left"
     className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/80 backdrop-blur-md border border-border shadow-md flex items-center justify-center hover:bg-white transition"
   >
-    <ArrowRight className="w-5 h-5 rotate-180 text-muted-foreground" />
+    <ArrowRight className="w-5 h-5 rotate-180 text-muted-foreground" aria-hidden="true" />
   </button>
 
   {/* Right Arrow */}
@@ -193,12 +193,19 @@ const HigherEdRoles = [
     aria-label="Scroll roles right"
     className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/80 backdrop-blur-md border border-border shadow-md flex items-center justify-center hover:bg-white transition"
   >
-    <ArrowRight className="w-5 h-5 text-muted-foreground" />
+    <ArrowRight className="w-5 h-5 text-muted-foreground" aria-hidden="true" />
   </button>
 
   <div
     ref={higherEdCarouselRef}
-    className="flex overflow-x-auto pb-8 gap-6 snap-x no-scrollbar px-12"
+    role="region"
+    aria-label="Higher education coworker roles"
+    tabIndex={0}
+    onKeyDown={(e) => {
+      if (e.key === "ArrowRight") scrollCarousel("right");
+      if (e.key === "ArrowLeft") scrollCarousel("left");
+    }}
+    className="flex overflow-x-auto pb-8 gap-6 snap-x no-scrollbar px-12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
   >
 
     {HigherEdRoles.map((role, i) => (
@@ -211,12 +218,12 @@ const HigherEdRoles = [
   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
   {(() => {
   const Icon = role.icon ?? GraduationCap;
-  return <Icon className="w-5 h-5" />;
+  return <Icon className="w-5 h-5" aria-hidden="true" />;
 })()}
 
 
   </div>
-  <h4 className="font-bold text-lg leading-tight mt-2">{role.title}</h4>
+  <h3 className="font-bold text-lg leading-tight mt-2">{role.title}</h3>
 </div>
 
 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -305,28 +312,28 @@ const HigherEdRoles = [
               <div className="grid gap-6">
                 <div className="flex gap-4">
                   <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0 border border-green-200">
-                    <Server className="w-5 h-5" />
+                    <Server className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Deep Integration</h4>
+                    <h3 className="font-bold mb-1">Deep Integration</h3>
                     <p className="text-sm text-muted-foreground">Integrates with CRM, SIS, LMS, ERP, ticketing, and communication tools to orchestrate full workflows.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0 border border-blue-200">
-                    <Shield className="w-5 h-5" />
+                    <Shield className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Compliance & Visibility</h4>
+                    <h3 className="font-bold mb-1">Compliance & Visibility</h3>
                     <p className="text-sm text-muted-foreground">Offers full visibility into coworker conversations, decisions, and actions for compliance and review.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0 border border-purple-200">
-                    <Lock className="w-5 h-5" />
+                    <Lock className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Safety Guardrails</h4>
+                    <h3 className="font-bold mb-1">Safety Guardrails</h3>
                     <p className="text-sm text-muted-foreground">Uses modern techniques to minimize hallucinations. Provides controls for sensitive topics like financial aid or mental health.</p>
                   </div>
                 </div>
@@ -338,21 +345,21 @@ const HigherEdRoles = [
                 <h3 className="text-2xl font-bold mb-4 text-gray-300">Launch your first campus coworker pod </h3>
                 <ul className="space-y-4 mb-8 text-gray-300">
                   <li className="flex gap-3">
-                    <Check className="w-5 h-5 flex-shrink-0 text-primary" />
+                    <Check className="w-5 h-5 flex-shrink-0 text-primary" aria-hidden="true" />
                     <span>Start with a focused pod, such as a set of academic support coworkers.</span>
                   </li>
                   <li className="flex gap-3">
-                    <Check className="w-5 h-5 flex-shrink-0 text-primary" />
+                    <Check className="w-5 h-5 flex-shrink-0 text-primary" aria-hidden="true" />
                     <span>We handle discovery, workflow design, integrations, configuration, and training.</span>
                   </li>
                   <li className="flex gap-3">
-                    <Check className="w-5 h-5 flex-shrink-0 text-primary" />
+                    <Check className="w-5 h-5 flex-shrink-0 text-primary" aria-hidden="true" />
                     <span>Live in weeks, handling real student and family needs.</span>
                   </li>
                 </ul>
-                <Link href="/contact">
-                  <Button className="w-full bg-white text-black hover:bg-gray-100 font-medium">Get Started</Button>
-                </Link>
+                <Button asChild className="w-full bg-white text-black hover:bg-gray-100 font-medium">
+                  <Link href="/contact">Get Started</Link>
+                </Button>
               </div>
             </AnimatedCard>
           </div>
