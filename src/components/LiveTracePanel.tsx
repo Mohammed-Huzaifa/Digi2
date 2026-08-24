@@ -72,7 +72,7 @@ export function LiveTracePanel({ steps }: { steps: TraceStep[] }) {
       {/* Grounding shadow beneath the card */}
       <div className="absolute left-6 right-6 -bottom-6 h-12 -z-10 rounded-full bg-[#0B0F1A]/40 blur-2xl" />
 
-      <div className="relative rounded-2xl border border-white/10 bg-[#0B0F1A] shadow-[0_30px_60px_-15px_rgba(108,71,255,0.35),0_20px_40px_-20px_rgba(0,0,0,0.5)] overflow-hidden">
+      <div className="relative rounded-2xl border border-white/10 bg-[#0B0F1A] shadow-[0_30px_60px_-15px_rgba(108,71,255,0.35),0_20px_40px_-20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_40px_80px_-15px_rgba(108,71,255,0.55),0_25px_50px_-15px_rgba(0,0,0,0.6)] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_0%,rgba(108,71,255,0.25),transparent_55%)]" />
 
         <div className="relative flex items-center justify-between px-5 py-4 border-b border-white/10">
