@@ -70,7 +70,7 @@ export const agentUsecases: AgentUsecase[] = [
     cardDescription:
       "A closed-loop pipeline that posts the role, enriches resumes, runs AI voice screenings, schedules interviews, and briefs your execs, writing every result straight back into Workday.",
     cardStat: "7 connected agents · full hiring lifecycle",
-    integrations: ["Voice AI", "Calendar & Meetings", "Email", "Workday", "HR"],
+    integrations: ["Calendar & Meetings", "Email", "Workday", "HR"],
     heroTitle: "Your best candidates aren't lost to competitors. They're lost to your process.",
     heroSubhead:
       "Open roles carry a cost every day they sit unfilled. Digiworks AI coworkers run the recruiting pipeline end to end: posting, screening, scheduling, preparation, and feedback, so your team owns every decision while the agents carry the work. Live in weeks. Measured from day one.",
