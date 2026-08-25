@@ -19,14 +19,14 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://digiworks.ai/agent-usecases</loc>
-    <lastmod>2026-08-18</lastmod>
+    <loc>https://digiworks.ai/workers</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://digiworks.ai/agent-usecases/recruiter</loc>
-    <lastmod>2026-08-18</lastmod>
+    <loc>https://digiworks.ai/workers/recruiter</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

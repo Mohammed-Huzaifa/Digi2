@@ -141,10 +141,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </div>
               </div>
 
-              <Link href="/agent-usecases" asChild>
+              <Link href="/workers" asChild>
                 <a
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-                    location.startsWith("/agent-usecases")
+                    location.startsWith("/workers")
                       ? "bg-secondary text-foreground"
                       : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
                   }`}
@@ -274,7 +274,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         )}
                       </div>
 
-                      <Link href="/agent-usecases" onClick={() => setIsOpen(false)} asChild>
+                      <Link href="/workers" onClick={() => setIsOpen(false)} asChild>
                         <a className="block px-4 py-4 rounded-xl text-base font-medium text-foreground hover:bg-secondary transition-colors">
                           Workers
                         </a>

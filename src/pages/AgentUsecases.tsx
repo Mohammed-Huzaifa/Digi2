@@ -10,7 +10,7 @@ export default function AgentUsecases() {
     title: "Workers | Digiworks",
     description:
       "Browse real Digiworks agent pipelines: the exact triggers, systems, and outcomes we deploy inside customer stacks, starting with the AI recruiting suite.",
-    path: "/agent-usecases",
+    path: "/workers",
   });
 
   return (
@@ -58,7 +58,7 @@ export default function AgentUsecases() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {agentUsecases.map((usecase, i) => (
-            <Link key={usecase.slug} href={`/agent-usecases/${usecase.slug}`} className="block rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
+            <Link key={usecase.slug} href={`/workers/${usecase.slug}`} className="block rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
               <AnimatedCard
                 delay={i * 0.1}
                 className="group cursor-pointer glass-card rounded-2xl p-8 h-full flex flex-col"

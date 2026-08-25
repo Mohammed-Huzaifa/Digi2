@@ -11,8 +11,8 @@ Digiworks deploys focused "coworker pods": small teams of AI agents scoped to on
 
 ## Agent Usecases
 
-- [Recruiter](https://digiworks.ai/agent-usecases/recruiter): A seven-agent recruiting pod covering the full hiring pipeline, job description drafting, resume enrichment and scoring, AI voice screening, interview scheduling, interview question generation, feedback capture, and executive debriefing, all synced back to the customer's ATS/HRIS (e.g. Workday).
-- [Agent Usecases library](https://digiworks.ai/agent-usecases): Browse all published agent pipelines.
+- [Recruiter](https://digiworks.ai/workers/recruiter): A seven-agent recruiting pod covering the full hiring pipeline, job description drafting, resume enrichment and scoring, AI voice screening, interview scheduling, interview question generation, feedback capture, and executive debriefing, all synced back to the customer's ATS/HRIS (e.g. Workday).
+- [Workers library](https://digiworks.ai/workers): Browse all published agent pipelines.
 
 ## Company
 

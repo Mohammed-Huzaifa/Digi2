@@ -23,12 +23,12 @@ export default function AgentUsecaseDetail() {
   useDocumentHead({
     title: usecase ? `${usecase.title} | Digiworks Workers` : "Workers | Digiworks",
     description: usecase ? usecase.cardDescription : "Browse real Digiworks agent pipelines.",
-    path: `/agent-usecases/${slug}`,
+    path: `/workers/${slug}`,
     noindex: !usecase,
   });
 
   if (!usecase) {
-    return <Redirect to="/agent-usecases" />;
+    return <Redirect to="/workers" />;
   }
 
   return (

@@ -24,21 +24,25 @@ function Router() {
           <Redirect to="/business-operations" />
         </Route>
         <Route path="/recruiting-agent">
-          <Redirect to="/agent-usecases/recruiter" />
+          <Redirect to="/workers/recruiter" />
         </Route>
         <Route path="/agent-usecases/hr-automation-flow">
-          <Redirect to="/agent-usecases/recruiter" />
+          <Redirect to="/workers/recruiter" />
         </Route>
-        <Route path="/agent-usecases" component={AgentUsecases} />
-        <Route path="/agent-usecases/:slug" component={AgentUsecaseDetail} />
+        <Route path="/agent-usecases/:slug">
+          {(params) => <Redirect to={`/workers/${params.slug}`} />}
+        </Route>
+        <Route path="/agent-usecases">
+          <Redirect to="/workers" />
+        </Route>
+        <Route path="/workers" component={AgentUsecases} />
+        <Route path="/workers/:slug" component={AgentUsecaseDetail} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
   );
 }
-
-6200781514
 
 function App() {
   return (
