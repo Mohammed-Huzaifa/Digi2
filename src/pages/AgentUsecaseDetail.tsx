@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { PhoneCall, CalendarClock, Mail, ArrowRight, Briefcase, Users, Lock } from "lucide-react";
 import { Link, useParams, Redirect } from "wouter";
-import { motion } from "framer-motion";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
 import { RecruitingUIMockup } from "@/components/RecruitingUIMockup";
 import { LiveTracePanel } from "@/components/LiveTracePanel";
+import { HorizontalAgentCarousel } from "@/components/HorizontalAgentCarousel";
 import { getAgentUsecase } from "@/data/agentUsecases";
 import { useDocumentHead } from "@/hooks/useDocumentHead";
 
@@ -114,64 +114,9 @@ export default function AgentUsecaseDetail() {
         </div>
       </section>
 
-      {/* THE POD — scroll-revealed, one agent at a time */}
-      <section id="pod" className="container py-24 scroll-mt-24">
-        <AnimatedSection className="mb-16">
-          <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
-            The Recruiting Pod
-          </p>
-          <h2 className="text-4xl font-heading font-bold tracking-tight mb-4">
-            Seven agents, one complete pipeline.
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl">{usecase.podIntro}</p>
-        </AnimatedSection>
-
-        <div className="flex flex-col gap-10">
-          {usecase.scenarios.map((s) => (
-            <motion.div
-              key={s.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="glass-card rounded-2xl p-8 md:p-10 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0">
-                    <s.icon className="w-5 h-5" aria-hidden="true" />
-                  </div>
-                  <span className="text-xs font-bold text-muted-foreground">{s.number}</span>
-                </div>
-                <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1">
-                  {s.headline}
-                </p>
-                <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3 tracking-tight">
-                  {s.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  {s.description}
-                </p>
-
-                <div className="grid sm:grid-cols-2 gap-3">
-                  <div className="p-3 rounded-lg bg-secondary/50 border border-border text-sm">
-                    <span className="font-semibold text-foreground/70 block mb-1">Before</span>
-                    <span className="text-muted-foreground">{s.before}</span>
-                  </div>
-                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/10 text-sm">
-                    <span className="font-semibold text-primary block mb-1">After</span>
-                    <span className="text-foreground/80">{s.after}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center gap-3">
-                <RecruitingUIMockup sample={s.uiSample} />
-                <span className="text-xs text-muted-foreground italic">{s.caption}</span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+      {/* THE POD — horizontal scroll carousel */}
+      <section id="pod" className="scroll-mt-0">
+        <HorizontalAgentCarousel scenarios={usecase.scenarios} podIntro={usecase.podIntro} />
       </section>
 
       {/* CASE STUDY — gated behind registration */}
