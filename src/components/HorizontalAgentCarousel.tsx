@@ -93,48 +93,44 @@ export function HorizontalAgentCarousel({ scenarios, podIntro }: Props) {
         {scenarios.map((s, i) => (
           <div
             key={s.id}
-            className="min-w-[85vw] lg:min-w-[75vw] shrink-0 pr-6 h-full flex items-center"
+            className="min-w-[88vw] sm:min-w-[420px] lg:min-w-[460px] shrink-0 pr-6 h-full flex items-center"
           >
-            <div className="glass-card rounded-2xl p-7 lg:p-9 grid lg:grid-cols-[1.15fr_1fr] gap-8 items-center w-full max-h-[560px]">
-              {/* Left: text */}
-              <div className="flex flex-col justify-center">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <s.icon className="w-4 h-4" aria-hidden="true" />
-                  </div>
-                  <span className="text-xs font-bold text-muted-foreground tabular-nums">
-                    {s.number} / {String(scenarios.length).padStart(2, "0")}
-                  </span>
+            <div className="glass-card rounded-2xl p-6 flex flex-col w-full h-full overflow-y-auto">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+                  <s.icon className="w-4 h-4" aria-hidden="true" />
                 </div>
+                <span className="text-xs font-bold text-muted-foreground tabular-nums">
+                  {s.number} / {String(scenarios.length).padStart(2, "0")}
+                </span>
+              </div>
 
-                <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1">
-                  {s.headline}
-                </p>
-                <h3 className="text-2xl lg:text-3xl font-heading font-bold mb-3 tracking-tight">
-                  {s.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-6 text-sm lg:text-base">
-                  {s.description}
-                </p>
+              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1">
+                {s.headline}
+              </p>
+              <h3 className="text-xl font-heading font-bold mb-2 tracking-tight">
+                {s.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+                {s.description}
+              </p>
 
-                <div className="grid sm:grid-cols-2 gap-3">
-                  <div className="p-3 rounded-lg bg-secondary/50 border border-border text-sm">
-                    <span className="font-semibold text-foreground/70 block mb-1">
-                      Before
-                    </span>
-                    <span className="text-muted-foreground">{s.before}</span>
-                  </div>
-                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/10 text-sm">
-                    <span className="font-semibold text-primary block mb-1">
-                      After
-                    </span>
-                    <span className="text-foreground/80">{s.after}</span>
-                  </div>
+              <div className="flex flex-col gap-2 mb-4">
+                <div className="p-3 rounded-lg bg-secondary/50 border border-border text-sm">
+                  <span className="font-semibold text-foreground/70 block mb-1">
+                    Before
+                  </span>
+                  <span className="text-muted-foreground">{s.before}</span>
+                </div>
+                <div className="p-3 rounded-lg bg-primary/5 border border-primary/10 text-sm">
+                  <span className="font-semibold text-primary block mb-1">
+                    After
+                  </span>
+                  <span className="text-foreground/80">{s.after}</span>
                 </div>
               </div>
 
-              {/* Right: mockup */}
-              <div className="flex flex-col items-center gap-3 h-full justify-center">
+              <div className="flex flex-col items-center gap-2 mt-auto pt-1 w-full max-w-[280px] mx-auto">
                 <RecruitingUIMockup sample={s.uiSample} />
                 <span className="text-xs text-muted-foreground italic">
                   {s.caption}
