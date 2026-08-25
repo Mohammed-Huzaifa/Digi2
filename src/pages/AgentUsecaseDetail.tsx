@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { PhoneCall, CalendarClock, Mail, Check, ArrowRight } from "lucide-react";
+import { PhoneCall, CalendarClock, Mail, ArrowRight, Briefcase, Users, Lock } from "lucide-react";
 import { Link, useParams, Redirect } from "wouter";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
 import { RecruitingUIMockup } from "@/components/RecruitingUIMockup";
 import { LiveTracePanel } from "@/components/LiveTracePanel";
@@ -13,15 +12,16 @@ const INTEGRATION_ICONS: Record<string, React.ReactNode> = {
   "Voice AI": <PhoneCall className="w-4 h-4" aria-hidden="true" />,
   "Calendar & Meetings": <CalendarClock className="w-4 h-4" aria-hidden="true" />,
   Email: <Mail className="w-4 h-4" aria-hidden="true" />,
+  Workday: <Briefcase className="w-4 h-4" aria-hidden="true" />,
+  HR: <Users className="w-4 h-4" aria-hidden="true" />,
 };
 
 export default function AgentUsecaseDetail() {
   const { slug } = useParams<{ slug: string }>();
   const usecase = getAgentUsecase(slug);
-  const [activeIndex, setActiveIndex] = useState(0);
 
   useDocumentHead({
-    title: usecase ? `${usecase.title} | Digiworks Agent Usecases` : "Agent Usecases | Digiworks",
+    title: usecase ? `${usecase.title} | Digiworks Workers` : "Workers | Digiworks",
     description: usecase ? usecase.cardDescription : "Browse real Digiworks agent pipelines.",
     path: `/agent-usecases/${slug}`,
     noindex: !usecase,
@@ -30,8 +30,6 @@ export default function AgentUsecaseDetail() {
   if (!usecase) {
     return <Redirect to="/agent-usecases" />;
   }
-
-  const activeScenario = usecase.scenarios[activeIndex];
 
   return (
     <div className="flex flex-col pb-20 overflow-x-hidden">
@@ -116,9 +114,9 @@ export default function AgentUsecaseDetail() {
         </div>
       </section>
 
-      {/* THE POD */}
+      {/* THE POD — scroll-revealed, one agent at a time */}
       <section id="pod" className="container py-24 scroll-mt-24">
-        <AnimatedSection className="mb-12">
+        <AnimatedSection className="mb-16">
           <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
             The Recruiting Pod
           </p>
@@ -128,176 +126,94 @@ export default function AgentUsecaseDetail() {
           <p className="text-lg text-muted-foreground max-w-2xl">{usecase.podIntro}</p>
         </AnimatedSection>
 
-        <div role="tablist" aria-label="Recruiting pod agents" className="flex flex-wrap gap-3 mb-10">
-          {usecase.scenarios.map((s, i) => (
-            <button
+        <div className="flex flex-col gap-10">
+          {usecase.scenarios.map((s) => (
+            <motion.div
               key={s.id}
-              type="button"
-              role="tab"
-              aria-selected={i === activeIndex}
-              aria-controls={`agent-panel-${s.id}`}
-              onClick={() => setActiveIndex(i)}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-                i === activeIndex
-                  ? "bg-primary text-white shadow-sm"
-                  : "bg-secondary text-foreground/70 hover:text-foreground hover:bg-secondary/80"
-              }`}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="glass-card rounded-2xl p-8 md:p-10 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center"
             >
-              {s.number} · {s.title}
-            </button>
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+                    <s.icon className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <span className="text-xs font-bold text-muted-foreground">{s.number}</span>
+                </div>
+                <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1">
+                  {s.headline}
+                </p>
+                <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3 tracking-tight">
+                  {s.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  {s.description}
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div className="p-3 rounded-lg bg-secondary/50 border border-border text-sm">
+                    <span className="font-semibold text-foreground/70 block mb-1">Before</span>
+                    <span className="text-muted-foreground">{s.before}</span>
+                  </div>
+                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/10 text-sm">
+                    <span className="font-semibold text-primary block mb-1">After</span>
+                    <span className="text-foreground/80">{s.after}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center gap-3">
+                <RecruitingUIMockup sample={s.uiSample} />
+                <span className="text-xs text-muted-foreground italic">{s.caption}</span>
+              </div>
+            </motion.div>
           ))}
         </div>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeScenario.id}
-            id={`agent-panel-${activeScenario.id}`}
-            role="tabpanel"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="glass-card rounded-2xl p-8 md:p-10 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center"
-          >
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0">
-                  <activeScenario.icon className="w-5 h-5" aria-hidden="true" />
-                </div>
-                <span className="text-xs font-bold text-muted-foreground">{activeScenario.number}</span>
-              </div>
-              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1">
-                {activeScenario.headline}
-              </p>
-              <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3 tracking-tight">
-                {activeScenario.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                {activeScenario.description}
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-3">
-                <div className="p-3 rounded-lg bg-secondary/50 border border-border text-sm">
-                  <span className="font-semibold text-foreground/70 block mb-1">Before</span>
-                  <span className="text-muted-foreground">{activeScenario.before}</span>
-                </div>
-                <div className="p-3 rounded-lg bg-primary/5 border border-primary/10 text-sm">
-                  <span className="font-semibold text-primary block mb-1">After</span>
-                  <span className="text-foreground/80">{activeScenario.after}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center gap-3">
-              <RecruitingUIMockup sample={activeScenario.uiSample} />
-              <span className="text-xs text-muted-foreground italic">{activeScenario.caption}</span>
-            </div>
-          </motion.div>
-        </AnimatePresence>
       </section>
 
-      {/* THE JOURNEY */}
-      <section className="py-24 border-y border-border/50 glass-bg">
+      {/* CASE STUDY — gated behind registration */}
+      <section id="business-case" className="py-24 border-y border-border/50 glass-bg scroll-mt-24">
         <div className="container">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-12 max-w-2xl mx-auto">
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
-              One Week, End to End
+              The Full Case Study
             </p>
-            <h2 className="text-4xl font-heading font-bold tracking-tight mb-4">{usecase.journeyIntro}</h2>
-          </AnimatedSection>
-
-          <AnimatedCard className="glass-card rounded-2xl p-8 md:p-10 max-w-3xl mx-auto">
-            <div className="flex flex-col divide-y divide-border">
-              {usecase.journey.map((item, i) => (
-                <div key={i} className="flex gap-6 py-4 first:pt-0 last:pb-0">
-                  <span className="w-24 flex-shrink-0 text-xs font-bold text-primary font-heading">{item.day}</span>
-                  <span className="text-sm text-foreground/80 leading-relaxed">{item.desc}</span>
-                </div>
-              ))}
-            </div>
-          </AnimatedCard>
-
-          <AnimatedSection className="max-w-2xl mx-auto text-center mt-12">
-            <p className="text-lg font-medium text-foreground/80">{usecase.journeyClose}</p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* WHAT CHANGES, AND HOW IT'S MEASURED */}
-      <section id="business-case" className="container py-24 scroll-mt-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-          <AnimatedSection>
-            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
-              What Changes, and How It's Measured
-            </p>
-            <h2 className="text-3xl font-heading font-bold mb-4 tracking-tight">{usecase.metricsIntro}</h2>
-            <ul className="space-y-4 mt-8">
-              {usecase.metrics.map((item, i) => (
-                <li key={i} className="flex gap-3 items-start">
-                  <div className="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                    <Check className="w-3 h-3" aria-hidden="true" />
-                  </div>
-                  <span className="text-foreground/80">
-                    <span className="font-semibold text-foreground">{item.title}: </span>
-                    {item.desc}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-sm text-muted-foreground mt-8 leading-relaxed">{usecase.pilotLine}</p>
-          </AnimatedSection>
-
-          <div className="flex flex-col items-center lg:items-end gap-3">
-            <RecruitingUIMockup sample={usecase.dashboardSample} />
-            <span className="text-xs text-muted-foreground italic">Impact, measured.</span>
-          </div>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <AnimatedCard className="glass-card rounded-2xl p-8">
-            <h3 className="text-xl font-bold mb-2">Guardrails</h3>
-            <p className="text-sm text-muted-foreground mb-6">Non-negotiable, on every deployment.</p>
-            <div className="space-y-4">
-              {usecase.guardrails.map((item, i) => (
-                <div key={i} className="flex gap-4 p-4 bg-secondary/50 rounded-lg border border-border">
-                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                    <item.icon className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-semibold text-sm block">{item.title}</span>
-                    <span className="text-sm text-muted-foreground">{item.desc}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </AnimatedCard>
-
-          <div className="flex flex-col items-center lg:items-end gap-3">
-            <RecruitingUIMockup sample={usecase.approvalSample} />
-            <span className="text-xs text-muted-foreground italic">Humans approve. Agents execute.</span>
-          </div>
-        </div>
-      </section>
-
-      {/* BUILT FOR THE WAY YOU ALREADY WORK */}
-      <section className="py-24 glass-bg">
-        <div className="container">
-          <AnimatedSection className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold tracking-tight mb-6">
-              Built for the way you already work
+            <h2 className="text-4xl font-heading font-bold tracking-tight mb-4">
+              See the full rollout, metrics, and guardrails.
             </h2>
+            <p className="text-lg text-muted-foreground">
+              Register to unlock the week-by-week timeline, measured outcomes, and safety guardrails behind this pipeline.
+            </p>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            {usecase.builtFor.map((item, i) => (
-              <AnimatedCard key={i} delay={i * 0.05} className="glass-card p-5 rounded-xl flex gap-3 items-start">
-                <div className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                  <Check className="w-3 h-3" aria-hidden="true" />
-                </div>
-                <span className="text-sm text-foreground/80">{item}</span>
-              </AnimatedCard>
-            ))}
-          </div>
+          <AnimatedCard className="relative glass-card rounded-2xl overflow-hidden max-w-3xl mx-auto">
+            <div className="p-8 md:p-10 blur-[6px] select-none pointer-events-none" aria-hidden="true">
+              <div className="flex flex-col divide-y divide-border">
+                {usecase.journey.slice(0, 4).map((item, i) => (
+                  <div key={i} className="flex gap-6 py-4 first:pt-0 last:pb-0">
+                    <span className="w-24 flex-shrink-0 text-xs font-bold text-primary font-heading">{item.day}</span>
+                    <span className="text-sm text-foreground/80 leading-relaxed">{item.desc}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 backdrop-blur-sm px-8 text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                <Lock className="w-5 h-5" aria-hidden="true" />
+              </div>
+              <p className="font-bold text-lg mb-2">Register to get the case study report</p>
+              <p className="text-sm text-muted-foreground max-w-sm mb-6">
+                Full rollout timeline, measured outcomes, and guardrails, sent straight to you.
+              </p>
+              <Button asChild size="lg" className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white rounded-md shadow-lg shadow-primary/20 font-medium">
+                <Link href="/contact">Get the case study report</Link>
+              </Button>
+            </div>
+          </AnimatedCard>
         </div>
       </section>
 

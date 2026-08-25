@@ -65,12 +65,12 @@ export const agentUsecases: AgentUsecase[] = [
     slug: "recruiter",
     icon: Workflow,
     eyebrow: "AI RECRUITING SUITE",
-    title: "Recruiter",
+    title: "HR Automation Flow",
     cardHook: "From resume to hire: seven agents, zero manual handoffs.",
     cardDescription:
       "A closed-loop pipeline that posts the role, enriches resumes, runs AI voice screenings, schedules interviews, and briefs your execs, writing every result straight back into Workday.",
     cardStat: "7 connected agents · full hiring lifecycle",
-    integrations: ["Voice AI", "Calendar & Meetings", "Email"],
+    integrations: ["Voice AI", "Calendar & Meetings", "Email", "Workday", "HR"],
     heroTitle: "Your best candidates aren't lost to competitors. They're lost to your process.",
     heroSubhead:
       "Open roles carry a cost every day they sit unfilled. Digiworks AI coworkers run the recruiting pipeline end to end: posting, screening, scheduling, preparation, and feedback, so your team owns every decision while the agents carry the work. Live in weeks. Measured from day one.",
@@ -331,6 +331,7 @@ export const agentUsecases: AgentUsecase[] = [
       "Connects to your calendar and email systems.",
       "Aligns to your security model and permissions.",
       "Escalation rules defined by your teams.",
+      "Workers talking to each other: each agent hands off context automatically, so nothing gets re-entered or re-explained down the pipeline.",
     ],
 
     closeTitle: "Tell us about one role you're hiring for today.",

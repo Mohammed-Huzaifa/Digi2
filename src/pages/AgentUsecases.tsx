@@ -7,7 +7,7 @@ import { useDocumentHead } from "@/hooks/useDocumentHead";
 
 export default function AgentUsecases() {
   useDocumentHead({
-    title: "Agent Usecases | Digiworks",
+    title: "Workers | Digiworks",
     description:
       "Browse real Digiworks agent pipelines: the exact triggers, systems, and outcomes we deploy inside customer stacks, starting with the AI recruiting suite.",
     path: "/agent-usecases",
@@ -21,7 +21,7 @@ export default function AgentUsecases() {
           <div className="max-w-3xl">
             <AnimatedText>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-bold text-primary mb-6 uppercase tracking-wider shadow-sm">
-                Agent Usecases
+                Workers
               </div>
 
               <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">

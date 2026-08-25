@@ -149,7 +149,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
                   }`}
                 >
-                  Agent Usecases
+                  Workers
                 </a>
               </Link>
 
@@ -276,7 +276,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
                       <Link href="/agent-usecases" onClick={() => setIsOpen(false)} asChild>
                         <a className="block px-4 py-4 rounded-xl text-base font-medium text-foreground hover:bg-secondary transition-colors">
-                          Agent Usecases
+                          Workers
                         </a>
                       </Link>
 
