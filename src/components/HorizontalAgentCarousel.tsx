@@ -93,42 +93,48 @@ export function HorizontalAgentCarousel({ scenarios, podIntro }: Props) {
         {scenarios.map((s, i) => (
           <div
             key={s.id}
-            className="min-w-[85vw] sm:min-w-[420px] lg:min-w-[480px] shrink-0 pr-6 h-full flex items-center"
+            className="w-[85vw] sm:w-[420px] lg:w-[460px] shrink-0 pr-6 h-full flex items-center min-w-0"
           >
-            <div className="glass-card rounded-2xl overflow-hidden w-full h-[540px] flex flex-col">
-              {/* Top: framed mockup, with index badge like a screenshot header */}
-              <div className="relative shrink-0 bg-secondary/40 border-b border-border/60 h-[220px] flex items-center justify-center px-6 py-4">
-                <span className="absolute top-3 left-4 text-xs font-bold text-muted-foreground tabular-nums">
-                  {s.number} / {String(scenarios.length).padStart(2, "0")}
-                </span>
-                <div className="absolute top-3 right-4 w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+            <div className="glass-card rounded-2xl p-6 flex flex-col w-full h-full min-w-0 overflow-y-auto">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
                   <s.icon className="w-4 h-4" aria-hidden="true" />
                 </div>
-                <div className="w-full max-w-[280px] scale-90">
-                  <RecruitingUIMockup sample={s.uiSample} />
+                <span className="text-xs font-bold text-muted-foreground tabular-nums">
+                  {s.number} / {String(scenarios.length).padStart(2, "0")}
+                </span>
+              </div>
+
+              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1">
+                {s.headline}
+              </p>
+              <h3 className="text-xl font-heading font-bold mb-2 tracking-tight">
+                {s.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+                {s.description}
+              </p>
+
+              <div className="flex flex-col gap-2 mb-4">
+                <div className="p-3 rounded-lg bg-secondary/50 border border-border text-sm">
+                  <span className="font-semibold text-foreground/70 block mb-1">
+                    Before
+                  </span>
+                  <span className="text-muted-foreground">{s.before}</span>
+                </div>
+                <div className="p-3 rounded-lg bg-primary/5 border border-primary/10 text-sm">
+                  <span className="font-semibold text-primary block mb-1">
+                    After
+                  </span>
+                  <span className="text-foreground/80">{s.after}</span>
                 </div>
               </div>
 
-              {/* Bottom: text */}
-              <div className="flex flex-col flex-1 min-h-0 p-6">
-                <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1 line-clamp-1">
-                  {s.headline}
-                </p>
-                <h3 className="text-xl font-heading font-bold mb-2 tracking-tight">
-                  {s.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm line-clamp-3 mb-4">
-                  {s.description}
-                </p>
-
-                <div className="mt-auto pt-3 border-t border-border/60 space-y-1">
-                  <p className="text-xs text-muted-foreground line-clamp-1">
-                    <span className="font-semibold text-foreground/70">Before:</span> {s.before}
-                  </p>
-                  <p className="text-xs text-foreground/80 line-clamp-1">
-                    <span className="font-semibold text-primary">After:</span> {s.after}
-                  </p>
-                </div>
+              <div className="flex flex-col items-center gap-2 mt-auto pt-1 w-full max-w-[280px] mx-auto">
+                <RecruitingUIMockup sample={s.uiSample} />
+                <span className="text-xs text-muted-foreground italic">
+                  {s.caption}
+                </span>
               </div>
             </div>
           </div>
