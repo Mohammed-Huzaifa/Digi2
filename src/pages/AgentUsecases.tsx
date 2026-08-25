@@ -25,7 +25,7 @@ export default function AgentUsecases() {
               </div>
 
               <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
-                Real agent pipelines, built for real systems.
+                A workforce of agentic workers that hand off, coordinate, and deliver.
               </h1>
 
               <p className="text-lg leading-relaxed max-w-2xl mb-8 text-muted-foreground">

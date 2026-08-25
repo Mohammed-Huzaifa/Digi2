@@ -103,7 +103,7 @@ export const agentUsecases: AgentUsecase[] = [
       ],
     },
 
-    podIntro: "Seven agents, one complete pipeline. Each handles one stage; together they run the entire loop, from request to decision.",
+    podIntro: "Each handles one stage; together they run the entire loop, from request to decision.",
     scenarios: [
       {
         id: "job-description",

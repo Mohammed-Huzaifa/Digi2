@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { PhoneCall, CalendarClock, Mail, ArrowRight, Briefcase, Users, Lock } from "lucide-react";
 import { Link, useParams, Redirect } from "wouter";
+import { toast } from "sonner";
 import { AnimatedSection, AnimatedText, AnimatedCard } from "@/components/AnimatedSection";
 import { RecruitingUIMockup } from "@/components/RecruitingUIMockup";
 import { LiveTracePanel } from "@/components/LiveTracePanel";
@@ -19,6 +23,24 @@ const INTEGRATION_ICONS: Record<string, React.ReactNode> = {
 export default function AgentUsecaseDetail() {
   const { slug } = useParams<{ slug: string }>();
   const usecase = getAgentUsecase(slug);
+  const [caseStudyForm, setCaseStudyForm] = useState({ name: "", email: "" });
+
+  const handleCaseStudySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const subject = encodeURIComponent(`Case Study Request — ${usecase?.title ?? ""}`);
+    const body = encodeURIComponent(
+`New Case Study Request
+
+Name: ${caseStudyForm.name}
+Email: ${caseStudyForm.email}
+Use Case: ${usecase?.title ?? ""}
+`
+    );
+
+    window.location.href = `mailto:maaz@digiworks.ai?subject=${subject}&body=${body}`;
+    toast.success("Opening your email app with your details…");
+  };
 
   useDocumentHead({
     title: usecase ? `${usecase.title} | Digiworks Workers` : "Workers | Digiworks",
@@ -135,7 +157,7 @@ export default function AgentUsecaseDetail() {
           </AnimatedSection>
 
           <AnimatedCard className="relative glass-card rounded-2xl overflow-hidden max-w-3xl mx-auto">
-            <div className="p-8 md:p-10 blur-[6px] select-none pointer-events-none" aria-hidden="true">
+            <div className="absolute inset-0 p-8 md:p-10 blur-[6px] select-none pointer-events-none" aria-hidden="true">
               <div className="flex flex-col divide-y divide-border">
                 {usecase.journey.slice(0, 4).map((item, i) => (
                   <div key={i} className="flex gap-6 py-4 first:pt-0 last:pb-0">
@@ -146,7 +168,7 @@ export default function AgentUsecaseDetail() {
               </div>
             </div>
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 backdrop-blur-sm px-8 text-center">
+            <div className="relative flex flex-col items-center justify-center bg-white/90 backdrop-blur-sm px-8 py-10 text-center">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
                 <Lock className="w-5 h-5" aria-hidden="true" />
               </div>
@@ -154,9 +176,34 @@ export default function AgentUsecaseDetail() {
               <p className="text-sm text-muted-foreground max-w-sm mb-6">
                 Full rollout timeline, measured outcomes, and guardrails, sent straight to you.
               </p>
-              <Button asChild size="lg" className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-white rounded-md shadow-lg shadow-primary/20 font-medium">
-                <Link href="/contact">Get the case study report</Link>
-              </Button>
+              <form onSubmit={handleCaseStudySubmit} className="w-full max-w-sm space-y-3 text-left">
+                <div className="space-y-1.5">
+                  <Label htmlFor="case-study-name" className="sr-only">Name</Label>
+                  <Input
+                    id="case-study-name"
+                    placeholder="Your name"
+                    required
+                    className="h-10 bg-white"
+                    value={caseStudyForm.name}
+                    onChange={(e) => setCaseStudyForm({ ...caseStudyForm, name: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="case-study-email" className="sr-only">Email</Label>
+                  <Input
+                    id="case-study-email"
+                    type="email"
+                    placeholder="you@company.com"
+                    required
+                    className="h-10 bg-white"
+                    value={caseStudyForm.email}
+                    onChange={(e) => setCaseStudyForm({ ...caseStudyForm, email: e.target.value })}
+                  />
+                </div>
+                <Button type="submit" size="lg" className="w-full h-12 text-base bg-primary hover:bg-primary/90 text-white rounded-md shadow-lg shadow-primary/20 font-medium">
+                  Get the case study report
+                </Button>
+              </form>
             </div>
           </AnimatedCard>
         </div>
