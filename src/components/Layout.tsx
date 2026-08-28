@@ -121,7 +121,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div className="absolute left-0 top-full pt-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
                   <div className="w-56 rounded-xl border border-border bg-background shadow-lg p-2">
                     <Link href="/solutions#higher-ed" asChild>
-                      <a className="block rounded-lg px-3 py-2 text-sm hover:bg-secondary transition-colors">
+                      <a
+                        className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
+                          location.startsWith("/solutions")
+                            ? "bg-secondary"
+                            : "hover:bg-secondary"
+                        }`}
+                      >
                         <div className="font-semibold">Higher Education</div>
                         <div className="text-xs text-muted-foreground">
                           Universities & Institutions
@@ -130,7 +136,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </Link>
 
                     <Link href="/business-operations" asChild>
-                      <a className="block rounded-lg px-3 py-2 text-sm hover:bg-secondary transition-colors">
+                      <a
+                        className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
+                          location === "/business-operations"
+                            ? "bg-secondary"
+                            : "hover:bg-secondary"
+                        }`}
+                      >
                         <div className="font-semibold">Business Operations</div>
                         <div className="text-xs text-muted-foreground">
                           IT, HR & Operations teams
@@ -247,7 +259,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                               }}
                               asChild
                             >
-                              <a className="block px-4 py-3 rounded-xl text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+                              <a
+                                className={`block px-4 py-3 rounded-xl text-sm font-medium text-foreground transition-colors ${
+                                  location.startsWith("/solutions")
+                                    ? "bg-secondary"
+                                    : "hover:bg-secondary"
+                                }`}
+                              >
                                 Higher Education
                                 <div className="text-xs text-muted-foreground mt-0.5">
                                   Universities & Institutions
@@ -263,7 +281,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                               }}
                               asChild
                             >
-                              <a className="block px-4 py-3 rounded-xl text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+                              <a
+                                className={`block px-4 py-3 rounded-xl text-sm font-medium text-foreground transition-colors ${
+                                  location === "/business-operations"
+                                    ? "bg-secondary"
+                                    : "hover:bg-secondary"
+                                }`}
+                              >
                                 Business Operations
                                 <div className="text-xs text-muted-foreground mt-0.5">
                                   IT, HR & Operations teams
