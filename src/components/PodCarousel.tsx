@@ -15,7 +15,7 @@ interface Props {
 function PodCard({ s }: { s: Scenario }) {
   return (
     <div className="glass-card rounded-2xl p-8 md:p-10 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
-      <div>
+      <div className="min-w-0">
         <div className="flex items-center gap-3 mb-3">
           <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0">
             <s.icon className="w-5 h-5" aria-hidden="true" />
@@ -44,7 +44,7 @@ function PodCard({ s }: { s: Scenario }) {
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-3">
+      <div className="flex flex-col items-center gap-3 min-w-0 w-full">
         <RecruitingUIMockup sample={s.uiSample} />
         <span className="text-xs text-muted-foreground italic">{s.caption}</span>
       </div>

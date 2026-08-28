@@ -156,8 +156,8 @@ function ChatMockup({ sample }: { sample: ChatSample }) {
         ))}
         {sample.confirm && (
           <div className="self-start max-w-[82%] bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold px-3.5 py-2.5 rounded-xl flex items-center gap-2">
-            <Check className="w-3.5 h-3.5" aria-hidden="true" />
-            {sample.confirm}
+            <Check className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
+            <span className="min-w-0">{sample.confirm}</span>
           </div>
         )}
       </div>
@@ -256,8 +256,8 @@ function CalendarMockup({ sample }: { sample: CalendarSample }) {
       <div className="space-y-1">
         {sample.skipped.map((s, i) => (
           <div key={i} className="flex items-center gap-2 text-[10px] text-muted-foreground/60">
-            <span className="w-1.5 h-1.5 rounded-full bg-border" />
-            {s}
+            <span className="w-1.5 h-1.5 rounded-full bg-border flex-shrink-0" />
+            <span className="min-w-0">{s}</span>
           </div>
         ))}
       </div>
@@ -281,7 +281,7 @@ function EmailMockup({ sample }: { sample: EmailSample }) {
         {sample.points.map((p, i) => (
           <li key={i} className="flex gap-2 text-xs text-foreground/80">
             <span className="font-semibold text-primary flex-shrink-0">{i + 1}.</span>
-            {p}
+            <span className="min-w-0">{p}</span>
           </li>
         ))}
       </ol>
@@ -307,7 +307,7 @@ function DashboardMockup({ sample }: { sample: DashboardSample }) {
       <div className="space-y-1.5">
         {sample.log.map((l, i) => (
           <div key={i} className="flex justify-between text-[10px] text-muted-foreground py-1 border-b border-secondary last:border-0">
-            <span>{l.text}</span>
+            <span className="min-w-0">{l.text}</span>
             <span className="flex-shrink-0 ml-2">{l.time}</span>
           </div>
         ))}
@@ -334,7 +334,7 @@ function ApprovalMockup({ sample }: { sample: ApprovalSample }) {
       <div className="space-y-1.5">
         {sample.log.map((l, i) => (
           <div key={i} className="flex justify-between text-[10px] text-muted-foreground py-1 border-b border-secondary last:border-0">
-            <span>{l.text}</span>
+            <span className="min-w-0">{l.text}</span>
             <span className="flex-shrink-0 ml-2">{l.time}</span>
           </div>
         ))}
@@ -358,7 +358,7 @@ function SummaryMockup({ sample }: { sample: SummarySample }) {
         {sample.points.map((p, i) => (
           <li key={i} className="flex gap-2 text-xs text-foreground/80">
             <span className="mt-1.5 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
-            {p}
+            <span className="min-w-0">{p}</span>
           </li>
         ))}
       </ul>
