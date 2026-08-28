@@ -109,7 +109,7 @@ export const agentUsecases: AgentUsecase[] = [
         id: "job-description",
         number: "01",
         icon: FileEdit,
-        title: "Job Description Agent",
+        title: "Drafter",
         headline: "A three-line request becomes a posted role, in minutes.",
         description:
           "The recruiter forwards the hiring manager's requirement from Slack, email, or a meeting note. The agent drafts the JD in the organization's standard format; HR approves it into Workday or your HR management tool. No template hunting, no format drift, no drafting cycles.",
@@ -119,7 +119,7 @@ export const agentUsecases: AgentUsecase[] = [
         uiSample: {
           kind: "chat",
           system: "Digiworks",
-          heading: "Job Description Agent",
+          heading: "Drafter",
           bubbles: [
             { from: "user", text: "\"Senior backend engineer, Go, payments, Toronto.\"" },
             { from: "agent", label: "Digi · AI Coworker", text: "Drafted in your standard format: role summary, requirements, comp band. Ready for HR review." },
@@ -131,7 +131,7 @@ export const agentUsecases: AgentUsecase[] = [
         id: "resume-enrichment",
         number: "02",
         icon: FileSearch,
-        title: "Resume Enrichment Agent",
+        title: "Curator",
         headline: "Every resume read in seconds, and the strong candidates found.",
         description:
           "CVs are parsed, skills mapped, and fit scored against the job description, then written to your existing app as candidate profiles.",
@@ -157,7 +157,7 @@ export const agentUsecases: AgentUsecase[] = [
         id: "screening",
         number: "03",
         icon: Phone,
-        title: "Screening Agent",
+        title: "Vetter",
         headline: "First-round screening, around the clock.",
         description:
           "The agent runs structured voice screenings, capturing responses, transcripts, and summaries without a recruiter on the line. Candidates in any time zone move forward without waiting weeks.",
@@ -180,7 +180,7 @@ export const agentUsecases: AgentUsecase[] = [
         id: "interview-scheduling",
         number: "04",
         icon: CalendarCheck,
-        title: "Interview Scheduling Agent",
+        title: "Convener",
         headline: "One calendar for the hiring manager, the recruiter, and the candidate.",
         description:
           "Availability is checked across all three, the candidate is confirmed by voice, and the interview is booked. No double-booking, no dropped threads.",
@@ -201,7 +201,7 @@ export const agentUsecases: AgentUsecase[] = [
         id: "questionnaire",
         number: "05",
         icon: ClipboardList,
-        title: "Questionnaire Agent",
+        title: "Inquirer",
         headline: "The hiring manager walks in prepared, with questions worth asking.",
         description:
           "Before each interview, the agent assembles a question set tailored to the role and the candidate, so every conversation starts from the same strong foundation.",
@@ -225,7 +225,7 @@ export const agentUsecases: AgentUsecase[] = [
         id: "feedback",
         number: "06",
         icon: MessageSquare,
-        title: "Feedback Agent",
+        title: "Assessor",
         headline: "Interview feedback, captured while it's fresh.",
         description:
           "After the interview, the agent notes the hiring manager's feedback from chat or voice and saves it to the candidate record, directly in the recruiting software.",
@@ -235,7 +235,7 @@ export const agentUsecases: AgentUsecase[] = [
         uiSample: {
           kind: "chat",
           system: "Digiworks",
-          heading: "Feedback Agent",
+          heading: "Assessor",
           bubbles: [
             { from: "agent", label: "Digi · AI Coworker", text: "How did the interview with Marcus go?" },
             { from: "user", text: "Strong on system design, a bit light on team leadership examples. Would move forward." },
@@ -247,7 +247,7 @@ export const agentUsecases: AgentUsecase[] = [
         id: "executive-debrief",
         number: "07",
         icon: BarChart3,
-        title: "Executive Debrief Agent",
+        title: "Rapporteur",
         headline: "Decision-ready summaries, without the transcript-diving.",
         description:
           "Interview transcripts are distilled into concise executive summaries: strengths, concerns, and a clear recommendation, so leadership reviews signal, not noise.",
