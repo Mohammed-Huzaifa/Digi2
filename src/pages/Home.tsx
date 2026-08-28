@@ -243,7 +243,7 @@ export default function Home() {
               <div className="relative z-10 grid gap-6">
                 <AnimatedCard delay={0.1} className="glass-card p-6 rounded-xl shadow-sm">
                   <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                    <img src="/images/business.png" className="w-6 h-6 object-contain" alt="Microsoft Teams" />
+                    <img src="/images/business.png" className="w-6 h-6 object-contain" alt="Microsoft Teams" loading="lazy" />
                     Microsoft Teams
                   </h4>
                   <p className="text-sm text-muted-foreground">"Hey Digi, can you reset the password for user @sarah?"</p>
@@ -251,7 +251,7 @@ export default function Home() {
                 
                 <AnimatedCard delay={0.2} className="glass-card p-6 rounded-xl shadow-sm translate-x-8">
                   <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                  <img src="/images/slack.png" className="w-6 h-6 object-contain" alt="Slack" />
+                  <img src="/images/slack.png" className="w-6 h-6 object-contain" alt="Slack" loading="lazy" />
                     Slack
                   </h4>
                   <p className="text-sm text-muted-foreground">"Approved. Please proceed with the purchase order #9921."</p>
@@ -259,7 +259,7 @@ export default function Home() {
                 
                 <AnimatedCard delay={0.3} className="glass-card p-6 rounded-xl shadow-sm">
                   <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                    <img src="/images/crm.png" className="w-6 h-6 object-contain" alt="CRM / ERP" />
+                    <img src="/images/crm.png" className="w-6 h-6 object-contain" alt="CRM / ERP" loading="lazy" />
                     CRM / ERP Update
                   </h4>
                   <p className="text-sm text-muted-foreground">System updated successfully. Notification sent to finance team.</p>
@@ -406,7 +406,7 @@ export default function Home() {
 </Button>
             </div>
             <div className="h-48 relative overflow-hidden mt-auto">
-              <img src="/images/higher-ed-bg.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Higher Education" />
+              <img src="/images/higher-ed-bg.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Higher Education" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
             </div>
           </AnimatedCard>
@@ -436,7 +436,7 @@ export default function Home() {
               </Button>
             </div>
             <div className="h-48 relative overflow-hidden mt-auto">
-              <img src="/images/enterprise-bg.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Enterprise" />
+              <img src="/images/enterprise-bg.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Enterprise" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
             </div>
           </AnimatedCard>

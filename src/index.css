@@ -141,7 +141,7 @@
 @layer base {
   * {
     @apply border-border;
-    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+    outline-color: var(--ring);
   }
   html, body {
     overflow-x: clip;

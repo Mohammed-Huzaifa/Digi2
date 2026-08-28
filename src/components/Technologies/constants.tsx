@@ -27,7 +27,7 @@ import outlookPng from "@/components/icons/skills/icons8-outlook-48.png";
 // ✅ IMPORTANT: keep this export name EXACTLY as "skillRows"
 export const skillRows: Skill[][] = [
   [
-    { icon: <img src={awsSvg} className="w-6 h-6" alt="AWS" />, name: "AWS" },
+    { icon: <img src={awsSvg} className="w-6 h-6" alt="AWS" loading="lazy" />, name: "AWS" },
     { icon: <AzureIcon className="w-6 h-6 text-[#0078D4]" />, name: "Azure" },
     { icon: <PythonIcon className="w-6 h-6 text-[#3776AB]" />, name: "Python" },
     { icon: <FastAPIIcon className="w-6 h-6 text-[#009688]" />, name: "FastAPI" },
@@ -44,10 +44,10 @@ export const skillRows: Skill[][] = [
     { icon: <SupabaseIcon className="w-6 h-6" />, name: "Supabase" },
     { icon: <PostgresqlIcon className="w-6 h-6 text-[#336791]" />, name: "PostgreSQL" },
     { icon: <DockerIcon className="w-6 h-6 text-[#2496ED]" />, name: "Docker" },
-    { icon: <img src={slackSvg} className="w-6 h-6" alt="Slack" />, name: "Slack" },
-    { icon: <img src={gmailPng} className="w-6 h-6" alt="Gmail" />, name: "Gmail" },
-    { icon: <img src={shopifyPng} className="w-6 h-6" alt="Shopify" />, name: "Shopify" },
-    { icon: <img src={teamsPng} className="w-6 h-6" alt="Teams" />, name: "Teams" },
-    { icon: <img src={outlookPng} className="w-6 h-6" alt="Outlook" />, name: "Outlook" },
+    { icon: <img src={slackSvg} className="w-6 h-6" alt="Slack" loading="lazy" />, name: "Slack" },
+    { icon: <img src={gmailPng} className="w-6 h-6" alt="Gmail" loading="lazy" />, name: "Gmail" },
+    { icon: <img src={shopifyPng} className="w-6 h-6" alt="Shopify" loading="lazy" />, name: "Shopify" },
+    { icon: <img src={teamsPng} className="w-6 h-6" alt="Teams" loading="lazy" />, name: "Teams" },
+    { icon: <img src={outlookPng} className="w-6 h-6" alt="Outlook" loading="lazy" />, name: "Outlook" },
   ],
 ];
