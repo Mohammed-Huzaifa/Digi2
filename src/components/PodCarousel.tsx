@@ -106,7 +106,7 @@ export function PodCarousel({ scenarios, podIntro }: Props) {
               The Recruiting Pod
             </p>
             <h2 className="text-4xl font-heading font-bold tracking-tight mb-4">
-              Seven Co-workers, one complete pipeline.
+              Seven coworkers, one complete pipeline.
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl">{podIntro}</p>
           </div>
@@ -144,7 +144,7 @@ export function PodCarousel({ scenarios, podIntro }: Props) {
             The Recruiting Pod
           </p>
           <h2 className="text-3xl font-heading font-bold tracking-tight mb-4">
-            Seven Co-workers, one complete pipeline.
+            Seven coworkers, one complete pipeline.
           </h2>
           <p className="text-lg text-muted-foreground">{podIntro}</p>
         </div>
